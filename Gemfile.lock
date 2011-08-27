@@ -1,0 +1,232 @@
+GIT
+  remote: git://github.com/intridea/omniauth.git
+  revision: 59f048fbf68add7d4fcdc5e0cc36daa9da85f637
+  specs:
+    oa-basic (0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      rest-client (~> 1.6.0)
+    oa-core (0.3.0.rc1)
+    oa-enterprise (0.3.0.rc1)
+      addressable (~> 2.2.6)
+      net-ldap (~> 0.2.2)
+      nokogiri (~> 1.5.0)
+      oa-core (= 0.3.0.rc1)
+      pyu-ruby-sasl (~> 0.0.3.1)
+      rubyntlm (~> 0.1.1)
+    oa-more (0.3.0.rc1)
+      multi_json (~> 1.0.0)
+      oa-core (= 0.3.0.rc1)
+      rest-client (~> 1.6.0)
+    oa-oauth (0.3.0.rc1)
+      faraday (~> 0.7.3)
+      multi_json (~> 1.0.0)
+      multi_xml (~> 0.2.2)
+      oa-core (= 0.3.0.rc1)
+      oauth (~> 0.4.0)
+      oauth2 (~> 0.5.0)
+    oa-openid (0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      rack-openid (~> 1.3.1)
+      ruby-openid-apps-discovery (~> 1.2.0)
+    omniauth (0.3.0.rc1)
+      oa-basic (= 0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      oa-enterprise (= 0.3.0.rc1)
+      oa-more (= 0.3.0.rc1)
+      oa-oauth (= 0.3.0.rc1)
+      oa-openid (= 0.3.0.rc1)
+
+GIT
+  remote: git://github.com/maccman/nestful.git
+  revision: 688376201ccafe45e2ffe7fd47eba6cafbc258d8
+  specs:
+    nestful (0.0.6)
+      activesupport (>= 3.0.0.beta)
+
+GIT
+  remote: git://github.com/maccman/ruby-stylus.git
+  revision: 645b12215e12fcd18729ea2ae19a77a62400e637
+  specs:
+    stylus (0.2.1.beta)
+      execjs
+
+GIT
+  remote: git://github.com/rails/coffee-rails.git
+  revision: ac83ad836d5fd6901b6af3b066415acc72d94544
+  specs:
+    coffee-rails (3.2.0.beta)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0.beta)
+
+GIT
+  remote: git://github.com/rails/rails.git
+  revision: bb4dedbc2cc7b96b95bf4519f56ed9624949a7ef
+  specs:
+    actionmailer (3.2.0.beta)
+      actionpack (= 3.2.0.beta)
+      mail (~> 2.3.0)
+    actionpack (3.2.0.beta)
+      activemodel (= 3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      i18n (~> 0.6)
+      rack (~> 1.3.2)
+      rack-cache (~> 1.0.2)
+      rack-mount (~> 0.8.1)
+      rack-test (~> 0.6.0)
+      sprockets (~> 2.0.0.beta.14)
+    activemodel (3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+      bcrypt-ruby (~> 3.0.0)
+      builder (~> 3.0.0)
+      i18n (~> 0.6)
+    activerecord (3.2.0.beta)
+      activemodel (= 3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+      arel (~> 2.2.1)
+      tzinfo (~> 0.3.29)
+    activeresource (3.2.0.beta)
+      activemodel (= 3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+    activesupport (3.2.0.beta)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    rails (3.2.0.beta)
+      actionmailer (= 3.2.0.beta)
+      actionpack (= 3.2.0.beta)
+      activerecord (= 3.2.0.beta)
+      activeresource (= 3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+      bundler (~> 1.0)
+      railties (= 3.2.0.beta)
+    railties (3.2.0.beta)
+      actionpack (= 3.2.0.beta)
+      activesupport (= 3.2.0.beta)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.6)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.6)
+    ansi (1.3.0)
+    archive-tar-minitar (0.5.2)
+    arel (2.2.1)
+    bcrypt-ruby (3.0.0)
+    builder (3.0.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.1.2)
+    columnize (0.3.4)
+    daemons (1.1.4)
+    erubis (2.7.0)
+    eventmachine (0.12.10)
+    execjs (1.2.4)
+      multi_json (~> 1.0)
+    faraday (0.7.4)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.0)
+      rack (< 2, >= 1.1.0)
+    heroku (2.5.2)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      term-ansicolor (~> 1.0.5)
+    hike (1.2.1)
+    i18n (0.6.0)
+    jquery-rails (1.0.13)
+      railties (~> 3.0)
+      thor (~> 0.14)
+    launchy (2.0.5)
+      addressable (~> 2.2.6)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
+    mail (2.3.0)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.16)
+    multi_json (1.0.3)
+    multi_xml (0.2.2)
+    multipart-post (1.1.3)
+    net-ldap (0.2.2)
+    nokogiri (1.5.0)
+    oauth (0.4.5)
+    oauth2 (0.5.0)
+      faraday (< 0.8, >= 0.6.1)
+      multi_json (~> 1.0.0)
+    pg (0.11.0)
+    polyglot (0.3.2)
+    pyu-ruby-sasl (0.0.3.3)
+    rack (1.3.2)
+    rack-cache (1.0.2)
+      rack (>= 0.4)
+    rack-mount (0.8.2)
+      rack (>= 1.0.0)
+    rack-openid (1.3.1)
+      rack (>= 1.1.0)
+      ruby-openid (>= 2.1.8)
+    rack-ssl (1.3.2)
+      rack
+    rack-test (0.6.1)
+      rack (>= 1.0)
+    rake (0.9.2)
+    rdoc (3.9.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby-openid (2.1.8)
+    ruby-openid-apps-discovery (1.2.0)
+      ruby-openid (>= 2.1.7)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
+    rubyntlm (0.1.1)
+    sprockets (2.0.0.beta.15)
+      hike (~> 1.2)
+      rack (~> 1.0)
+      tilt (!= 1.3.0, ~> 1.1)
+    sqlite3 (1.3.4)
+    term-ansicolor (1.0.6)
+    thin (1.2.11)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.14.6)
+    tilt (1.3.3)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
+    turn (0.8.2)
+      ansi (>= 1.2.2)
+    tzinfo (0.3.29)
+    uglifier (1.0.1)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  coffee-rails!
+  heroku
+  jquery-rails
+  nestful!
+  omniauth!
+  pg
+  rails!
+  ruby-debug19
+  sqlite3
+  stylus!
+  thin
+  turn
+  uglifier
