@@ -5,7 +5,8 @@ body, html
   width: 100%
   margin: 0
   padding: 0
-  overflow: hidden
+  overflow: auto
+  -webkit-user-select: none
 
 html
   color: #52585D
@@ -16,6 +17,7 @@ html
   
 p
   font-family: 'helvetica neue', helvetica, arial, sans-serif
+  -webkit-user-select: text
   
 a 
   color: #2D81C5
@@ -44,6 +46,7 @@ button, a.cta
   text-shadow: 0 1px 0 #FFF
   color: darken(#52585D, 15%)
   vbg-gradient(#F2F2F2, #E7E7E7)
+  font-family: 'Lucida Grande';
 
   background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), color-stop(0.5, #F2F2F2), color-stop(0.5, #E7E7E7))
   -webkit-box-shadow: inset 0 1px 0 #FFF, 0 1px 1px rgba(0, 0, 0, 0.05)
@@ -51,17 +54,34 @@ button, a.cta
   &.default
     border-color: rgba(104, 189, 244, 0.8)
     -webkit-box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    -moz-box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
   
   &:active
     border-color: rgba(0, 0, 0, 0.3)
     -webkit-box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.1)
+    -moz-box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.1)
+    box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.1)
     
 input[type=text], textarea
   padding: 3px
   margin: 0
   border: 1px solid rgba(0, 0, 0, 0.25)
   inset-box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2))
+
+input[type=text], textarea, select
+  &:focus
+    outline: none
+    border-color: rgba(104, 189, 244, 0.8)
     
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+  
+textarea
+  padding: 5px
+  height: 80px
+      
 h1
   font: 20px arial,lucida,helvetica,arial,sans-serif
   font-weight: normal
@@ -134,7 +154,7 @@ header.heading
     position: absolute;
     bottom: 25px;
     width: 70%;
-    height: 55%
+    height: 200px
     box-shadow(0, 4px, 8px, rgba(0, 0, 0, 0.3))
 
   &:before

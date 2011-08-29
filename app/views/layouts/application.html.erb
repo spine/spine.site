@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SpineSite</title>
+  <title>Spine</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= css_scope %>">
+  <section id="section">
+    <header id="header">
+      <div class="left">
+        <h1><%= link_to "Spine", "/" %></h1>
+      </div>
+      
+      <nav class="right">
+        <ul>
+          <li><%= link_to "Download", pages_url("download") %></li>
+          <li><%= link_to "Examples", pages_url("examples") %></li>
+          <li><%= link_to "Documentation", pages_url("documentation") %></li>
+          <li><%= link_to "Community", pages_url("community") %></li>
+        </ul>
+      </nav>
 
-<%= yield %>
-
+      <%= yield :header %>
+    </header>
+    
+    <%= flash_message %>
+    
+    <%= yield %>
+  </section>
+  
+  <footer id="footer">
+    <ul>
+      <li><%= link_to "Home", "/" %></li>
+      <li>About</li>
+      <li>About</li>
+      <li>About</li>      
+    </ul>
+  </footer>
 </body>
 </html>
