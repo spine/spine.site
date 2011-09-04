@@ -1,8 +1,10 @@
 SpineSite::Application.routes.draw do
   match '/pages/:action' => 'pages', :as => :pages
   match '/docs/:action'  => 'docs', :as => :docs
+  
+  match '/docs' => 'docs#index'
 
-  root :to => 'pages#home'
+  root :to => 'pages#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

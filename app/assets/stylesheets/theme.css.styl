@@ -8,12 +8,12 @@ body, html
   overflow: auto
   -webkit-user-select: none
 
-html
+body
   color: #52585D
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: antialiased
   font: 14px arial
-  vbg-gradient(#DCDCDC, #CCCCCC)
+  background: #F4F4F4
   
 p
   font-family: 'helvetica neue', helvetica, arial, sans-serif
@@ -43,22 +43,23 @@ button, a.cta
   display: inline-block
   font-size: 13px
   padding: 4px 8px
-  border: 1px solid rgba(0, 0, 0, 0.3)
+  border: 1px solid rgba(0, 0, 0, 0.1)
   border-radius(5px)
   inset-line()
   text-shadow: 0 1px 0 #FFF
   color: darken(#52585D, 15%)
-  vbg-gradient(#F2F2F2, #E7E7E7)
   font-family: 'Lucida Grande';
+  
+  vbg-gradient(lighten(#F4F4F4, 10%), darken(#F4F4F4, 5%))
 
-  background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), color-stop(0.5, #F2F2F2), color-stop(0.5, #E7E7E7))
-  -webkit-box-shadow: inset 0 1px 0 #FFF, 0 1px 1px rgba(0, 0, 0, 0.05)
+  background: -webkit-gradient(linear, left top, left bottom, from(lighten(#F4F4F4, 10%)), color-stop(0.5, lighten(#F4F4F4, 10%)), color-stop(0.5, darken(#F4F4F4, 5%)))
+  -webkit-box-shadow: inset 0 1px 0 #FFF, 0 1px 0 rgba(0, 0, 0, 0.3)
   
   &.default
     border-color: rgba(104, 189, 244, 0.8)
-    -webkit-box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
-    -moz-box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
-    box-shadow: inset 0 1px 0 #FFF, 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 5px 0 rgba(104, 189, 244, 0.6)
   
   &:active
     border-color: rgba(0, 0, 0, 0.3)

@@ -1,17 +1,21 @@
 @import 'mixins'
 
-body.pages-home
+body.pages-index
   #header
     inset-line(0.7)
-    vbg-gradient(#F4F4F4, darken(#F4F4F4, 10%))
+    vbg-gradient(lighten(#F4F4F4, 10%), darken(#F4F4F4, 5%))
     border-bottom: 1px solid lighten(#CCCCCC, 10%)
 
   header.intro
     padding: 10px
     text-align: center
+    overflow: hidden
+    
+    h2
+      margin: 0 0 20px 0
     
     h3
-      margin: 8px 5px 0 20px
+      margin: 8px 5px 0px 20px
       font-size: 25px
       font-weight: normal
 
@@ -28,17 +32,13 @@ body.pages-home
   aside section
     float: left
     width: 204px
-    border: 1px solid darken(#CCCCCC, 0%)
     border-radius(5px)
-    box-shadow(0, 1px, 0px, rgba(0, 0, 0, 0.1))
     margin: 0 20px 20px 0
     
     p
       margin: 6px
   
     header
-      vbg-gradient(#F4F4F4, darken(#F4F4F4, 10%))
-      border-bottom: 1px solid darken(#CCCCCC, 5%)
       padding: 6px 8px
       -webkit-border-radius: 5px 5px 0 0
       font-weight: bold
