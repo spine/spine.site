@@ -14,7 +14,7 @@ end
 gem 'jquery-rails'
 gem 'thin'
 gem 'nestful', :git => 'git://github.com/maccman/nestful.git'
-gem 'omniauth'
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
 gem 'rdiscount'
 
 group :development do 
