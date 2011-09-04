@@ -22,4 +22,8 @@ module ApplicationHelper
       content_tag(:div, value, :class => "flash #{key}") if value.present?
     end.join("").html_safe
   end
+  
+  def title(name)
+    content_for(:title) { name }
+  end
 end

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spine</title>
+  <%= stylesheet_link_tag    "docs" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= css_scope %>">
+  <header id="header">
+    <h1><a href="/">Spine</a></h1>
+    <h2><%= yield(:title) %></h2>
+    <%= flash_message %>
+  </header>
+  
+  <article id="article">
+  
+    <nav id="nav">
+      <h2><%= link_to "Documentation", docs_path %></h2>
+      <ul>
+        <li><%= link_to "Introduction", docs_path("introduction") %></li>
+        <li><%= link_to "Classes", docs_path("classes") %></li>
+        <li><%= link_to "Models", docs_path("models") %></li>
+        <li><%= link_to "Controllers", docs_path("controllers") %></li>
+        <li><%= link_to "Events", docs_path("events") %></li>
+        <li><%= link_to "Routing", docs_path("routing") %></li>
+      </ul>
+    </nav>
+  
+    <section id="section">    
+      <%= yield %>
+    </section>
+    
+  </article>
+</body>
+</html>

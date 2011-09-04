@@ -1,5 +1,6 @@
 SpineSite::Application.routes.draw do
   match '/pages/:action' => 'pages', :as => :pages
+  match '/docs/:action'  => 'docs', :as => :docs
 
   root :to => 'pages#home'
   
