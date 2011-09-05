@@ -1,5 +1,9 @@
 <% title "Classes" %>
 
+Spine uses CoffeeScript for its class implementation
+
+    class Task
+
 Spine's class implementation is one of its features that makes it stand out from the crowd. Rather than copying properties to emulate inheritance, as most libraries, Spine uses JavaScript's native prototypal inheritance. This is how inheritance should be done, and means it's dynamic, properties are resolved at runtime.
 
 Classes are created like so:

@@ -16,6 +16,7 @@ h2
 pre, code
   font-size: 12px; line-height: 18px
   font-family: Monaco, Consolas, "Lucida Console", monospace
+  color: #000
   margin: 0; padding: 0
 
 pre
@@ -37,7 +38,7 @@ p
   
   inset-line(0.1)
   vbg-gradient(lighten(#313335, 10%), lighten(#191B1C, 5%))
-  color: #CCC
+  color: #FFF
   text-shadow: 0 -1px #000
 
   height: 30px
@@ -51,7 +52,7 @@ p
     text-shadow: inherit
   
 #header h2
-  inset-line(0.7)
+  inset-line()
   vbg-gradient(#F4F4F4, darken(#F4F4F4, 10%))
   padding: 0 5px
   margin: 0
@@ -76,21 +77,35 @@ p
   inset-box-shadow(-1px, -1px, 4px, rgba(0, 0, 0, 0.05))  
   
   h2
-    margin: 25px 35px
+    margin: 25px 35px 10px 0
     
   ul
     list-style: none
     text-align: right
-    margin: 5px 35px
-    font-size: 17px
+    margin: 5px 35px 5px 0
+    font-size: 15px
     text-shadow: 0 1px 0 #FFF
     color: lighten(#52585D, 10%)
     
   li
-    margin: 15px 0
+    margin: 10px 0
     
   a
     color: inherit
+    
+  #search
+    border: 1px solid lighten(#D1D1D1, 20%)
+    border-width: 1px 0
+    inset-line(0.7)
+    margin: 25px 25px
+    padding: 13px 0
+    text-align: center
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(0.2, rgba(255, 255, 255, 0.4)), color-stop(0.8, rgba(255, 255, 255, 0.4)), to(rgba(255, 255, 255, 0)))
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 0 rgba(255, 255, 255, 0.5)
+    
+    input
+      width: 150px
+      outline: none
   
 #section
   background: #FFF
@@ -110,19 +125,29 @@ p
     line-height: 1.7em
 
 body.docs-index #section
+  h2
+    font: 20px arial, lucida, helvetica, arial, sans-serif
+    font-weight: normal
+    border-bottom: 1px solid lighten(#D1D1D1, 50%)
+    padding: 0 0 5px 0
+    margin: 10px 150px 20px 0
+
   article
-    margin: 20px 0 0 20px
-    overflow: hidden
+    overflow: hidden    
     
     div
       width: 200px
       height: 50px
       float: left
-      margin: 0 30px 20px 0
+      margin: 0 30px 30px 0      
       
       h3
+        font: 18px arial, lucida, helvetica, arial, sans-serif
+        font-weight: normal
         margin: 5px 0
       
       span
+        line-height: 1.3em
         display: block
+        opacity: 0.7
         
