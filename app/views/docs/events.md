@@ -19,4 +19,4 @@ You can pass optional data arguments to `trigger()` that will be passed onto eve
     Tasks.bind "create", (name) -> alert(name)
     Tasks.trigger "create", "Take out the rubbish"
     
-Although you might never use `Spine.Events` in your own classes, you will use it with Spine's models and controllers. We're going to cover those next.
+Although you might never use `Spine.Events` in your own classes, you will use it with Spine's models and controllers.

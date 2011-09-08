@@ -22,6 +22,25 @@ Hem has two types of dependency resolutions: Node modules and Stitch.
 
 ##Slug.json
 
+    {
+      // Specify main JavaScript file:
+      "main": "./app/index",
+      
+      // Specify main CSS file:
+      "css": "./css/index.less",
+      
+      // Specify public directory:
+      "public": "./public"
+      
+      // Add load paths:
+       "paths": ["./app"]
+      
+      // We want these to load before (not CommonJS libs):
+       "libs": [
+         "./lib/other.js"
+       ]
+    }
+
 ##Usage
 
     hem server
@@ -29,3 +48,7 @@ Hem has two types of dependency resolutions: Node modules and Stitch.
 
 ##Heroku
 
+    hem build
+    git add ./public
+    git commit -m 'version x'
+    git push heroku master
