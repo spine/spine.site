@@ -46,7 +46,9 @@
       </ul>
       
       <div id="search">
-        <input type="search" name="query" value="" placeholder="Search..." results="0">
+        <%= form_tag docs_path(:search), :method => :get do %>
+          <input type="search" name="query" value="" placeholder="Search..." results="0">
+        <%- end %>
       </div>
     </nav>
   

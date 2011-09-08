@@ -16,7 +16,7 @@
   <article id="article">
   
     <nav id="nav">
-      <h2><%= link_to "API", docs_path %></h2>
+      <h2><%= link_to "API", api_path %></h2>
       <ul>
         <li><%= link_to "Classes", api_path("classes") %></li>
         <li><%= link_to "Models", api_path("models") %></li>
@@ -24,6 +24,12 @@
         <li><%= link_to "Events", api_path("events") %></li>
         <li><%= link_to "Routing", api_path("routing") %></li>
       </ul>
+      
+      <div id="search">
+        <%= form_tag api_path(:search), :method => :get do %>
+          <input type="search" name="query" value="" placeholder="Search..." results="0">
+        <%- end %>
+      </div>
     </nav>
   
     <section id="section">    

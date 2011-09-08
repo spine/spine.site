@@ -1,0 +1,3 @@
+<%- @results.each do |name, context| %>
+  <p><%= link_to(name.titleize, docs_path(name)) %> <span><%= context %></span></p>
+<%- end %>
