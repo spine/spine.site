@@ -1,20 +1,33 @@
 <% title "Models" %>
 
-Models are the core to Spine, and absolutely critical to your applications. Models are where your application's data is stored, and where any logic associated with that data is kept. Models should be de-coupled from the rest of your application, and completely independent. The data associated with models is stored in memory under `Model.records`.
+Models are the core to Spine, and absolutely critical to your applications. Models are where your application's data is stored, and where any logic associated with that data is kept. Models should be de-coupled from the rest of your application, and completely independent. The data associated with models is stored in memory, but can be persisted with HTML5 Local Storage or Ajax.
 
-Creating models is slightly different from creating classes, since the `create()` function is already reserved by models. Models are created with the `setup()` function, passing in the model name and an array of attributes.
-
-    class Contact extends Spine.Model
-      @configure "Contact", "first_name", "last_name"
-
-Models are Spine classes, so you can treat them as such, extending and including properties.
+Model are created by extending `Spine.Model`:
 
     class Contact extends Spine.Model
       @configure "Contact", "first_name", "last_name"
       
+You should call `@configure()` before anything else inside the model, since it bootstraps various variables and events. Pass `@configure()` the model name, and any attributes the model has. 
+
+Models are like any other CoffeeScript class, so you can class/instance methods as usual:
+
+    class Contact extends Spine.Model
+      @configure "Contact", "first_name", "last_name"
+      
+      @filter: (query) -> 
+        @select (c) -> 
+          c.first_name.indexOf(query) is not -1
+      
       fullName: -> @first_name + " " + @last_name
+      
+Models are Spine modules, so you can treat them as such, extending and including properties.
     
-Model instances are created with `init()`, passing in an optional set of attributes.
+    class Contact extends Spine.Model
+      @configure "Contact", "first_name", "last_name"
+    
+      @extend MyModule
+    
+Model instances are created with `new`, passing in an optional set of attributes.
 
     contact = new Contact(first_name: "Alex", last_name: "MacCaw")
     assertEqual( contact.fullName(), "Alex MacCaw" )
@@ -85,7 +98,7 @@ If `validate()` returns anything, the validation will fail and an *error* event 
     Contact.bind "error", (rec, msg) ->
       alert("Contact failed to save - " + msg)
     
-In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the [form tutorial](http://maccman.github.com/spine.tutorials/form.html).
+In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the *[validation guide](<%= docs_path("models_validation") %>)*
 
 ##Serialization
 
@@ -107,87 +120,7 @@ If you're using an older browser which doesn't have native JSON support (i.e. IE
 
 ##Persistence
 
-While storing records in memory is useful for quick retrieval, persisting them in one way or another is often required. Spine includes a number of pre-existing storage modules, such as Ajax and HTML5 Local Storage, which you can use for persistence. Alternatively you can roll your own custom one, take a look at `spine.ajax.js` for inspiration. 
-
-Spine's persistence is implemented via modules, so for HTML5 Local Storage persistence you'll need to include [spine.local.js](lib/spine.local.js) script in the page and for Ajax persistence you'll need [spine.ajax.js](lib/spine.ajax.js).
-
-To persist a model using HTML5 Local Storage, simply extend it with `Spine.Model.Local`.
-
-    class Contact extends Spine.Model
-      @extend Spine.Model.Local
-
-When a record is changed, the Local Storage database will be updated to reflect that. In order to fetch the records from Local Storage in the first place, you need to use `fetch()`. 
-
-    Contact.fetch()
-    
-Typically this is called once, when your application is first initialized. 
-
-###Using Ajax
-
-Using Ajax as a persistence mechanism is very similar, extend models with `Spine.Model.Ajax`.
-
-    class Contact extends Spine.Model
-      @extend Spine.Model.Ajax
-    
-By convention, this uses a basic pluralization mechanism to generate an endpoint, in this case `/contacts`. You can choose a custom URL by setting the `url` property on your model, like so:
-
-    class Contact extends Spine.Model
-      @extend Spine.Model.Ajax
-  
-      url: "/users"
-    
-Spine will use this endpoint URL as a basis for all of its Ajax requests. Once a model has been persisted with Ajax, whenever its records are changed, Spine will send an Ajax request notifying the server. Spine encodes all of its request's parameters with JSON, and expects JSON encoded responses. Spine uses REST to determine the method and endpoint of HTTP requests, and will work seamlessly with REST friendly frameworks like Rails.
-
-    read    → GET    /collection
-    create  → POST   /collection
-    update  → PUT    /collection/id
-    destroy → DELETE /collection/id
-
-For example, after a record has been created client side Spine will send off an HTTP POST to your server, including a JSON representation of the record. Let's say we created a `Contact` with a name of `"Lars"`, this is the request that would be send to the server:
-
-    POST /contacts HTTP/1.0
-    Host: localhost:3000
-    Origin: http://localhost:3000
-    Content-Length: 59
-    Content-Type: application/json
-    
-    {"id":"E537616F-F5C3-4C2B-8537-7661C7AC101E","name":"Lars"}
-
-Likewise destroying a record will trigger a DELETE request to the server, and updating a record will trigger a PUT request. For PUT and DELETE requests, the records ID is referenced inside the URL.
-
-    PUT /tasks/E537616F-F5C3-4C2B-8537-7661C7AC101E HTTP/1.0
-    Host: localhost:3000
-    Origin: http://localhost:3000
-    Content-Length: 60
-    Content-Type: application/json
-    
-    {"id":"44E1DB33-2455-4728-AEA2-ECBD724B5E7B","name":"Peter"}
-
-As you can see, the record's attributes aren't prefixed by the record's model name. This can cause problems with frameworks like Rails, which expect parameters in a certain format. You can fix this, by setting the `ajaxPrefix` option.
-    
-    Spine.Model.ajaxPrefix = true;
-    
-If `ajaxPrefix` is true, Spine will send requests like the following, prefixing all the attributes with the model name. 
-
-    PUT /tasks/E537616F-F5C3-4C2B-8537-7661C7AC101E HTTP/1.0
-    Host: localhost:3000
-    Origin: http://localhost:3000
-    Content-Length: 73
-    Content-Type: application/json
-    
-    {"contact": {"id":"44E1DB33-2455-4728-AEA2-ECBD724B5E7B","name":"Peter"}}
-    
-It's worth mentioning here one of the major differences between Spine and other similar frameworks. All of Spine's server communication is asynchronous - that is Spine never waits for a response. Requests are sent after the operation has completed successfully client side. In other words, a POST request will be sent to the server after the record has successfully saved client side, and the UI has updated. The server is completely de-coupled from the client, clients don't necessarily need a server in order to function.
-
-This might seem like an odd architectural decision at first, but let me explain. Having a de-coupled server offers some clear advantages. Firstly, clients have a completely non-blocking interface, they're never waiting for a slow server response for further interaction with your application. User's don't have to know, or care, about server requests being fired off in the background - they can continue using the application without any loading spinners.
-
-The second advantage is that a de-coupled server greatly simplifies your code. You don't need to cater for the scenario that the record may be displayed in your interface, but isn't editable until a server response returns. Lastly, if you ever decided to add offline support to your application, having a de-coupled server makes this a doddle. 
-
-Obviously there are caveats for those advantages, but I think those are easily addressed. Server-side model validation is a contentious issue, for example - what if that fails? However, this is solved by client-side validation. Validation should fail before a record ever gets sent to the server. If validation does fail server-side, it's an error in your client-side validation logic rather than with user input. 
-
-When the server does return an unsuccessful response, an *ajaxError* event will be fired on the model, including the record, XMLHttpRequest object, Ajax settings and the thrown error. 
-
-    Contact.bind "ajaxError", (record, xhr, settings, error) -> /* Invalid response... */ 
+While storing records in memory is useful for quick retrieval, persisting them in one way or another is often required. Spine includes a number of pre-existing storage modules, such as Ajax and HTML5 Local Storage, which you can use for persistence. Please check out the [Ajax](<%= docs_path("models_ajax") %>) and [Local Storage guides](<%= docs_path("models_local") %>)) for more information. 
 
 ##Events
 
@@ -214,6 +147,8 @@ For model level callbacks, any associated record is always passed to the callbac
     
 The callback's context will be the record that the event listener was placed on. You'll find model events crucial when it comes to binding records to the view, making sure the view is kept in sync with your application's data. 
 
+If you want to remove events, you can unbind specific events by calling `unbind()` on the Model. See the [event documentation](<%= docs_path("events") %>) for more information on how you should use `unbind()`. Model instances also have an `unbind()` function, but it can only be used for remove every event listener associated with that instance. 
+
 ##Dynamic records
 
 One rather neat addition to Spine's models is dynamic records, which use prototypal inheritance to stay updated. Any calls to `find()`, `all()`, `first()`, `last()` etc, and model event callbacks return a *clone* of the saved record. This means that whenever a record is updated, all of its clones will immediately reflect that update.
@@ -232,3 +167,6 @@ Let's give you a code example; we're going to create an asset, and a clone of th
     assertEqual(clone.name, "bob")
     
 This means that you never have to bother calling some sort of `reload()` functions on instances. You can be sure that all instances are constantly in sync with their saved versions.
+
+##API documentation
+

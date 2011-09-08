@@ -1,8 +1,10 @@
 SpineSite::Application.routes.draw do
-  match '/pages/:action' => 'pages', :as => :pages
-  match '/docs/:action'  => 'docs', :as => :docs
+  match '/pages/:action'  => 'pages', :as => :pages
+  match '/api/:action'    => 'api', :as => :api
+  match '/docs/:action'   => 'docs', :as => :docs
   
-  match '/docs' => 'docs#index'
+  match '/docs' => 'docs#index'  
+  match '/api' => 'api#index'
 
   root :to => 'pages#index'
   
