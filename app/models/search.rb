@@ -8,7 +8,7 @@ module Search
       result.inject({}) do |hash, result| 
         name, context = result.split(":", 2)
         name = Pathname(name).relative_path_from(path)
-        name = name.dirname + name.basename(".*")
+        name, _ = name.to_s.split(".")
         hash[name.to_s] = context.lstrip
         hash
       end
