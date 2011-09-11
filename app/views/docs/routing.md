@@ -58,7 +58,7 @@ Spine also gives you the option of using HTML5's History API, which has the adva
 
 To use the History API, instead of hash fragments, pass `{history: true}` to `setup()`:
 
-    Spine.Route.setup({history: true});
+    Spine.Route.setup(history: true)
     
 HTML5 History support will only be enabled if this option is present, and the API is available. Otherwise, Spine's routing will revert back to using hash fragments. 
 

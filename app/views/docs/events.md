@@ -38,4 +38,4 @@ However, keep in mind that is often not such a great idea, as it introduces a de
 
 ##API documentation
 
-For more information about controllers, please see the [full API documentation](<%= api_path("events") %>).
+For more information about events, please see the [full API documentation](<%= api_path("events") %>).
