@@ -1,6 +1,10 @@
 <% title "Models" %>
 
-Models are the core to Spine, and absolutely critical to your applications. Models are where your application's data is stored, and where any logic associated with that data is kept. Models should be de-coupled from the rest of your application, and completely independent. The data associated with models is stored in memory, but can be persisted with HTML5 Local Storage or Ajax.
+One of the challenges with moving state to the client side is data management. Data management in stateful JavaScript applications is a completely different matter to how it's normally handled in conventional server side apps. There’s no request/response model, and you don’t have access to server-side variables. Instead, data is fetched remotely and stored temporarily on the client side. This has the advantage that data access is immediate, and users are rarely, if ever, left waiting for remote data to load. 
+
+After the initial page load, remote data is stored locally in class structures called models. Models are the core to Spine, and absolutely critical to your applications. Not only do they store all the application's data, but they are also where any logic associated with that data is kept. 
+
+Models should be de-coupled from the rest of your application, and completely independent. Model data can be persisted with [HTML5 Local Storage](<%= docs_path("models_local") %>) or [Ajax](<%= docs_path("models_ajax") %>).
 
 ##Implementation
 
@@ -100,7 +104,7 @@ If `validate()` returns anything, the validation will fail and an *error* event 
     Contact.bind "error", (rec, msg) ->
       alert("Contact failed to save - " + msg)
     
-In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the *[validation guide](<%= docs_path("models_validation") %>)*.
+In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the [validation guide](<%= docs_path("models_validation") %>).
 
 ##Serialization
 
@@ -169,6 +173,10 @@ Let's give you a code example; we're going to create an asset, and a clone of th
     assertEqual(clone.name, "bob")
     
 This means that you never have to bother calling some sort of `reload()` functions on instances. You can be sure that all instances are constantly in sync with their saved versions.
+
+##Relationships
+
+Spine has support for *has-many*, *has-one* and *belongs-to* model relationships. For more information, see the [relationships guide](<%= docs_path("models_relationship") %>).
 
 ##API documentation
 

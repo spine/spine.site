@@ -1,3 +1,5 @@
+<% title "Searching for '#{@query}'" %>
+
 <%- @results.each do |name, context| %>
-  <p><%= link_to(name.titleize, docs_path(name)) %> <span><%= context %></span></p>
+  <h2><%= link_to(name.titleize, docs_path(name)) %></h2>
 <%- end %>

@@ -2,6 +2,7 @@ class ApiController < ApplicationController
   respond_to :html, :md
   
   def search
-    @results = Search.api(params[:query])
+    @query   = params[:query]
+    @results = Search.api(@query)
   end
 end
