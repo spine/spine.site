@@ -2,6 +2,8 @@
 
 Models are the core to Spine, and absolutely critical to your applications. Models are where your application's data is stored, and where any logic associated with that data is kept. Models should be de-coupled from the rest of your application, and completely independent. The data associated with models is stored in memory, but can be persisted with HTML5 Local Storage or Ajax.
 
+##Implementation
+
 Model are created by extending `Spine.Model`:
 
     class Contact extends Spine.Model
@@ -98,7 +100,7 @@ If `validate()` returns anything, the validation will fail and an *error* event 
     Contact.bind "error", (rec, msg) ->
       alert("Contact failed to save - " + msg)
     
-In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the *[validation guide](<%= docs_path("models_validation") %>)*
+In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the *[validation guide](<%= docs_path("models_validation") %>)*.
 
 ##Serialization
 
@@ -143,7 +145,7 @@ For model level callbacks, any associated record is always passed to the callbac
 
     contact = Contact.first()
     contact.bind "save", ->
-      // Contact was updated
+      # Contact was updated
     
 The callback's context will be the record that the event listener was placed on. You'll find model events crucial when it comes to binding records to the view, making sure the view is kept in sync with your application's data. 
 
@@ -170,3 +172,4 @@ This means that you never have to bother calling some sort of `reload()` functio
 
 ##API documentation
 
+For more information about models, please see the [full API documentation](<%= api_path("models") %>).

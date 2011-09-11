@@ -74,7 +74,12 @@ In the example above, Spine will generate a model under `./app/models/user.coffe
     
 ##Serving your application
 
-As soon as it's generated, your application is all ready to be served using [Hem](<%= docs_path("hem") %>).
+As soon as it's generated, your application is all ready to be served using [Hem](<%= docs_path("hem") %>). Firstly, you'll need to install Hem, and your applications' dependencies:
+
+    npm install .
+    npm install -g hem
+    
+And now we can use Hem to serve up the application:
 
     hem server
     

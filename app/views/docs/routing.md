@@ -22,7 +22,7 @@ Route parameters, are in the form of `:name`, and are passed as arguments to the
       "/pages/*glob": (params) ->
         console.log("/pages/", params.glob)
 
-Routes are added in reverse order of specificity, so the most specific routes should be added first, and generic 'catch alls' should be added later. It's worth noting, especially if you're putting routes in the `init()` function of controllers, that routes shouldn't be added more than once. The examples above are fine, since the `App` controller is only ever going to be instantiated a single time. 
+Routes are added in reverse order of specificity, so the most specific routes should be added first, and generic 'catch alls' should be added later. It's worth noting, especially if you're putting routes in the `constructor()` function of controllers, that routes shouldn't be added more than once. The examples above are fine, since the `App` controller is only ever going to be instantiated a single time. 
 
 One alternative is to skip out controllers, and add routes directly using `Spine.Route.add()`, passing in either a hash or a single route. 
     
@@ -40,19 +40,17 @@ When the page loads initially, even if the URL has a hash fragment, the `hashcha
     
 Lastly, Spine gives controllers a `navigate()` function, which can be passed a fragment to change the URL's hash. You can also pass `navigate()` multiple arguments, which will be joined by a forward slash (`/`) to create the fragment. 
 
-    var Users = Spine.Controller.create({
-      init: function(){
-        // Navigate to #/users/:id
-        this.navigate("/users", this.item.id);
-      }
-    });
+    class Users extends Spine.Controller
+      constructor: ->
+        # Navigate to #/users/:id
+        @navigate("/users", @item.id)
     
-    Users.init({item: User.first()});
+    new Users(item: User.first())
     
 Using `navigate()` ensures that the URL's fragment is kept in sync with the relevant controllers. By default, calling `navigate()` __won't__ trigger any events or route callbacks. If you want to trigger routes, pass a `true` boolean as the last argument to `navigate()`.
 
     // Trigger routes by passing true
-    Spine.Route.navigate("/users", true);
+    Spine.Route.navigate("/users", true)
 
 ##HTML5 History
 

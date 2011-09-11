@@ -2,14 +2,16 @@
 
 Controllers are the last part to the trinity of Spine and are very simple, being more of a set of conventions than actual code. Controllers are the glue inside your application, tying the various components together. Generally, controllers deal with adding and responding to DOM events, rendering templates and keeping views and models in sync.
 
-Controllers, like models, extend `Spine.Class` and so inherit all of its properties. This means you can use `extend()` and `include()` to add properties onto controllers, and can take advantage of all of Spine's context management. To create a controller, inherit a class from `Spine.Controller`.
+##Implementation
+
+Controllers, like models, extend `Spine.Module` and so inherit all of its properties. This means you can use `extend()` and `include()` to add properties onto controllers, and can take advantage of all of Spine's context management. To create a controller, inherit a class from `Spine.Controller`.
 
     class Tasks extends Spine.Controller
       constructor: ->
         super
         // Called on instantiation
     
-The convention inside Spine is to give the controller a plural camel cased name of the model it is most associated with, in this case `Tasks`. Usually, you'll only be adding instance properties onto controllers, so you can just pass them as the first argument to `create()`. Instantiating controllers is the same as creating an instance of any other class, by calling `init()`.
+The convention inside Spine is to give the controller a plural camel cased name of the model it is most associated with, in this case `Tasks`. Usually, you'll only be adding instance properties onto controllers, so you can add them inline just like any other class. Instantiating controllers is done by using the `new` keyword.
 
     tasks = new Tasks
     
@@ -67,15 +69,6 @@ As well as DOM events, `Spine.Controller` has been extended with `Spine.Events`,
       toggle: ->
         # ...
 
-Spine also has a global object `Spine.App`, that you can bind and trigger global events. This is one way that you can get controllers communicating with one other, without resorting to deep-coupling. `Spine.App` is aliased inside controllers to `this.App`.
-
-    class GlobalController extends Spine.Controller
-      constructor: ->
-        super
-        @el.click @click
-        
-      click: =>        
-
 ##Elements
 
 When you first instantiate a controller, it's common to set a bunch of instance variables referencing various elements. For example, setting the `items` variable on the `Tasks` controller:
@@ -94,3 +87,7 @@ Since this is such a common scenario, Spine provides a helper, the `elements` pr
       constructor: ->
         super
         @items.each -> #...
+
+##API documentation
+
+For more information about controllers, please see the [full API documentation](<%= api_path("controllers") %>).

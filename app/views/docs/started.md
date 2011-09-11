@@ -13,11 +13,15 @@ Now we've got an executable called `spine` which we can use to generate new appl
     spine app my-app
     cd my-app
     
-Check out the article on [Spine.app](<%= docs_url("app") %>) for more information concerning its usage. 
+Check out the article on [Spine.app](<%= docs_url("app") %>) for more information concerning its usage. Now let's install the default dependencies listed in our application's `package.json`:
 
-We can use the `hem` executable to run a Hem server, which will temporarily host our Spine application during development.
+    npm install .
+
+Finally we can use the `hem` executable to run a Hem server, which will temporarily host our Spine application during development.
     
     hem server
+    
+##Extending our application
 
 Have an explore around the files Spine.app has generated. If you open up [http://localhost:9294](http://localhost:9294) you'll just see a blank page. Let's change our default controller so that it actually does something. 
     
