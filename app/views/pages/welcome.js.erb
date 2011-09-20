@@ -1,4 +1,9 @@
 document.addEventListener( "DOMContentLoaded", function(){
+  if (document.body.innerHTML != "") {
+    console.log("Remove welcome script in index.html");
+    return;
+  }
+  
   var iframe = document.createElement("iframe");
   iframe.src    = <%= welcome_url.to_json.html_safe %>;
   iframe.width  = "100%"
