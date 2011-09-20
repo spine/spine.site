@@ -1,3 +1,5 @@
+<% title 'Controllers' %>
+
 ##Class methods
 
 ### `@include(Module)`
