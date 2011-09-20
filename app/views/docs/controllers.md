@@ -11,7 +11,7 @@ Controllers, like models, extend `Spine.Module` and so inherit all of its proper
         super
         // Called on instantiation
     
-The convention inside Spine is to give the controller a plural camel cased name of the model it is most associated with, in this case `Tasks`. Usually, you'll only be adding instance properties onto controllers, so you can add them inline just like any other class. Instantiating controllers is done by using the `new` keyword.
+The convention inside Spine is to give the controller a plural camel cased name of the model it is most associated with, in this case the `Task` model. Usually, you'll only be adding instance properties onto controllers, so you can add them inline just like any other class. Instantiating controllers is done by using the `new` keyword.
 
     tasks = new Tasks
     
@@ -27,11 +27,11 @@ The `el` property can also be set manually by passing it through on instantiatio
     
     tasks = new Tasks(el: $("#tasks"));
 
-In fact, anything you pass to `init()` will be set as properties on the newly created instance. For example, you could pass a record that a controller would be associated with.
+In fact, anything you pass on instantiation will be set as properties on the newly created instance. For example, you could pass a record that a controller would be associated with.
 
     taskItem = new TaskItem(item: Task.first())
 
-Inside your controller's `init()` function, you'll generally add event listeners to models and views, referencing a function inside the controller. 
+Inside your controller's `constructor()` function, you'll generally add event listeners to models and views, referencing a function inside the controller. 
 
 ##Events
 

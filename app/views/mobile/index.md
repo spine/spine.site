@@ -16,6 +16,10 @@ So what's the motivation behind building this framework, surely developers shoul
 
 [![Currency](https://lh5.googleusercontent.com/-hcwujJAkdVU/TnYhDQ5VoZI/AAAAAAAABYA/pRrKwNoNccc/s400/Screen%252520Shot%2525202011-09-18%252520at%25252017.27.50.png)](https://github.com/maccman/spine.mobile.currency)
 
+There's also a demo of an app called [Global Guide](http://globalguide-mobile.herokuapp.com), although unfortunately the source isn't available. 
+
+[![Global Guide](https://lh4.googleusercontent.com/-MaYsm32ZsTs/TnjK6xgwUYI/AAAAAAAABZ4/sASZNgKdGJk/s400/Screen%252520Shot%2525202011-09-20%252520at%25252018.17.59.png)](http://globalguide-mobile.herokuapp.com)
+
 ##Installation
 
 The most straightforward way of building Spine Mobile apps is with [Hem](<%= docs_path("hem") %>), [Spine.app](<%= docs_path("app") %>), [GFX](http://maccman.github.com/gfx) and [jQuery](http://jquery.com). The first step, is to install all the required npm modules. 
