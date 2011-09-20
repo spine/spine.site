@@ -1,8 +1,5 @@
 document.addEventListener( "DOMContentLoaded", function(){
-  if (document.body.innerHTML != "\n\n") {
-    console.log("Remove welcome script in index.html");
-    return;
-  }
+  console.log("Remove start.js script in index.html");
   
   var iframe = document.createElement("iframe");
   iframe.src    = <%= mobile_url("start").to_json.html_safe %>;
