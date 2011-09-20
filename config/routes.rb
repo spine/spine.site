@@ -8,7 +8,7 @@ SpineSite::Application.routes.draw do
   match '/api' => 'api#index'
   match '/mobile' => 'mobile#index'
   
-  match '/welcome' => 'pages#welcome', :as => :welcome
+  match '/start' => 'pages#start', :as => :start
 
   root :to => 'pages#index'
   

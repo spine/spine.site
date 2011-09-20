@@ -1,4 +1,4 @@
-<% 'Events' %>
+<% title 'Events' %>
 
 Although mobile browsers, such as Mobile Safari, have many of the same events as we're used to in desktop browsers, there are a few key differences. Not being fully aware of these differences, could give your application a sluggish feel, even though you optimized everything else. It's worth getting right. 
 

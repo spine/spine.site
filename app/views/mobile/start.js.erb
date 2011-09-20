@@ -1,0 +1,13 @@
+document.addEventListener( "DOMContentLoaded", function(){
+  if (document.body.innerHTML != "\n\n") {
+    console.log("Remove welcome script in index.html");
+    return;
+  }
+  
+  var iframe = document.createElement("iframe");
+  iframe.src    = <%= mobile_url("start").to_json.html_safe %>;
+  iframe.width  = "100%"
+  iframe.height = "100%"
+  iframe.style.cssText = "position:absolute;left:0;right:0;bottom:0;top:0;border:0;"
+  document.body.appendChild(iframe);
+}, false );
