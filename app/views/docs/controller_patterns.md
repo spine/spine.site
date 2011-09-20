@@ -11,7 +11,7 @@ The *render pattern* is a really useful way of binding models and views together
         Contact.bind("refresh change", @render)
 
       template: (items) ->
-        $("#contactsTemplate").tmpl(items)
+        require('views/contacts')(items)
 
       render: =>
         @html(@template(Contact.all()))
@@ -42,7 +42,7 @@ The element pattern essentially gives you the same functionality as the render p
 
       // Use a template, in this case via jQuery.tmpl.js
       template: (items) ->
-        $("#contactsTemplate").tmpl(items)
+        require('views/contacts')(items)
 
       // Called after an element is destroyed
       remove: ->

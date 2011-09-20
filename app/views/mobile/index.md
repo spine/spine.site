@@ -24,11 +24,11 @@ There's also a demo of an app called [Global Guide](http://globalguide-mobile.he
 
 The most straightforward way of building Spine Mobile apps is with [Hem](<%= docs_path("hem") %>), [Spine.app](<%= docs_path("app") %>), [GFX](http://maccman.github.com/gfx) and [jQuery](http://jquery.com). The first step, is to install all the required npm modules. 
 
-If you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then, to install:
+If you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then run:
 
     npm install -g spine spine.app hem
     
-Spine.app will generate an initial project structure for you, with the `mobile` generator:
+Spine.app will generate an initial project structure for you using the `mobile` generator:
 
     spine mobile ./myapp
     

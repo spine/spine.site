@@ -6,7 +6,7 @@ Internally Spine uses the *hashchange* event to detect changes in the URLs hash.
 
 ##Adding routes
 
-So, how to use the API? It's very simple, first you need to include [spine.route.js](lib/spine.route.js), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
+So, how to use the API? It's very simple, first you need to include [route.coffee](https://raw.github.com/maccman/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
 
     class App extends Spine.Controller
       constructor: ->
@@ -67,3 +67,10 @@ However, there are some things you need to be aware of when using the History AP
 When browsers request a URL (expecting a HTML response) you first make sure on server-side that the endpoint exists and is valid. Then you can just serve up the main application, which will read the URL, invoking the appropriate routes. For example, let's say your user navigates to `http://example.com/users/1`. On the server-side, you check that the URL `/users/1` is valid, and that the User record with an ID of `1` exists. Then you can go ahead and just serve up the JavaScript application. 
 
 The caveat to this approach is that it doesn't give search engine crawlers any real content. If you want your application to be crawl-able, you'll have to detect crawler bot requests, and serve them a 'parallel universe of content'. That is beyond the scope of this documentation though. 
+
+##Shimming
+
+Sometimes it's convenient to use routes, without any changes to the page's URL or hash fragment. This is an especially common scenario in full-screen mobile or PhoneGap applications, where the page's address isn't even displayed. To cater for this, `Route.setup()` takes a `shim` option; for example:
+
+    Spine.Route.setup(shim: true)
+    
