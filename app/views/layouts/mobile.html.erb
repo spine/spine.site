@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spine</title>
+  <%= stylesheet_link_tag    "docs" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= css_scope %>">
+  <header id="header">
+    <h1><a href="/">Spine</a></h1>
+    <h2><%= yield(:title) %></h2>
+    <%= flash_message %>
+  </header>
+  
+  <article id="article">
+  
+    <nav id="nav">
+      <h2><%= link_to "Spine Mobile", mobile_path %></h2>
+      <ul>
+        <li><%= link_to "Introduction", mobile_path %>
+        <li><%= link_to "Controllers", mobile_path("controllers") %>
+        <li><%= link_to "Transitions", mobile_path("transitions") %>          
+        <li><%= link_to "Events", mobile_path("events") %>
+        <li><%= link_to "Meta Tags", mobile_path("meta") %>
+        <li><%= link_to "Scrolling", mobile_path("scrolling") %>
+        <li><%= link_to "Offline", mobile_path("offline") %>
+        <li><%= link_to "PhoneGap", mobile_path("phonegap") %>        
+        <li><%= link_to "Contacts Example", mobile_path("contacts") %>        
+      </ul>
+      
+      <div id="search">
+        <%= form_tag mobile_path(:search), :method => :get do %>
+          <input type="search" name="query" value="" placeholder="Search..." results="0">
+        <%- end %>
+      </div>
+    </nav>
+  
+    <section id="section">    
+      <%= yield %>
+    </section>
+    
+  </article>
+</body>
+</html>

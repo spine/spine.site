@@ -2,9 +2,13 @@ SpineSite::Application.routes.draw do
   match '/pages/:action'  => 'pages', :as => :pages
   match '/api/:action'    => 'api', :as => :api
   match '/docs/:action'   => 'docs', :as => :docs
+  match '/mobile/:action' => 'mobile', :as => :mobile
   
   match '/docs' => 'docs#index'
   match '/api' => 'api#index'
+  match '/mobile' => 'mobile#index'
+  
+  match '/welcome' => 'pages#welcome', :as => :welcome
 
   root :to => 'pages#index'
   

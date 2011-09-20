@@ -1,0 +1,8 @@
+document.addEventListener( "DOMContentLoaded", function(){
+  var iframe = document.createElement("iframe");
+  iframe.src    = <%= welcome_url.to_json.html_safe %>;
+  iframe.width  = "100%"
+  iframe.height = "100%"
+  iframe.style.cssText = "position:absolute;left:0;right:0;bottom:0;top:0;border:0;"
+  document.body.appendChild(iframe);
+}, false );
