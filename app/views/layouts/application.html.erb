@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= analytics_tag %>
 </head>
 <body class="<%= css_scope %>">
   <section id="section">
@@ -15,9 +16,8 @@
       
       <nav class="right">
         <ul>
-          <li><%= link_to "Download", pages_path("download") %></li>
-          <li><%= link_to "Examples", pages_path("examples") %></li>
           <li><%= link_to "Documentation", docs_path %></li>
+          <li><%= link_to "Examples", pages_path("examples") %></li>
           <li><%= link_to "Community", pages_path("community") %></li>
         </ul>
       </nav>

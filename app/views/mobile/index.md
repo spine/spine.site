@@ -1,6 +1,6 @@
 <%- title 'Introduction' %>
 
-Spine Mobile is a lightweight framework on top of Spine for building mobile JavaScript web applications. What makes Spine Mobile stand out from the competition is attention to detail. User experience comes before all else, and Spine Mobile applications strive for a native feel; they shouldn't give a discernibly different feel than applications built in Objective C or Java.
+Spine Mobile is a lightweight framework on top of [Spine](<%= docs_path %>) for building mobile JavaScript web applications. What makes Spine Mobile stand out from the competition is attention to detail. User experience comes before all else, and Spine Mobile applications strive for a native feel; they shouldn't give a discernibly different feel than applications built in Objective C or Java.
 
 So what's the motivation behind building this framework, surely developers should just learn native technologies? Well, I think there's a number of compelling reasons, such as exposing mobile applications to more developers, cross platform porting, and ease of development. Technologies such as HTML & CSS were designed for developing interfaces, and they're absolutely fantastic at doing so. There's no technological reason why HTML apps can't give as good or better an experience than native technologies. 
 

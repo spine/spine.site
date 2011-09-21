@@ -6,33 +6,26 @@
 <article>
   <footer>
     <div class="bcta">
-      <button>Download (version 1.1.1)</button>
+      <%= link_to "Download (version #{version})", pages_path("download"), :class => "cta" %>
     </div>
   </footer>
   
   <aside>
     <section>
-      <header>Learning</header>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
+      <header>MVC</header>
+      <p>The Model View Controller pattern is at the heart of Spine, and absolutely integral to modern JavaScript applications.</p>
     </section>
-  
+    
     <section>
-      <header>Quality</header>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
+      <header>Simplicity</header>
+      <p>Spine is a simple and lightweight framework, and doesn't consist of a vast amount of complex widgets to configure and theme.</p>
     </section>
-  
+    
     <section>
-      <header>Security</header>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
-      <p>Foo bar Foo bar. Foo bar. </p>
+      <header>Documentation</header>
+      <p>Spine strives to have the best, and most friendly documentation for any JavaScript framework available.</p>
     </section>
+    
+    <%= link_to "More information...", docs_url("introduction"), :class => "more" %>
   </aside>
 </article>
