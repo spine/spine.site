@@ -129,4 +129,4 @@ Data binding is a very powerful technique for ensuring model data stays in sync 
         
 Notice we're using a 'fat arrow' for the `render()` function. This ensures that `render()` is invoked in the correct context of `ContactsList`, rather than `Contact`. For more information on function binding, see the [classes guide](<%= docs_path("classes") %>).
 
-There are several common binding patterns, see the [controller patterns guide](<%= docs_url("controller_patterns") %>) for more information.
+There are several common binding patterns, see the [controller patterns guide](<%= docs_path("controller_patterns") %>) for more information.

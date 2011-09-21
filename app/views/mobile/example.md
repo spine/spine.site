@@ -169,4 +169,4 @@ And the ContactsCreate form is defined under `app/views/contacts/form.eco`:
     
 ##Next steps
 
-View the full source code under [https://github.com/maccman/spine.mobile.currency](https://github.com/maccman/spine.mobile.currency).
+View the full source code under [https://github.com/maccman/spine.mobile.contacts](https://github.com/maccman/spine.mobile.contacts).

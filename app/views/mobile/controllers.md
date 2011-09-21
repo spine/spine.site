@@ -111,6 +111,12 @@ The controller above generates the following markup:
       <article></article>
     </div>
     
+##Theming
+
+Theming your application is up to you. Spine provides a default theme which fits in with the general look and feel of iOS, but feel free to experiment. Having said that, read Apple's [Human Interface Guidelines](http://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/AppleHIGuidelines/Intro/Intro.html), especially if you're submitting your app to the App Store using PhoneGap. 
+
+Make sure your application layout is fluid. There are a [huge number](https://gist.github.com/1232164) of iOS screen sizes your app needs to support, and don't get me started on Android. 
+    
 ##Next steps
 
 So we've got the basic building blocks for our application, Stages and Panels. Everything we subsequently cover will build of those. Now, let's look at [transitioning between Panels](<%= mobile_path("transitions") %>).

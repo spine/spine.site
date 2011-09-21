@@ -2,7 +2,9 @@
 
 Getting started with any new framework or library can be daunting, but I'm going to do my best to ensure your first introduction to Spine is as straightforward as possible.
 
-Firstly, to make life easier, we're going to install [Spine.app](<%= docs_url("app") %>) and [Hem](<%= docs_url("hem") %>). Spine.app is a Spine application generator. It's not required to use Spine, but very useful all the same. Hem is bit like Bundler for JavaScript apps, see their respective guides for more information.
+If you're not into CoffeeScript, and want to use the plain JS version of the library, please see the [Getting Started with JavaScript Guide](<%= docs_path("started_js") %>). Otherwise, let's crack on.
+
+Firstly, to make life easier, we're going to install [Spine.app](<%= docs_path("app") %>) and [Hem](<%= docs_path("hem") %>). Spine.app is a Spine application generator. It's not required to use Spine, but very useful all the same. Hem is bit like Bundler for JavaScript apps, see their respective guides for more information.
 
 If you haven't got it installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Both project's sites include excellent installation instructions. Now we can get on with installing the two npm modules we need, `spine.app` and `hem`:
 
@@ -13,7 +15,7 @@ Now we've got an executable called `spine` which we can use to generate new appl
     spine app my-app
     cd my-app
     
-Check out the article on [Spine.app](<%= docs_url("app") %>) for more information concerning its usage. Now let's install the default dependencies listed in our application's `package.json`:
+Check out the article on [Spine.app](<%= docs_path("app") %>) for more information concerning its usage. Now let's install the default dependencies listed in our application's `package.json`:
 
     npm install .
 
@@ -40,7 +42,7 @@ Awesome. Now if you reload the application, you should see that log statement in
 
 ##Next steps
 
-Now, we've only just scratched the surface here; JavaScript Web applications are a huge area, and constantly evolving. To take your next steps with Spine, read through the [Introduction](<%= docs_path("introduction") %>) and [main](<%= docs_path("models") %>) [class](<%= docs_path("controllers") %>) guides.  
+Now, we've only just scratched the surface here; JavaScript Web applications are a huge area, and constantly evolving. To take your next steps with Spine, read through the [introduction](<%= docs_path("introduction") %>) and [main](<%= docs_path("models") %>) [classes'](<%= docs_path("controllers") %>) guides.  
 
 You may also be interested in [*JavaScript Web Applications*](http://oreilly.com/catalog/0636920018421) by O'Reilly, which gives you a thorough introduction to all these topics. 
 

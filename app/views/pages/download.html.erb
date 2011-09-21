@@ -3,17 +3,13 @@
 </header>
 
 <article>
-  <%= link_to "Download (0.1.1)", pages_url("download"), :class => "cta" %>
-  <%= link_to "Download Min (0.1.1)", pages_url("download"), :class => "cta" %>
+  <%= link_to "Download (0.1.1)", pages_path("download"), :class => "cta" %>
+  <%= link_to "Download Min (0.1.1)", pages_path("download"), :class => "cta" %>
   
   <h4>Node Package Manager</h4>
   
   <code><pre>npm install -g spine</pre></code>
   
-  <h4>Sample application</h4>
-  
-  <code><pre>npm install -g spine
-npm install -g spine.app
-spine app myapp</pre></code>
+  <p>Read the <%= link_to "getting started guide.", docs_path("started") %></p>
   
 </article>

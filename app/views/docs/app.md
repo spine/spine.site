@@ -1,6 +1,6 @@
 <% title 'Using Spine.app' %>
 
-Spine.app is a Spine application generator. It'll create the basic application structure, as well as controllers and models. This can then be served up, or compiled, using [Hem](<%= docs_url("hem") %>).
+Spine.app is a Spine application generator. It'll create the basic application structure, as well as controllers and models. This can then be served up, or compiled, using [Hem](<%= docs_path("hem") %>).
 
 Spine.app is an excellent way of getting started with Spine applications, and a highly recommended workflow.
 
@@ -37,7 +37,7 @@ Spine.app will generate the initial application files, which look like this:
     ./public/index.html
     ./slug.json
     
-The `Procfile` is for [Heroku](http://heroku.com), which we'll cover later. `slug.json` is for Hem, see the [article on that](<%= docs_url("hem") %>) for more information. The rest is your classical MVC structure, which should look very familiar to you if you've used Rails.
+The `Procfile` is for [Heroku](http://heroku.com), which we'll cover later. `slug.json` is for Hem, see the [article on that](<%= docs_path("hem") %>) for more information. The rest is your classical MVC structure, which should look very familiar to you if you've used Rails.
 
 Now `cd` into your application directory, and you can generate some controllers, models and serve up the application.    
     

@@ -15,10 +15,10 @@
       
       <nav class="right">
         <ul>
-          <li><%= link_to "Download", pages_url("download") %></li>
-          <li><%= link_to "Examples", pages_url("examples") %></li>
-          <li><%= link_to "Documentation", docs_url %></li>
-          <li><%= link_to "Community", pages_url("community") %></li>
+          <li><%= link_to "Download", pages_path("download") %></li>
+          <li><%= link_to "Examples", pages_path("examples") %></li>
+          <li><%= link_to "Documentation", docs_path %></li>
+          <li><%= link_to "Community", pages_path("community") %></li>
         </ul>
       </nav>
 
@@ -33,9 +33,9 @@
   <footer id="footer">
     <ul>
       <li><%= link_to "Home", "/" %></li>
-      <li>About</li>
-      <li>About</li>
-      <li>About</li>      
+      <li><%= link_to "Documentation", docs_path %></li>
+      <li><%= link_to "Spine Mobile", mobile_path %></li>
+      <li><%= link_to "About", pages_path("about") %></li>
     </ul>
   </footer>
 </body>

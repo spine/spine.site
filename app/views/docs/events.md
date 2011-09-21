@@ -1,6 +1,6 @@
 <% title 'Events' %>
 
-Events are a powerful way of de-coupling interaction inside your application. They aren't just restricted to DOM elements, Spine gives you custom events that ... TODO
+Events are a powerful way of de-coupling interaction inside your application. They aren't just restricted to DOM elements, Spine gives you custom events that can be applied to any class or instance. If you're familiar with [jQuery](http://jquery.com) or [Zepto](http://zeptojs.com)'s event API, then you'll feel right at home with Spine's event implementation. Events are a great way of de-coupling and abstracting out components inside your application.
 
 ##Implementation
 

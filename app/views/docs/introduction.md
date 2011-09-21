@@ -2,10 +2,9 @@
 
 Spine is a lightweight framework for building JavaScript web applications. Spine gives you a MVC structure and then gets out of your way, allowing you to concentrate on the fun stuff, building awesome web applications.
 
-Spine is opinionated in its approach to web application architecture and ... The library is written in CoffeeScript, and 
+Spine is opinionated in its approach to web application architecture and ... The library is written in CoffeeScript, and TODO
 
-Spine is tiny, the library comes in at around 500 lines of CoffeeScript, that's about 2K minified & compressed. However, it's not about size, it's how you use it, and Spine certainly packs a punch!
-
+Spine is tiny, the library comes in at around 500 lines of CoffeeScript, that's about 2K minified & compressed. 
 
 ##Core values
 
@@ -35,7 +34,7 @@ But don't take my word for it. Take a look at the source of the [example applica
 
 * *Spine* - The main library, containing the core classes, such as `Model` and `Controller`.
 
-* *Spine.mobile* - Spine's mobile extension, letting you easily build mobile and PhoneGap applications. 
+* *Spine Mobile* - Spine's mobile extension, letting you easily build [mobile and PhoneGap applications](<%= mobile_path %>). 
 
 * *Spine.app* - The simple way of [generating Spine applications](<%= docs_path("app") %>).
 
