@@ -10,7 +10,7 @@ If you want to dive straight into using Hem and building Spine applications, che
 
 ##Installation
 
-First, if you haven't got it installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then, to install Hem:
+First, if you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then, to install Hem:
 
     npm install -g hem
     

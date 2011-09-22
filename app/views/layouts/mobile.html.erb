@@ -3,7 +3,7 @@
 <head>
   <title>Spine</title>
   <%= stylesheet_link_tag    "docs" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "docs" %>
   <%= csrf_meta_tags %>
   <%= analytics_tag %>
 </head>
@@ -28,6 +28,11 @@
         <li><%= link_to "Offline", mobile_path("offline") %>
         <li><%= link_to "PhoneGap", mobile_path("phonegap") %>        
         <li><%= link_to "Contacts Example", mobile_path("example") %>        
+      </ul>
+      
+      <h2>More</h2>
+      <ul>
+        <li><%= link_to "Spine docs", docs_path %>
       </ul>
       
       <div id="search">

@@ -6,7 +6,7 @@ Spine.app is an excellent way of getting started with Spine applications, and a 
 
 ##Installation
 
-First, if you haven't got it installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then, to install Spine.app:
+First, if you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Then, to install Spine.app:
 
     npm install -g spine.app
     

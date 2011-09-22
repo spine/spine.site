@@ -3,7 +3,7 @@
 <head>
   <title>Spine</title>
   <%= stylesheet_link_tag    "docs" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "docs" %>
   <%= csrf_meta_tags %>
   <%= analytics_tag %>
 </head>
@@ -20,6 +20,7 @@
       <h2><%= link_to "Documentation", docs_path %></h2>
       <ul>
         <li><%= link_to "Introduction", docs_path("introduction") %></li>
+        <li><%= link_to "Getting started", docs_path("started") %></li>
         <li><%= link_to "Classes", docs_path("classes") %></li>
         <li><%= link_to "Models", docs_path("models") %></li>
         <li><%= link_to "Controllers", docs_path("controllers") %></li>
@@ -30,7 +31,6 @@
       
       <h2>Guides</h2>
       <ul>
-        <li><%= link_to "Getting started", docs_path("started") %></li>
         <li><%= link_to "Using Spine.app", docs_path("app") %></li>
         <li><%= link_to "Using Hem", docs_path("hem") %></li>
         <li><%= link_to "Controller patterns", docs_path("controller_patterns") %></li>

@@ -4,9 +4,11 @@ Getting started with any new framework or library can be daunting, but I'm going
 
 If you're not into CoffeeScript, and want to use the plain JS version of the library, please see the [Getting Started with JavaScript Guide](<%= docs_path("started_js") %>). Otherwise, let's crack on.
 
+##Spine.app & Hem
+
 Firstly, to make life easier, we're going to install [Spine.app](<%= docs_path("app") %>) and [Hem](<%= docs_path("hem") %>). Spine.app is a Spine application generator. It's not required to use Spine, but very useful all the same. Hem is bit like Bundler for JavaScript apps, see their respective guides for more information.
 
-If you haven't got it installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Both project's sites include excellent installation instructions. Now we can get on with installing the two npm modules we need, `spine.app` and `hem`:
+If you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Both project's sites include excellent installation instructions. Now we can get on with installing the two npm modules we need, `spine.app` and `hem`:
 
     npm install -g spine.app hem
     
@@ -42,7 +44,7 @@ Awesome. Now if you reload the application, you should see that log statement in
 
 ##Next steps
 
-Now, we've only just scratched the surface here; JavaScript Web applications are a huge area, and constantly evolving. To take your next steps with Spine, read through the [introduction](<%= docs_path("introduction") %>) and [main](<%= docs_path("models") %>) [classes'](<%= docs_path("controllers") %>) guides.  
+Now, we've only just scratched the surface here; JavaScript Web applications are a huge area, and constantly evolving. To take your next steps with Spine, read through the [introduction](<%= docs_path("introduction") %>), the [main](<%= docs_path("models") %>) [classes](<%= docs_path("controllers") %>) and the source from some of the [example applications](<%= pages_path("examples") %>).  
 
 You may also be interested in [*JavaScript Web Applications*](http://oreilly.com/catalog/0636920018421) by O'Reilly, which gives you a thorough introduction to all these topics. 
 

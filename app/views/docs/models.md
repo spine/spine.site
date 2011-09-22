@@ -9,14 +9,20 @@ Models should be de-coupled from the rest of your application, and completely in
 ##Implementation
 
 Model are created by extending `Spine.Model`:
-
+    
+    //= CoffeeScript
     class Contact extends Spine.Model
       @configure "Contact", "first_name", "last_name"
+
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name", "last_name");
       
-You should call `@configure()` before anything else inside the model, since it bootstraps various variables and events. Pass `@configure()` the model name, and any attributes the model has. 
+You should call `configure()` before anything else inside the model, since it bootstraps various variables and events. Pass `configure()` the model name, and any attributes the model has. 
 
-Models are like any other CoffeeScript class, so you can class/instance methods as usual:
+Models are like any other CoffeeScript class, so you can add class/instance methods as usual:
 
+    //= CoffeeScript
     class Contact extends Spine.Model
       @configure "Contact", "first_name", "last_name"
       
@@ -24,19 +30,49 @@ Models are like any other CoffeeScript class, so you can class/instance methods 
         @select (c) -> 
           c.first_name.indexOf(query) is not -1
       
-      fullName: -> @first_name + " " + @last_name
+      fullName: -> [@first_name, @last_name].join(' ')
       
-Models are Spine modules, so you can treat them as such, extending and including properties.
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name", "last_name");
     
+    Contact.extend({
+      filter: function(query) {
+        return this.select(function(c){
+          return c.first_name.indexOf(query) != -1
+        });
+      }
+    });
+    
+    Contact.include({
+      fullName: function(){
+        return(this.first_name + " " + this.last_name);
+      }
+    });
+      
+Models are Spine [modules](<%= docs_path("classes") %>), so you can treat them as such, extending and including properties.
+    
+    //= CoffeeScript
     class Contact extends Spine.Model
       @configure "Contact", "first_name", "last_name"
     
       @extend MyModule
+      
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name", "last_name");
+    
+    Contact.extend(MyModule);
     
 Model instances are created with `new`, passing in an optional set of attributes.
 
+    //= CoffeeScript
     contact = new Contact(first_name: "Alex", last_name: "MacCaw")
     assertEqual( contact.fullName(), "Alex MacCaw" )
+    
+    //= JavaScript
+    var contact = new Contact({first_name: "Alex", last_name: "MacCaw"});
+    assertEqual( contact.fullName(), "Alex MacCaw" );
     
 Models can be also be easily subclassed:
 
