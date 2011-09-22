@@ -6,9 +6,6 @@
 
 @import 'mixins'
 
-body
-  vbox()
-  
 h2
   font: 20px arial,lucida,helvetica,arial,sans-serif
   font-weight: normal
@@ -62,17 +59,25 @@ p
 
 #article
   overflow: hidden
-  box-flex(1)
-  hbox()
+  position: absolute
+  top: 73px
+  bottom: 0
+  left: 0
+  right: 0
 
 #nav
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+
   width: 220px
   background: #F4F4F4
-  overflow: hidden
+  overflow: auto
   text-align: right
   
   border-right: 1px solid lighten(#CCC, 40%)
-  inset-box-shadow(-1px, -1px, 4px, rgba(0, 0, 0, 0.05))  
+  inset-box-shadow(-1px, -1px, 4px, rgba(0, 0, 0, 0.05))
   
   h2
     margin: 25px 35px 10px 0
@@ -126,13 +131,17 @@ p
       background: -webkit-gradient(linear, left top, right top, from(rgba(244, 244, 244, 0.3)), to(rgba(244, 244, 244, 1)))
   
 #section
+  position: absolute
+  top: 0
+  left: 220px
+  bottom: 0
+  right: 0
+
   background: #FFF
   padding: 25px 35px    
   
   font: 15px 'helvetica neue', helvetica, arial, sans-serif
   overflow: auto
-  box-flex(1)
-  vbox()
   
   p, hr, h2, h3, ul, ol
     max-width: 550px

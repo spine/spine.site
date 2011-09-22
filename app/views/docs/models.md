@@ -76,18 +76,31 @@ Model instances are created with `new`, passing in an optional set of attributes
     
 Models can be also be easily subclassed:
 
+    //= CoffeeScript
     class User extends Contact
       @configure "User"
+      
+    //= JavaScript
+    var User = Contact.sub();
+    User.configure("User");
     
 ##Saving/Retrieving Records
 
 Once an instance is created it can be saved in memory by calling `save()`.
-
+    
+    //= CoffeeScript
     class Contact extends Spine.Model
       @configure "Contact", "first_name", "last_name"
       
     contact = new Contact(first_name: "Joe")
     contact.save()
+    
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name", "last_name");
+    
+    var contact = new Contact({first_name: "Joe"});
+    contact.save();
     
 When a record is saved, Spine automatically creates an ID if it doesn't already exist.
 
@@ -103,40 +116,57 @@ If `find()` fails to retrieve a record, an exception will be thrown. You can che
     assert( Contact.exists( contact.id ) )
     
 Once you've changed any of a record's attributes, you can update it in-memory by re-calling `save()`.
-
-    contact = Contact.create({first_name: "Polo"})
+    
+    //= CoffeeScript
+    contact = Contact.create(first_name: "Polo")
     contact.save()
     contact.first_name = "Marko"
     contact.save()
     
 You can also use `first()` or `last()` on the model to retrieve the first and last records respectively.
 
+    //= CoffeeScript
     firstContact = Contact.first()
     
 To retrieve every contact, use `all()`.
-
+  
+    //= CoffeeScript
     contacts = Contact.all()
     console.log(contact.name) for contact in contacts
 
 You can pass a function that'll be iterated over every record using `each()`.
 
+    //= CoffeeScript
     Contact.each (contact) -> console.log(console.first_name)
     
 Or select a subset of records with `select()`.
 
+    //= CoffeeScript
     Contact.select (contact) -> contact.first_name
     
 ##Validation
 
 Validating models is dirt simple, simply override the `validate()` function with your own custom one.
 
+    //= CoffeeScript
     class Contact extends Spine.Model
       validate: ->
         unless @first_name
           "First name is required"
+          
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name", "last_name");
+    Contact.include({
+      validate: function(){
+        if ( !this.first_name )
+          return "First name is required";
+      }
+    });
 
 If `validate()` returns anything, the validation will fail and an *error* event will be fired on the model. You can catch this by listening for it on the model, notifying the user.
     
+    //= CoffeeScript
     Contact.bind "error", (rec, msg) ->
       alert("Contact failed to save - " + msg)
     
@@ -151,6 +181,7 @@ Spine's models include special support for JSON serialization. To serialize a re
     
 Alternatively, you can retrieve an instance's attributes and implement your own serialization by calling `attributes()`.
 
+    //= CoffeeScript
     contact = new Contact(first_name: "Leo")
     assertEqual( contact.attributes(), {first_name: "Leo"} )
     
@@ -178,14 +209,17 @@ You've already seen that models have some events associated with them, such as *
 
 For example, you can bind to a model's *create* event like so:
 
+    //= CoffeeScript
     Contact.bind "create", (newRecord) ->
-      // New record was created
+      # New record was created
     
 For model level callbacks, any associated record is always passed to the callback. The other option is to bind to the event directly on the record.
 
+    //= CoffeeScript
     contact = Contact.first()
-    contact.bind "save", ->
+    contact.bind "save", -> 
       # Contact was updated
+      updateInterface()
     
 The callback's context will be the record that the event listener was placed on. You'll find model events crucial when it comes to binding records to the view, making sure the view is kept in sync with your application's data. 
 
@@ -197,15 +231,16 @@ One rather neat addition to Spine's models is dynamic records, which use prototy
 
 Let's give you a code example; we're going to create an asset, and a clone of that asset. You'll notice that when the asset is updated, the clone has also automatically changed. 
 
+    //= CoffeeScript
     asset = Asset.create(name: "whatshisname")
     
-    // Completely new asset instance
+    # Completely new asset instance
     clone = Asset.find(asset.id)
 
-    // Change saved asset
+    # Change saved asset
     asset.updateAttributes(name: "bob")
     
-    // Clone reflects changes
+    # Clone reflects changes
     assertEqual(clone.name, "bob")
     
 This means that you never have to bother calling some sort of `reload()` functions on instances. You can be sure that all instances are constantly in sync with their saved versions.

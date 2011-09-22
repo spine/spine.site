@@ -8,6 +8,7 @@ Internally Spine uses the *hashchange* event to detect changes in the URLs hash.
 
 So, how to use the API? It's very simple, first you need to include [route.coffee](https://raw.github.com/maccman/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
 
+    //= CoffeeScript
     class App extends Spine.Controller
       constructor: ->
         @routes
@@ -15,9 +16,25 @@ So, how to use the API? It's very simple, first you need to include [route.coffe
             console.log("/users/", params.id)
           "/users": ->
             console.log("users")
+            
+    //= JavaScript
+    var App = Spine.Controller.sub({
+      init: function(){
+        this.routes({
+          "/users/:id": function(params){
+            console.log("/users/", params.id)
+          },
+          
+          "/users": function(){
+            console.log("users")
+          }
+        })
+      }
+    });
 
 Route parameters, are in the form of `:name`, and are passed as arguments to the associated callback. You can also use globs to match anything via an asterisk, like so: 
 
+    //= CoffeeScript
     @routes
       "/pages/*glob": (params) ->
         console.log("/pages/", params.glob)
@@ -26,6 +43,7 @@ Routes are added in reverse order of specificity, so the most specific routes sh
 
 One alternative is to skip out controllers, and add routes directly using `Spine.Route.add()`, passing in either a hash or a single route. 
     
+    //= CoffeeScript
     Spine.Route.add /\/groups(\/)?/, -> console.log("groups")
     
 Like you can see in the example above, routes can also be raw regexes, giving you full control over matching.
@@ -34,12 +52,14 @@ Like you can see in the example above, routes can also be raw regexes, giving yo
 
 When the page loads initially, even if the URL has a hash fragment, the `hashchange` event won't be called. It'll only be called for subsequent changes. This means, after our application has been setup, we need to manually tell Spine that we want to run the routes & check the URL's hash. This can be done by invoking `Spine.Route.setup()`.
     
+    //= CoffeeScript
     Spine.Route.setup()
     
 ##Navigate
     
 Lastly, Spine gives controllers a `navigate()` function, which can be passed a fragment to change the URL's hash. You can also pass `navigate()` multiple arguments, which will be joined by a forward slash (`/`) to create the fragment. 
 
+    //= CoffeeScript
     class Users extends Spine.Controller
       constructor: ->
         # Navigate to #/users/:id
@@ -47,9 +67,19 @@ Lastly, Spine gives controllers a `navigate()` function, which can be passed a f
     
     new Users(item: User.first())
     
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      init: function(){
+        this.navigate("/users", this.item.id);
+      }
+    });
+    
+    new Users({item: User.first()});
+    
 Using `navigate()` ensures that the URL's fragment is kept in sync with the relevant controllers. By default, calling `navigate()` __won't__ trigger any events or route callbacks. If you want to trigger routes, pass a `true` boolean as the last argument to `navigate()`.
-
-    // Trigger routes by passing true
+    
+    //= CoffeeScript
+    # Trigger routes by passing true
     Spine.Route.navigate("/users", true)
 
 ##HTML5 History
@@ -58,6 +88,7 @@ Spine also gives you the option of using HTML5's History API, which has the adva
 
 To use the History API, instead of hash fragments, pass `{history: true}` to `setup()`:
 
+    //= CoffeeScript
     Spine.Route.setup(history: true)
     
 HTML5 History support will only be enabled if this option is present, and the API is available. Otherwise, Spine's routing will revert back to using hash fragments. 
@@ -71,6 +102,7 @@ The caveat to this approach is that it doesn't give search engine crawlers any r
 ##Shimming
 
 Sometimes it's convenient to use routes, without any changes to the page's URL or hash fragment. This is an especially common scenario in full-screen mobile or PhoneGap applications, where the page's address isn't even displayed. To cater for this, `Route.setup()` takes a `shim` option; for example:
-
+    
+    //= CoffeeScript
     Spine.Route.setup(shim: true)
     
