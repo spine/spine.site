@@ -2,9 +2,11 @@
 
 Spine is a lightweight framework for building JavaScript web applications. Spine gives you a MVC structure and then gets out of your way, allowing you to concentrate on the fun stuff, building awesome web applications.
 
-Spine is opinionated in its approach to web application architecture and ... The library is written in CoffeeScript, and TODO
+Spine is opinionated in its approach to web application architecture and design. Spine's architecture compliments patterns such as de-coupled components and CommonJS modules, markedly helping with code quality and maintainability. 
 
-Spine is tiny, the library comes in at around 500 lines of CoffeeScript, that's about 2K minified & compressed. 
+The library is written in [CoffeeScript](http://jashkenas.github.com/coffee-script), but doesn't necessary require CoffeeScript to develop applications - you can use whichever language you're most familiar with. 
+
+Spine is tiny, the library comes in at around 500 lines of CoffeeScript, that's about 2K minified & compressed. Being lightweight and simple is fundamental to Spine.
 
 ##Core values
 
@@ -24,7 +26,7 @@ JavaScript frameworks are a dime a dozen, and more are appearing everyday. So wh
 * Ajax and HTML5 Local Storage adapters baked in
 * Asynchronous server communication
 * Works in all major browsers (Chrome, Safari, Firefox, IE >= 7)
-* Supports mobile applications
+* [Spine Mobile](<%= mobile_path %>) extension
 * Simple and lightweight
 * Great documentation
 
@@ -47,6 +49,8 @@ Spine is written in [CoffeeScript](http://jashkenas.github.com/coffee-script/), 
 CoffeeScript won't be everyone's cup of tea, and I've no doubt it'll turn some people of the framework. However, if you've qualms about the language, I urge you to at least give it a chance and check it out; you should understand what you're missing. I personally think CoffeeScript is a complete revolution in web development.
 
 For an introduction to the language, see the [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/).
+
+Spine's documentation cater for both JavaScript and CoffeeScript developers; you can toggle source code examples between the two languages using the silver handles: <button>»</button>
 
 ##Learning Spine
 

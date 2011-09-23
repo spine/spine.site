@@ -156,7 +156,7 @@ p
     font-weight: normal
     
   ul, ol
-    margin: 10px 0
+    margin: 15px 0
     line-height: 1.7em
     
   .preview
@@ -171,6 +171,24 @@ p
       line-height: 10px
       font-size: 13px
       cursor: pointer
+
+body pre.CoffeeScript
+  display: block
+
+body pre.JavaScript
+  display: none     
+  
+body.JavaScript
+  pre.CoffeeScript
+    display: none
+
+  pre.JavaScript
+    display: block
+    
+select#preview
+  position: absolute
+  right: 10px
+  top: 41px
 
 body.docs-index #section
   h2

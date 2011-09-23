@@ -37,7 +37,6 @@ To find out more about why CommonJS modules are the best solution to JavaScript 
 The format is remarkably straightforward, but is something you'll have to adhere to in every file to make it work. CommonJS uses explicit exporting; so to expose a property inside a module to other modules, you'll need to do something like this:
 
     # In app/controllers/users.coffee:
-    
     class Users extends Spine.Controller
     
     # Explicitly export the Users object

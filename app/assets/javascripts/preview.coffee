@@ -23,11 +23,9 @@ jQuery ($) ->
     
     for script, i in scripts
       language = languages[i]
-      code = $('<code />').text(script).attr('data-language', language)
-      pre  = $('<pre />').hide().append(code)
+      code = $('<code />').text(script)
+      pre  = $('<pre />').append(code).addClass(language)
       wrap.append pre
-        
-    wrap.find('pre:first').show()
     
     handle = $('<button />').addClass('handle').text('»')
     handle.attr 'title', 'Click to toggle between CoffeeScript & JavaScript'
@@ -37,3 +35,17 @@ jQuery ($) ->
     
     wrap.prepend handle    
     $(@).parent().replaceWith wrap
+    
+  # Preview select
+  select = $('<select />').attr('id', 'preview')
+  select.append($('<option />').text('CoffeeScript'))
+  select.append($('<option />').text('JavaScript'))
+  select.change ->
+    $('body').removeClass('CoffeeScript JavaScript')
+    $('body').addClass($(@).val())
+    $.cookie('preview', $(@).val())
+    
+  select.val($.cookie('preview'))
+  select.change()
+
+  $('body').prepend select

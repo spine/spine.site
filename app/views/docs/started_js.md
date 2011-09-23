@@ -110,3 +110,10 @@ The variable `Spine.$` refers to jQuery, or Zepto, whichever library you're usin
     })(Spine, Spine.$, window);
     
 Each of your classes should be in separate files, and it's recommended to concatenate them together using a library like [Hem](<%= docs_path("hem") %>), [Stitch](https://github.com/sstephenson/stitch) or [Sprockets](https://github.com/sstephenson/sprockets). 
+
+<script>
+  jQuery(function($){
+    // Select JavaScript docs by default
+    $('select#preview').val('JavaScript').change()
+  });
+</script>
