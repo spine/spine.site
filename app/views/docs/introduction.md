@@ -52,6 +52,8 @@ For an introduction to the language, see the [The Little Book on CoffeeScript](h
 
 Spine's documentation cater for both JavaScript and CoffeeScript developers; you can toggle source code examples between the two languages using the silver handles: <button>»</button>
 
+Alternatively, you can toggle the language site-wide by using the language selector in the top right of the documentation. 
+
 ##Learning Spine
 
 Spine itself is fairly straight-forward, as the library is small and the API minimal. However, it's the concepts behind JavaScript web applications that can be tricky to grasp at first. Moving state to the client side, rendering on the client side, and structuring your JavaScript using MVC and CommonJS modules can all be quite a learning curve. 

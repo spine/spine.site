@@ -16,9 +16,9 @@ So what's the motivation behind building this framework, surely developers shoul
 
 [![Currency](https://lh5.googleusercontent.com/-hcwujJAkdVU/TnYhDQ5VoZI/AAAAAAAABYA/pRrKwNoNccc/s400/Screen%252520Shot%2525202011-09-18%252520at%25252017.27.50.png)](https://github.com/maccman/spine.mobile.currency)
 
-There's also a demo of an app called [Global Guide](http://globalguide-mobile.herokuapp.com), although unfortunately the source isn't available. 
+There's also a demo of an app called Global Guide, although unfortunately the source isn't available. 
 
-[![Global Guide](https://lh4.googleusercontent.com/-MaYsm32ZsTs/TnjK6xgwUYI/AAAAAAAABZ4/sASZNgKdGJk/s400/Screen%252520Shot%2525202011-09-20%252520at%25252018.17.59.png)](http://globalguide-mobile.herokuapp.com)
+<iframe src="http://player.vimeo.com/video/29557984?title=0&amp;byline=0&amp;portrait=0" width="250" height="360" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
 
 ##Installation
 

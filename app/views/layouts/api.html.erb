@@ -26,6 +26,12 @@
         <li><%= link_to "Routing", api_path("routing") %></li>
       </ul>
       
+      <h2>More</h2>
+      
+      <ul>
+        <li><%= link_to "Guides", docs_path %></li>
+      </ul>
+      
       <div id="search">
         <%= form_tag api_path(:search), :method => :get do %>
           <input type="search" name="query" value="" placeholder="Search..." results="0">

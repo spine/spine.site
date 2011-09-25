@@ -74,6 +74,12 @@ Voilà, that's all there is to it! Let's take a look at a full example then, to 
 
 You can see the transition to the `ContactsCreate` Panel specified in the `add()` function. Also notice the way the routing is configured to pass on the `params` object, to the `active()` function, so the controller knows what sort of transition to use. 
 
+##Video demonstration
+
+Let's take a look at the transitions in practice:
+
+<iframe src="http://player.vimeo.com/video/29557829?title=0&amp;byline=0&amp;portrait=0" width="250" height="360" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+
 ##Next step
 
 Now we've covered [controllers](<%= mobile_path("controllers") %>) and transitions, the next step is to look at [events](<%= mobile_path("events") %>), and how they differ in mobile applications. 
