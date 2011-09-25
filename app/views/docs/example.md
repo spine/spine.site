@@ -6,7 +6,7 @@ Indeed Addy Osmani has an [excellent project](http://addyosmani.github.com/todom
 
 > TodoMVC is a common set of JavaScript examples for MVC frameworks like SproutCore, JavaScriptMVC, Backbone, YUILibrary, Spine, Sammy, AngularJS and others.
 
-Some of the source will be ommitted for the sake of brevity (such as the CSS). You can find the [complete source on GitHub](https://github.com/maccman/spine.todos), as well as a [live demo](http://maccman.github.com/spine.todos). This is what we'll end up with:
+Some of the source will be omitted for the sake of brevity (such as the CSS). You can find the [complete source on GitHub](https://github.com/maccman/spine.todos), as well as a [live demo](http://maccman.github.com/spine.todos). This is what we'll end up with:
 
 ![Todos](https://lh4.googleusercontent.com/_IH1OempnqUc/TZF16JZSTlI/AAAAAAAABKM/ojAu7OBqXp8/s500/Screen%20shot%202011-03-29%20at%2019.01.44.png)
 
@@ -67,11 +67,11 @@ Now let's take a look at our application's static HTML. We're going to need a `<
       </div>
     </div>
     
-So far so good. Now in order to tie this into our Spine app, we're going to have to go back to the fundaments, the `Task` model. 
+So far so good. Now in order to tie this into our Spine app, we're going to have to go back to the fundamentals, the `Task` model. 
 
 ##Task model
 
-So the `Task` model is remarkably straightforward. Firstly a task has two attributes, a `name` and a `done` status that indicates whether it's been completed. This attributes are passed to `configure()`, as you can see in the example below:
+So the `Task` model is remarkably straightforward. Firstly a task has two attributes, a `name` and a `done` status that indicates whether it's been completed. These attributes are passed to `configure()`, as you can see in the example below:
 
     //= CoffeeScript
     class Task extends Spine.Model
@@ -127,7 +127,7 @@ Finally we have a static `destroyDone()` function, that iterates over all the ta
 
 So let's look at the core of the application's logic, the controllers. Since each task has a fair bit of logic associated with it, such as edit in place, we're going to use the [element controller pattern](<%= docs_path("controller_patterns") %>). 
 
-In other words, we're going to have one controller, `TaskApp`, which will be in charge creating new tasks, and rendering the initial task list. Then we'll have another controller called `Tasks`, instances of which will be associated with an individual `Task` record. `Tasks` instances will be in charge of editing, updating and destroying they're associated task. 
+In other words, we're going to have one controller, `TaskApp`, which will be in charge creating new tasks, and rendering the initial task list. Then we'll have another controller called `Tasks`, instances of which will be associated with an individual `Task` record. `Tasks` instances will be in charge of editing, updating and destroying their associated task. 
 
 To keep thing simple, we'll keep things 'read-only' at the moment, and won't provide any functionality for creating, editing or deleting tasks:
 
@@ -171,7 +171,7 @@ To keep thing simple, we'll keep things 'read-only' at the moment, and won't pro
       }
     });
     
-You can see we've got a couple of things going on, an `elements` object, a constructor function, and several instance function. Let's take a look at that `elements` hash first. 
+You can see we've got a couple of things going on, an `elements` object, a constructor function, and several instance functions. Let's take a look at that `elements` hash first. 
 
 On the left of the `elements` hash (i.e. the key) is a DOM element selector. The value of the hash is just a string, `"items"`. Spine takes this elements hash, and populates local variables pointing to the DOM elements. In this case, Spine will create a `items` variable, pointing to any element that matches the `.items` selector, which here will be the `<div class="items" />` element, defined in the HTML section earlier. 
 
@@ -183,7 +183,7 @@ Now let's take a look at the constructor function. It's binding to several event
 
 * When a *refresh* event is called (i.e. the tasks have been loaded from Local Storage), `addAll()` will be called. This function iterates over all the tasks, passing them to `addOne()`.
       
-For a more in-depth explanations of controllers, see the [controllers guide](<%= docs_path("controllers") %>).
+For more in-depth explanations of controllers, see the [controllers guide](<%= docs_path("controllers") %>).
 
 ##Task item controller
 
@@ -225,7 +225,7 @@ In the constructor, we're setting up listeners to the *update* and *destroy* eve
 
 You'll notice that the `this.item` variable is never defined. It's actually passed as a property when the `Tasks` class is instantiated, back in the `TaskApp` controller; Spine sets all options passed to controllers as local variables. 
 
-In the `render()` function we're rendering a [jQuery.tmpl](https://github.com/jquery/jquery-tmpl) JavaScript template, called `#taskTemplate`. This returns a piece of HTML, that we're using to replace the controller's current element. In other words, the rendered template is now present under `this.el`, and can be appended to the tasks list. 
+In the `render()` function we're rendering a [jQuery.tmpl](https://github.com/jquery/jquery-tmpl) JavaScript template, called `#taskTemplate`. This returns a piece of HTML that we're using to replace the controller's current element. In other words, the rendered template is now present under `this.el`, and can be appended to the tasks list. 
 
 ##Template
     
@@ -260,7 +260,7 @@ Now we've gone far enough without checking that things work as they should. Open
 
 ![Console](https://lh6.googleusercontent.com/-53aBupxfc6o/Tn8YtiaUwEI/AAAAAAAABaA/9wd4x5mffEE/s640/Screen%252520Shot%2525202011-09-25%252520at%25252013.03.20.png)
 
-Once you've run the above in the console, we should be looking a brand new task in the list of tasks. Notice that if you refresh the page, the task still persists using Local Storage. 
+Once you've run the above in the console, we should be looking at a brand new task in the list of tasks. Notice that if you refresh the page, the task still persists using Local Storage. 
 
 ##Creating new tasks
 
@@ -410,13 +410,13 @@ So the last part of our tutorial is going to cover completing and deleting tasks
     
 So, the key part of this is the two event handlers we've added, a *change* event on the task's checkbox, and a *click* event on the task's `<a class="destroy" />` link. 
 
-* The checkbox's *change* event invokes the `toggle()` function, which toggle's the tasks's `done` status, then resaving the task - very straightforward!
+* The checkbox's *change* event invokes the `toggle()` function, which toggles the tasks's `done` status, then resaving the task - very straightforward!
 
 * The link's *click* event invokes `destroyItem()`, which simply destroy the task.
 
 That's all there is to it. Since we're binding to the *update* function, whenever the task changes the view will automatically be re-rendered, checking or un-checking the checkbox as appropriate. Similarly, when the task is destroyed, the controller's `destroy()` function will be called, removing the task from the view.     
 
-This tutorial is long enough as-is, so we won't go into in-place editing or updating. If you want an example of that, see the [full source](https://github.com/maccman/spine.todos). 
+This tutorial is long enough as is, so we won't go into in-place editing or updating. If you want an example of that, see the [full source](https://github.com/maccman/spine.todos). 
 
 ##Next steps
 

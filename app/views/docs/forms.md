@@ -4,14 +4,28 @@ Forms are a staple part of almost every web application, so it's important to kn
 
 ##Capturing form events
 
-The first step is actually capture the form's *submit* event, so we know when a user wants to submit a form. The easiest way of doing this, is with Spine's controllers `events` option, for example:
+The first step is actually to capture the form's *submit* event, so we know when a user wants to submit a form. The easiest way of doing this, is with Spine's controllers `events` option, for example:
 
+    //= CoffeeScript
     class Contacts extends Spine.Controller
       events: 
         "submit form.contactForm": "create"
       
       create: (e) ->
+        # Form submitted
+    
+    new Contacts(el: $("body"))
+    
+    //= JavaScript
+    var Contacts = Spine.Controller.sub({
+      events: {
+        "submit form.contactForm": "create"
+      },
+      
+      create: function(e) {
         // Form submitted
+      }
+    });
     
     new Contacts(el: $("body"))
 
@@ -19,11 +33,22 @@ The `events` property ensures that all *submit* events on the matching form are 
 
 To ensure the form doesn't reload the page, we're going to need to cancel the 'default event'. This is easily done on the event object passed to our  `create()` function.
 
+    //= CoffeeScript
     class Contacts extends Spine.Controller
       events: {"submit form.contactForm": "create"}
       create: (e) ->
         e.preventDefault()
+        # Form stuff
+        
+    //= JavaScript
+    var Contacts = Spine.Controller.sub({
+      events: {"submit form.contactForm": "create"},
+      
+      create: function(e) {
+        e.preventDefault();
         // Form stuff
+      }
+    });
 
 Calling `preventDefault()` on the event prevents the default action, and is preferable to the alternative of returning `false` from the function. The latter approach cancels event propagation (something we could need later), and makes debugging extremely difficult if any code inside the event callback throws errors. 
 
@@ -37,6 +62,7 @@ So, now we know when forms are being submitted, but how about actually retrievin
     
 Let's create a plugin to jQuery which adds an additional function, `serializeForm()`.
 
+    //= CoffeeScript
     $.fn.serializeForm = ->
       result = {}
       for item in $(@).serializeArray()
@@ -49,17 +75,30 @@ This function basically takes the data returned from jQuery's `serializeArray()`
     
 Let's put everything together so you can see how form serialization works in context.
 
+    //= CoffeeScript
     class Contacts extends Spine.Controller
       elements: {"form.contactForm": "form"}
       events: {"submit form.contactForm": "create"}
       create: (e) ->
         e.preventDefault()
         data = @form.serializeForm()
+        
+    //= JavaScript
+    var Contacts = Spine.Controller.sub({
+      elements: {"form.contactForm": "form"},
+      events: {"submit form.contactForm": "create"},
+      
+      create: function(e) {
+        e.preventDefault();
+        var data = @form.serializeForm();
+      }
+    });
 
 ##Updating a record
 
 Updating a record is now trivial, we have the data, all we need is the record. If you're using the [*element pattern*](http://maccman.github.com/spine#s-patterns-the-element-pattern), then you've already got a local reference to the record. All you need to do now is call `create()` or `updateAttributes()` depending on whether you want to create a record, or update an existing one.
 
+    //= CoffeeScript
     class Contacts extends Spine.Controller
       elements: {"form.contactForm": "form"}
       events: {"submit form.contactForm": "create"}
@@ -67,17 +106,31 @@ Updating a record is now trivial, we have the data, all we need is the record. I
         e.preventDefault()
         data    = @form.serializeForm();
         contact = Contact.create(data);
+        
+    //= JavaScript
+    var Contacts = Spine.Controller.sub({
+      elements: {"form.contactForm": "form"},
+      events: {"submit form.contactForm": "create"},
+      
+      create: function(e) {
+        e.preventDefault();
+        var data = @form.serializeForm();
+        var contact = Contact.create(data);
+      }
+    });
 
 If, on the other hand, you don't have a local reference to the record at hand, you'll have to get one. If you're using [jQuery.tmpl](http://api.jquery.com/category/plugins/templates/) templating library, you can see which record an HTML element is associated with, by calling `tmplItem()`.
 
 However, unfortunately the format this function returns isn't exactly what we need, so let's add an additional function to jQuery.tmpl called `item()`:
 
+    //= CoffeeScript
     $.fn.item = ->
       item = $(this).tmplItem().data
       item.reload() if $.isFunction(item.reload)
     
 Now we can just call `item()` on a HTML element to retrieve the record it's associated with.
 
+    //= CoffeeScript
     class Contacts extends Spine.Controller
       events: 
         "submit .item form": "update"
@@ -87,23 +140,48 @@ Now we can just call `item()` on a HTML element to retrieve the record it's asso
         data = $(e.target).serializeForm()
         item = $(e.target).item()
         item.updateAttributes(data)
+        
+    //= JavaScript
+    var Contacts = Spine.Controller.sub({
+      events: {"submit form.contactForm": "update"},
+      
+      update: function(e) {
+        e.preventDefault();
+        var data = @form.serializeForm();
+        var item = $(e.target).item();
+        item.updateAttributes(data);
+      }
+    });
       
 ##Adding validation
 
 Validation is dirt simple, and leaves you a lot of flexibility in how you display error messages to users. Firstly, to add validation to your models, you need to override the model's instance function called `validate()`. Essentially, if `validate()` returns anything, validation fails. Let's see how we'd validate the presence of a `first_name` attribute on a model:
 
+    //= CoffeeScript
     class Contact extends Spine.Model
       @configure "Contact", "first_name"
       
       validate: ->
         "First name is required" unless @first_name
+        
+    //= JavaScript
+    var Contact = Spine.Model.sub();
+    Contact.configure("Contact", "first_name");
+    
+    Contact.include({
+      validate: function(){
+        if ( !this.first_name )
+          return "First name is required";
+      }
+    });
     
 So, if the record's `first_name` is missing or an empty string, `validate()` will return a message and validation will fail (empty strings coerce to `false` in JavaScript).
 
-In your controller's, you can cater for failing validation by checking to see if the record is valid before you save it:
+In your controllers, you can cater for failing validation by checking to see if the record is valid before you save it:
 
+    //= CoffeeScript
     if item.save()
-      // Coolio...
+      # Coolio...
     else
       msg = item.validate()
       alert(msg)

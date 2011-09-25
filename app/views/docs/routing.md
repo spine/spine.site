@@ -2,11 +2,11 @@
 
 Spine provides application routing based on the URL's hash fragment, for example the URL `http://example.com/#/users` has the hash fragment `/users`. Hash fragments can be completely arbitrary and don't trigger page reloads, maintaining page state. Your application can also be indexed by hash fragments using Google's [Ajax Crawling specification](http://code.google.com/web/ajaxcrawling/index.html).
 
-Internally Spine uses the *hashchange* event to detect changes in the URLs hash. This event has only been developed recently, and only available in newer browsers. To support antiquated browsers, you can use the excellent [jQuery hashchange plugin](http://benalman.com/projects/jquery-hashchange-plugin/), which emulates the event using iframes and other clever trickery. 
+Internally Spine uses the *hashchange* event to detect changes in the URLs hash. This event has only been developed recently, and is only available in newer browsers. To support antiquated browsers, you can use the excellent [jQuery hashchange plugin](http://benalman.com/projects/jquery-hashchange-plugin/), which emulates the event using iframes and other clever trickery. 
 
 ##Adding routes
 
-So, how to use the API? It's very simple, first you need to include [route.coffee](https://raw.github.com/maccman/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
+So, how to use the API? It's very simple. First you need to include [route.coffee](https://raw.github.com/maccman/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
 
     //= CoffeeScript
     class App extends Spine.Controller
@@ -93,7 +93,7 @@ To use the History API, instead of hash fragments, pass `{history: true}` to `se
     
 HTML5 History support will only be enabled if this option is present, and the API is available. Otherwise, Spine's routing will revert back to using hash fragments. 
 
-However, there are some things you need to be aware of when using the History API. Firstly, ever URL you send to `navigate()` needs to have a real HTML representation. Although the browser won't request the new URL at that point, it will be requested if the page is subsequently reloaded. In other words you can't make up arbitrary URLs, like you can with hash fragments; every URL passed to the API needs to exist. One way of implementing this is with server side support. 
+However, there are some things you need to be aware of when using the History API. Firstly, every URL you send to `navigate()` needs to have a real HTML representation. Although the browser won't request the new URL at that point, it will be requested if the page is subsequently reloaded. In other words you can't make up arbitrary URLs, like you can with hash fragments; every URL passed to the API needs to exist. One way of implementing this is with server side support. 
 
 When browsers request a URL (expecting a HTML response) you first make sure on server-side that the endpoint exists and is valid. Then you can just serve up the main application, which will read the URL, invoking the appropriate routes. For example, let's say your user navigates to `http://example.com/users/1`. On the server-side, you check that the URL `/users/1` is valid, and that the User record with an ID of `1` exists. Then you can go ahead and just serve up the JavaScript application. 
 

@@ -2,6 +2,14 @@ TODO
 
 Rails integration
 Custom Ajax
-Form
-Associations
+
+#Other
+
 CommonJS
+Validation guide
+Views in jQuery.tmpl
+Testing
+WebSockets
+Associations
+Models Local guide
+Models Ajax guide

@@ -1,6 +1,6 @@
 <% title "Models" %>
 
-One of the challenges with moving state to the client side is data management. Data management in stateful JavaScript applications is a completely different matter to how it's normally handled in conventional server side apps. There’s no request/response model, and you don’t have access to server-side variables. Instead, data is fetched remotely and stored temporarily on the client side. This has the advantage that data access is immediate, and users are rarely, if ever, left waiting for remote data to load. 
+One of the challenges with moving state to the client-side is data management. Data management in stateful JavaScript applications is a completely different matter to how it's normally handled in conventional server side apps. There’s no request/response model, and you don’t have access to server-side variables. Instead, data is fetched remotely and stored temporarily on the client-side. This has the advantage that data access is immediate, and users are rarely, if ever, left waiting for remote data to load. 
 
 After the initial page load, remote data is stored locally in class structures called models. Models are the core to Spine, and absolutely critical to your applications. Not only do they store all the application's data, but they are also where any logic associated with that data is kept. 
 
@@ -223,7 +223,7 @@ For model level callbacks, any associated record is always passed to the callbac
     
 The callback's context will be the record that the event listener was placed on. You'll find model events crucial when it comes to binding records to the view, making sure the view is kept in sync with your application's data. 
 
-If you want to remove events, you can unbind specific events by calling `unbind()` on the Model. See the [event documentation](<%= docs_path("events") %>) for more information on how you should use `unbind()`. Model instances also have an `unbind()` function, but it can only be used for remove every event listener associated with that instance. 
+If you want to remove events, you can unbind specific events by calling `unbind()` on the Model. See the [event documentation](<%= docs_path("events") %>) for more information on how you should use `unbind()`. Model instances also have an `unbind()` function, but it can only be used to remove every event listener associated with that instance. 
 
 ##Dynamic records
 

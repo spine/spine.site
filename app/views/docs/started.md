@@ -8,7 +8,7 @@ If you're not into CoffeeScript, and want to use the plain JS version of the lib
 
 Firstly, to make life easier, we're going to install [Spine.app](<%= docs_path("app") %>) and [Hem](<%= docs_path("hem") %>). Spine.app is a Spine application generator. It's not required to use Spine, but very useful all the same. Hem is bit like Bundler for JavaScript apps, see their respective guides for more information.
 
-If you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Both project's sites include excellent installation instructions. Now we can get on with installing the two npm modules we need, `spine.app` and `hem`:
+If you haven't got them installed already, you'll need [Node](http://nodejs.org) and [npm](http://npmjs.org). Both projects' sites include excellent installation instructions. Now we can get on with installing the two npm modules we need, `spine.app` and `hem`:
 
     npm install -g spine.app hem
     

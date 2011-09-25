@@ -21,7 +21,7 @@ Spine will use this endpoint URL as a basis for all of its Ajax requests. Once a
     update  → PUT    /collection/id
     destroy → DELETE /collection/id
 
-For example, after a record has been created client side Spine will send off an HTTP POST to your server, including a JSON representation of the record. Let's say we created a `Contact` with a name of `"Lars"`, this is the request that would be send to the server:
+For example, after a record has been created client-side Spine will send off an HTTP POST to your server, including a JSON representation of the record. Let's say we created a `Contact` with a name of `"Lars"`, this is the request that would be send to the server:
 
     POST /contacts HTTP/1.0
     Host: localhost:3000
@@ -55,7 +55,7 @@ If `ajaxPrefix` is true, Spine will send requests like the following, prefixing 
     
     {"contact": {"id":"44E1DB33-2455-4728-AEA2-ECBD724B5E7B","name":"Peter"}}
     
-It's worth mentioning here one of the major differences between Spine and other similar frameworks. All of Spine's server communication is asynchronous - that is Spine never waits for a response. Requests are sent after the operation has completed successfully client side. In other words, a POST request will be sent to the server after the record has successfully saved client side, and the UI has updated. The server is completely de-coupled from the client, clients don't necessarily need a server in order to function.
+It's worth mentioning here one of the major differences between Spine and other similar frameworks. All of Spine's server communication is asynchronous - that is Spine never waits for a response. Requests are sent after the operation has completed successfully client-side. In other words, a POST request will be sent to the server after the record has successfully saved client-side, and the UI has updated. The server is completely de-coupled from the client, clients don't necessarily need a server in order to function.
 
 This might seem like an odd architectural decision at first, but let me explain. Having a de-coupled server offers some clear advantages. Firstly, clients have a completely non-blocking interface, they're never waiting for a slow server response for further interaction with your application. User's don't have to know, or care, about server requests being fired off in the background - they can continue using the application without any loading spinners.
 
