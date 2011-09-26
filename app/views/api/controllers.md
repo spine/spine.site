@@ -14,7 +14,11 @@ Add instance methods; see [modules](<%= docs_path("modules") %>)
 
 JavaScript compatibility function for creating a new controller.
 
-    var Users = Spine.Controller.sub()
+    var Users = Spine.Controller.sub({
+      init: function(){
+        // ...
+      }
+    });
 
 ##Instance methods
 
@@ -24,6 +28,7 @@ JavaScript compatibility function for creating a new controller.
 
 You also set a custom element when instantiating controllers.
     
+    //= CoffeeScript
     new Users(el: $(".users"))
 
 ### `tag`
@@ -32,20 +37,33 @@ You also set a custom element when instantiating controllers.
 
 By default `tag` is set to `"div"`.
 
+    //= CoffeeScript
     class Users extends Spine.Controller  
       tag: "li"
+    
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      tag: "li"
+    });
 
 ### `className`
 
 Classes to be set on `@el` when the controller is instantiated. 
 
+    //= CoffeeScript
     class Users extends Spine.Controller  
       className: "users list"
+      
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      className: "users list"
+    });
 
 ### `events`
 
 You can use the `events` property instead of manually setting up event delegation. Set the `events` property to an array of object literals, in the following format: `{"eventType selector": "functionName"}`. If no selector is provided, then the event will be set directly on `@el`. Otherwise the events will be delegated to any of `@el`'s children matching the selector. 
 
+    //= CoffeeScript
     class Users extend Spine.Controller
       events:
         "click div": "click"
@@ -53,21 +71,44 @@ You can use the `events` property instead of manually setting up event delegatio
       click: ->
         @log("A div was clicked")
 
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      events: {
+        "click div": "click"
+      },
+
+      click: function(){
+        this.log("a div was clicked");
+      }
+    });
+
 ### `elements`
 
 Set `elements` to a hash of selectors to names. Spine will setup instances variables pointing to those elements upon the controller's instantiation. The element selectors are all scoped by `@el`.
 
+    //= CoffeeScript
     class Users extend Spine.Controller
-      events:
+      elements:
         ".main": "mainElement"
     
       render: ->
         // mainElement is set to a jQuery element
         @mainElement.empty()
+        
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      elements: {
+        ".main": "mainElement"
+      },
+      
+      render: function(){
+        this.mainElement.empty();
+      }
+    });
 
 ### `constructor(options = {})`
 
-The `constructor()` function is called when the controller is instantiated and passed the controller options. You can override this, but be sure to call `super`.
+The `constructor()` function is called when the controller is instantiated and passed the controller options. You can override this, but be sure to call `super`. If you're using JavaScript, you should use the `init()` function instead; see [classes](<%= api_path("classes") %>)
 
     class Users extend Spine.Controller
       constructor: ->
@@ -89,23 +130,41 @@ Unbind custom events. See [events](<%= docs_path("events") %>) for more informat
 ### `log(message)`
 
 Append a message to the console.
-
+    
+    //= CoffeeScript
     class Users extend Spine.Controller
       constructor: ->
         super
         @log("Instantiated!")
+        
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      init: function(){
+        this.log("Instantiated!");
+      }
+    });
 
-### `destroy()`
+### `release([function])`
 
-Triggers the *destroy* event which unbinds all the controller's event listeners. 
+If passed a function, then `release()` binds the function to the *release* events. Otherwise it fires the *release* event.
+
+The *release* event removes `el` from the page, and unbinds all the controller's event listeners. 
 
 ### `$`
 
 A jQuery/Zepto selector, scoped to `el`.
 
+    //= CoffeeScript
     class Users extend Spine.Controller
       render: ->
         @$(".count").html(User.count())
+        
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      render: function(){
+        this.$(".count").html(User.count())
+      }
+    });
 
 ### `delay(function, delay = 0)`
 

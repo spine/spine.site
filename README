@@ -5,11 +5,12 @@ Custom Ajax
 
 #Other
 
-CommonJS
-Validation guide
-Views in jQuery.tmpl
-Testing
-WebSockets
-Associations
 Models Local guide
 Models Ajax guide
+Validation guide
+Views in jQuery.tmpl
+Associations
+Testing
+CommonJS
+WebSockets
+

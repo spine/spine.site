@@ -43,6 +43,13 @@ You can also bind and trigger global events in your application by calling `Spin
       
     Spine.trigger 'sidebar:show'
     
+    //= JavaScript
+    Spine.bind('sidebar:show', this.proxy(function(){
+      this.sidebar.active();
+    });
+      
+    Spine.trigger('sidebar:show');
+    
 However, keep in mind that is often not such a great idea, as it introduces a degree of coupling into your code. Always ask yourself if you can use routes instead, or perhaps local controller events. 
 
 ##API documentation
