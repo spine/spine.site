@@ -4,7 +4,7 @@ One of the challenges with moving state to the client-side is data management. D
 
 After the initial page load, remote data is stored locally in class structures called models. Models are the core to Spine, and absolutely critical to your applications. Not only do they store all the application's data, but they are also where any logic associated with that data is kept. 
 
-Models should be de-coupled from the rest of your application, and completely independent. Model data can be persisted with [HTML5 Local Storage](<%= docs_path("models_local") %>) or [Ajax](<%= docs_path("models_ajax") %>).
+Models should be de-coupled from the rest of your application, and completely independent. Model data can be persisted with [HTML5 Local Storage](<%= docs_path("local") %>) or [Ajax](<%= docs_path("ajax") %>).
 
 ##Implementation
 
@@ -193,7 +193,7 @@ If you're using an older browser which doesn't have native JSON support (i.e. IE
 
 ##Persistence
 
-While storing records in memory is useful for quick retrieval, persisting them in one way or another is often required. Spine includes a number of pre-existing storage modules, such as Ajax and HTML5 Local Storage, which you can use for persistence. Please check out the [Ajax](<%= docs_path("models_ajax") %>) and [Local Storage guides](<%= docs_path("models_local") %>)) for more information. 
+While storing records in memory is useful for quick retrieval, persisting them in one way or another is often required. Spine includes a number of pre-existing storage modules, such as Ajax and HTML5 Local Storage, which you can use for persistence. Please check out the [Ajax](<%= docs_path("ajax") %>) and [Local Storage guides](<%= docs_path("local") %>)) for more information. 
 
 ##Events
 
