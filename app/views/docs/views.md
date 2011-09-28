@@ -91,7 +91,7 @@ The `tmpl.coffee` utility gives jQuery objects the `$.fn.item()` function, which
 
 `.jeco` templates also have the advantage that you can give them an array to render, and they'll automatically iterate over it. 
 
-##Template Helpers
+##Template helpers
 
 Template helpers are extremely useful for view specific logic, without violating MVC by putting lots of code in the view. Template helpers should exist as properties on the controller. Helpers can then be called by passing an instance of the controller to the template when rendering it. 
 

@@ -4,6 +4,8 @@ Classes are a great way of encapsulating logic and name-spacing. They're used th
 
 Although JavaScript doesn't have native class support, it can be emulated fairly convincingly using constructor functions and prototypal inheritance. Classes are just another tool, and are as useful in JavaScript as they are in any other language. 
 
+If you're using pure JavaScript to build your applications, rather than CoffeeScript, you should check out the penultimate section in this guide, *JavaScript Classes*. 
+
 ##Implementation
 
 For classes, Spine uses CoffeeScript's [native class implementation](http://arcturo.github.com/library/coffeescript/03_classes.html), for example:
