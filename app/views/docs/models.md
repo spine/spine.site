@@ -170,7 +170,7 @@ If `validate()` returns anything, the validation will fail and an *error* event 
     Contact.bind "error", (rec, msg) ->
       alert("Contact failed to save - " + msg)
     
-In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the [validation guide](<%= docs_path("models_validation") %>).
+In addition, `save()`, `create()` and `updateAttributes()` will all return false if validation fails. For more information about validation, see the [validation guide](<%= docs_path("form") %>).
 
 ##Serialization
 

@@ -3,3 +3,8 @@
 Jasmine
 
 Debugging
+
+##Testing models
+
+##Testing controllers
+

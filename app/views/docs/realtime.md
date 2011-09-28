@@ -85,7 +85,7 @@ That's pretty straightforward. So, the messages we broadcast to Juggernaut need 
       "record": {"name": "First one!"}
     }
     
-We can create this server-side, broadcasting it to Juggernaut whenever a record changes. For example, we could use Juggernaut's Ruby adapter in Rails to integrate with ActiveRecord models. Here we're using an observer, to record whenever the `Page` model changes.
+We can create this server-side, broadcasting it to Juggernaut whenever a record changes. For example, we could use Juggernaut's Ruby adapter in Rails to integrate with ActiveRecord models. Here we're using an observer to record whenever the `Page` model changes.
     
     class JuggernautObserver < ActiveRecord::Observer
       observe :page
