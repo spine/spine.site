@@ -247,7 +247,7 @@ This means that you never have to bother calling some sort of `reload()` functio
 
 ##Relationships
 
-Spine has support for *has-many*, *has-one* and *belongs-to* model relationships. For more information, see the [relationships guide](<%= docs_path("models_relationship") %>).
+Spine has support for *has-many*, *has-one* and *belongs-to* model relationships. For more information, see the [relationships guide](<%= docs_path("relations") %>).
 
 ##API documentation
 

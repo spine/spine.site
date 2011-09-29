@@ -6,6 +6,8 @@ To ensure your application's interface is completely asynchronous and responsive
 
 There are a number of good candidates, such as [Mustache](http://mustache.github.com) and [jQuery.tmpl](http://api.jquery.com/category/plugins/templates). We're going to demonstrate a library called [Eco](https://github.com/sstephenson/eco) here.
 
+If you're building your application in pure JavaScript, rather than CoffeeScript, I recommend looking at the [jQuery.tmpl guide](<%= docs_path("views_tmpl") %>)  instead.
+
 ##Eco templates
 
 JavaScript templates are very similar to server side ones. You have template tags interoperated with HTML, and during rendering those tags get evaluated and replaced. The great thing about [Eco](https://github.com/sstephenson/eco) templates, is they're actually written in CoffeeScript, a language you should be familiar with if you've been developing Spine applications. 

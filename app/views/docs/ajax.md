@@ -92,6 +92,12 @@ Then the server should respond with something like this:
     
 Notice the ID change; the server has substituted the client-side generated ID with it's own one. Spine takes this all into account, and will refer to the record by its server-side ID in the future. For more information on how this works, see the [Rails integration guide](<%= docs_path("rails") %>).
 
+##A note on API design
+
+Ideally, when presenting an Ajax API to Spine apps, you should abstract out as much of the model data and application logic as possible. Make the API as simple as possible. When you're building APIs, it's good to get into the mindset of an API client. Approach it as if you knew nothing about the database schema or backend. What are the fundaments that you, as a client, need from the service? What's the simplest abstraction? Then you'll have a good API.
+
+One good example is the `user_id` and `User` model relationship. A common pattern present in applications is scoping by a user. In other words, a logged in user owns a particular resource, and can only perform actions on its own resources. Every resource has a `user_id`, which scopes it by a particular user. This is a classic example of a relationship you don't need to expose in your API. Every request to the API already has the current logged in user specified in the session cookies - you don't need to specify it again in the API schema.
+
 ##Setting the Host
 
 By default, Ajax requests are relative to the current domain. If your Ajax endpoint is remote, you'll need to set the `host` property:
