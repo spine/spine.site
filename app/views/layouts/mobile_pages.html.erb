@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spine</title>
+  <title>Spine Mobile</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,15 +11,14 @@
   <section id="section">
     <header id="header">
       <div class="left">
-        <h1><%= link_to "Spine", "/" %></h1>
+        <h1><%= link_to "Spine Mobile", mobile_pages_path %></h1>
       </div>
       
       <nav class="right">
         <ul>
-          <li><%= link_to "Documentation", docs_path %></li>
-          <li><%= link_to "Examples", pages_path("examples") %></li>
-          <li><%= link_to "Community", pages_path("community") %></li>
-          <li><%= link_to "Mobile", mobile_pages_path %></li>
+          <li><%= link_to "Documentation", mobile_path %></li>
+          <li><%= link_to "Examples", mobile_pages_path("examples") %></li>
+          <li><%= link_to "Spine", "/" %></li>
         </ul>
       </nav>
 
@@ -33,9 +32,9 @@
   
   <footer id="footer">
     <ul>
-      <li><%= link_to "Home", "/" %></li>
-      <li><%= link_to "Documentation", docs_path %></li>
-      <li><%= link_to "Spine Mobile", mobile_pages_path %></li>
+      <li><%= link_to "Home", mobile_pages_path %></li>
+      <li><%= link_to "Documentation", mobile_docs_path %></li>
+      <li><%= link_to "Spine", pages_path %></li>
       <li><%= link_to "About", pages_path("about") %></li>
     </ul>
   </footer>

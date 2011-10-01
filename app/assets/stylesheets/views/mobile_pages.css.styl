@@ -1,53 +1,52 @@
 @import 'mixins'
 
-body.pages-index
+body.mobile-pages-index
   #header
     inset-line(0.7)
     vbg-gradient(lighten(#F4F4F4, 10%), darken(#F4F4F4, 5%))
     border-bottom: 1px solid lighten(#CCCCCC, 10%)
     
   #section
+    width: 830px
     overflow: visible
+    background: url("http://f.cl.ly/items/3O3J1n3U2o021E0x0L14/Screen%20Shot%202011-09-30%20at%2017.50.16.png") no-repeat 10px 55px, #FFF
+    
+  header.intro, article
+    margin-left: 420px
 
   header.intro
-    padding: 10px
-    text-align: center
+    padding: 10px 0
     overflow: hidden
     
     h2
-      margin: 10px 0 20px 0
+      margin: 10px 0 15px 0
     
     h3
-      margin: 8px 5px 0px 20px
+      margin: 0
       font-size: 25px
       font-weight: normal
 
-  article footer
-      padding: 5px 0 0 0
-      overflow: hidden
-      text-align: center
-      
   aside
     display: block
     overflow: hidden
-    padding: 10px 0 0 25px
      
   aside section
-    float: left
-    width: 205px
     border-radius(5px)
-    margin: 0 20px 0 0
+    margin: 15px 15px 0 0
     
     p
-      margin: 6px
+      margin: 6px 0
       line-height: 1.5em
   
     header
-      padding: 6px 8px
+      padding: 6px 0
       -webkit-border-radius: 5px 5px 0 0
       font-weight: bold
       text-shadow: 0 1px 0 #FFF
       inset-line(0.7)
+      
+  .himg
+    width: 250px
       
   .bcta
     font-size: 20px
@@ -59,10 +58,10 @@ body.pages-index
   .more
     float: right
     margin: 0
-    padding: 10px 30px 15px 0
+    padding: 15px 30px 15px 0
     font-size: 18px
       
-body.pages-examples
+body.mobile-pages-examples
   article
     width: 500px
     margin: 40px auto
@@ -71,7 +70,7 @@ body.pages-examples
       display: block
       margin: 0 auto 20px
       
-body.pages-start article
+body.mobile-pages-start article
   padding: 10px 30px
   font-size: 18px
       
@@ -83,9 +82,3 @@ body.pages-start article
     
   ol
     line-height: 1.5em
-    
-body.pages-community article
-  padding: 20px
-  
-body.pages-about article
-  padding: 20px

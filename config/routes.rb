@@ -1,15 +1,16 @@
 SpineSite::Application.routes.draw do
+  match '/docs'   => 'docs#index'
+  match '/api'    => 'api#index'
+  match '/mobile' => 'mobile_pages#index'
+  match '/mobile/docs' => 'mobile_docs#index'
+  match '/start'  => 'pages#start', :as => :start
+
   match '/pages/:action'  => 'pages', :as => :pages
   match '/api/:action'    => 'api', :as => :api
   match '/docs/:action'   => 'docs', :as => :docs
-  match '/mobile/:action' => 'mobile', :as => :mobile
+  match '/mobile/docs/:action' => 'mobile_docs', :as => :mobile
+  match '/mobile/:action' => 'mobile_pages', :as => :mobile_pages
   
-  match '/docs' => 'docs#index'
-  match '/api' => 'api#index'
-  match '/mobile' => 'mobile#index'
-  
-  match '/start' => 'pages#start', :as => :start
-
   root :to => 'pages#index'
   
   # The priority is based upon order of creation:

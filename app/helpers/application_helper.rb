@@ -3,7 +3,7 @@ module ApplicationHelper
     result = []
     result << params[:controller]
     result << params[:controller] + '-' + params[:action]
-    result.join(' ')
+    result.map(&:dasherize).join(' ')
   end
   
   def error_messages(instance)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spine</title>
+  <title>Spine Mobile</title>
   <%= stylesheet_link_tag    "docs" %>
   <%= javascript_include_tag "docs" %>
   <%= csrf_meta_tags %>
@@ -9,7 +9,7 @@
 </head>
 <body class="<%= css_scope %>">
   <header id="header">
-    <h1><a href="/">Spine</a></h1>
+    <h1><%= link_to "Spine Mobile", mobile_pages_path %></a></h1>
     <h2><%= yield(:title) %></h2>
     <%= flash_message %>
   </header>

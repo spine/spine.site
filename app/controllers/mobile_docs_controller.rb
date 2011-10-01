@@ -1,0 +1,2 @@
+class MobileDocsController < ApplicationController
+end
