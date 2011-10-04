@@ -161,7 +161,7 @@ To keep thing simple, we'll keep things 'read-only' at the moment, and won't pro
         Task.fetch();
       },
 
-      addOne: function(item){
+      addOne: function(task){
         var view = new Tasks({item: task});
         this.items.append(view.render().el);
       },
