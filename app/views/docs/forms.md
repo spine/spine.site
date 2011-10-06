@@ -29,7 +29,7 @@ The first step is actually to capture the form's *submit* event, so we know when
       }
     });
     
-    new Contacts(el: $("body"))
+    new Contacts({el: $("body")})
 
 The `events` property ensures that all *submit* events on the matching form are captured, calling the create function. Now, by default, forms cause a page reload. This is definitely not the behavior we want, since the page reloads, we've lost all state. Rather, we're going to send any required requests to the server using Ajax.
 
