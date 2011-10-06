@@ -137,7 +137,7 @@ To retrieve every contact, use `all()`.
 You can pass a function that'll be iterated over every record using `each()`.
 
     //= CoffeeScript
-    Contact.each (contact) -> console.log(console.first_name)
+    Contact.each (contact) -> console.log(contact.first_name)
     
 Or select a subset of records with `select()`.
 
