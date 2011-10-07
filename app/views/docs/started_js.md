@@ -27,7 +27,7 @@ The key difference between Spine programs written in JavaScript, and ones in Cof
 
     var SomeClass = Spine.Class.sub();
     
-To create a new Class, call `sub()` on the `Spine.Class` object. This subclasses `Spine.Class`, returning a new class ready for you to customize. Adding instance and class methods is easy as calling `include()` and `extend()` respectively.
+To create a new Class, call `sub()` on the `Spine.Class` object. This subclasses `Spine.Class`, returning a new class ready for you to customize. Adding instance and class (static) methods is easy as calling `include()` and `extend()` respectively.
 
     var SomeClass = Spine.Class.sub();
     
@@ -59,7 +59,7 @@ Inheriting from a class is as simple as calling `sub()` on it:
       save: function(){ /* ... */ }
     });
     
-Behind the scenes, classes are constructor functions, and can instantiated using the `new` keyword.
+Behind the scenes, classes are constructor functions, and can be instantiated using the `new` keyword.
 
     var User = Spine.Class.sub({
       init: function(name){
