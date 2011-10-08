@@ -251,12 +251,12 @@ So this template is just acting as a function. All we're doing is executing that
 In `app/views`, create a folder called `workouts` which will contain all our templates associated with the `Workouts` controller. Then let's create a file under `app/views/workouts/index.jeco` containing:
         
       <div class="item">
-        <span class="type"><%= @type %></span>
-        <span class="minutes">for <%= @minutes %> mins</span>
-        <span class="date">on <%= @date.toDateString() %></span>
+        <span class="type"><%%= @type %></span>
+        <span class="minutes">for <%%= @minutes %> mins</span>
+        <span class="date">on <%%= @date.toDateString() %></span>
       </div>
       
-This is using a great templating library called [Eco](https://github.com/sstephenson/eco). Check out the [view guide](http://spinejs.com/docs/views) for more information on its syntax. Suffice to say, it's CoffeeScript syntax, using the `<%= %>` notation to render template variables to the page. 
+This is using a great templating library called [Eco](https://github.com/sstephenson/eco). Check out the [view guide](http://spinejs.com/docs/views) for more information on its syntax. Suffice to say, it's CoffeeScript syntax, using the `<%%= %>` notation to render template variables to the page. 
 
 The end result is a list of workouts looking like this:
 
@@ -323,9 +323,9 @@ Now to define the `app/views/workouts/form.eco` template, used in the `render()`
         <span>Select type</span>
 
         <select name="type" size="1" required>
-          <% for type in @types: %>
-            <option value="<%= type %>"><%= type %></option>
-          <% end %>
+          <%% for type in @types: %>
+            <option value="<%%= type %>"><%%= type %></option>
+          <%% end %>
         </select>
       </label>
 
