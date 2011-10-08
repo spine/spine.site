@@ -39,7 +39,7 @@ If you're extending another class, and overriding the `constructor` function, ma
 
 ##Context
 
-JavaScript's programs often involve a lot of context changes, especially when it comes to event callbacks. Rather than manually proxying callbacks, so they're executed in the correct scope, CoffeeScript's function syntax provides a useful alternative, fat arrow functions (`=>`). 
+JavaScript programs often involve a lot of context changes, especially when it comes to event callbacks. Rather than manually proxying callbacks, so they're executed in the correct scope, CoffeeScript's function syntax provides a useful alternative, fat arrow functions (`=>`). 
 
     class TaskApp extends Spine.Controller
       constructor: ->
