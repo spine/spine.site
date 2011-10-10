@@ -167,7 +167,7 @@ To keep thing simple, we'll keep things 'read-only' at the moment, and won't pro
       },
 
       addAll: function(){
-        Task.each(this.addOne);
+        Task.each(this.proxy(this.addOne));
       }
     });
     
@@ -325,7 +325,7 @@ It's all very good creating tasks from the console, but we can hardly expect our
         },
       
         addAll: function(){
-          Task.each(this.addOne);
+          Task.each(this.proxy(this.addOne));
         },
       
         create: function(e) {
