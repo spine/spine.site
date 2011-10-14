@@ -1,11 +1,10 @@
 <% title 'CommonJS modules' %>
 
-CommonJS modules are one of the best solutions to JavaScript dependency management. 
-
 By default, JavaScript runs programs in a global scope and doesn't have any native namespacing language features. This means that, unless you're careful, your programs can descend into a mess of code spaghetti, full of conflicting variables and namespace pollution.
 
-CommonJS modules solve this issue by making sure each module is executed in its own namespace.
-Modules have to explicitly export variables they want to expose to other modules. Modules can also 'import' other modules by using the `require()` function.
+CommonJS modules are one of the best solutions to JavaScript dependency management. 
+
+CommonJS modules solve JavaScript scope issues by making sure each module is executed in its own namespace. Modules have to explicitly export variables they want to expose to other modules, and explicitly import other modules; in other words, there's no global namespace. 
 
 In my opinion, CommonJS modules are the best system for JavaScript dependency management. Here's a quote from my book [JavaScript Web Applications](http://oreilly.com/catalog/9781449307530/) explaining the benefits:
 
@@ -38,11 +37,11 @@ Properties are exported by either setting them on the `exports` object, or by se
       //= CoffeeScript
       class MyClass
       module.exports = MyClass
-      
+
       //= JavaScript
       var MyClass = Spine.Class.sub();
       module.exports = MyClass;
-      
+
 External modules are then imported in using the `require()` function, setting the returned value to a local variable:
 
       //= CoffeeScript
