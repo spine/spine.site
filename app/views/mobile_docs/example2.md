@@ -1,12 +1,12 @@
 ##Spine
 
-This article introduces a new framework, [Spine Mobile](http://spinejs.com/mobile) which you can use to create awesome Mobile applications in CoffeeScript and HTML, without sacrificing the great user experience of native apps. 
+This article introduces a new framework, [Spine Mobile](http://spinejs.com/mobile) which you can use to create awesome mobile applications in CoffeeScript and HTML, without sacrificing the great user experience of native apps. 
 
 Task lists and contact managers are a dime a dozen, so let's do something different in this tutorial and create a workout recorder. Users are going to be able to record workouts, including their type, time and duration. Then we're going to have a simple list showing all recorded workouts. There's also a lot of scope for further development, such as social features and graphs.
 
 You can checkout a [live demo of the finished application here](http://spine-workout.herokuapp.com), as well as all the example's [source code, on GitHub](https://github.com/maccman/spine.mobile.workout). I highly recommend you follow along this tutorial using the source code, at least initially, as it'll help you get started if you're new to [Spine](http://spinejs.com).
 
-If you ever need more details about [Spine Mobile](http://spinejs.com/mobile/docs), then hit up the comprehensive docs or the[ mailing list](https://groups.google.com/forum/#!forum/spinejs). For a short introduction to CoffeeScript, take a look at [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/).
+If you ever need more details about [Spine Mobile](http://spinejs.com), then hit up the [comprehensive docs](http://spinejs.com/mobile/docs) or the [mailing list](https://groups.google.com/forum/#!forum/spinejs). For a short introduction to CoffeeScript, take a look at [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/). 
 
 ##Tutorial Details
 
@@ -44,9 +44,13 @@ Our new application also has some local dependencies (specified in `package.json
     
     npm install .
     
+These will download and install the local dependencies in a folder called `node_modules` (which shouldn't be in your source control).
+    
 The last thing we need to do, is to run Spine's development server, [Hem](http://spinejs.com/docs/hem).
 
     hem server
+    
+Hem compiles CoffeeScript files, resolves dependencies, wraps source into [CommonJS modules](http://spinejs.com/docs/commonjs) and concatenates everything into one Javascript file, `application.js`. 
     
 Now the server's running, we navigate to our initial application on [http://localhost:9294](http://localhost:9294/).
     
@@ -95,7 +99,7 @@ Now the next function, `load()`, needs a bit of an explanation. `load()` get's c
       super
       @date = new Date(Date.parse(@date))
 
-Lastly we have fairly straightforward `validate()` function. In Spine, a model's validation fails if the `validate()` function return's anything 'truthy' - i.e. a string. Here we're returning `"type required"` unless the `type` exists exists. In other words, we're validating the presence of the `type`, `minutes` and `date` attributes.
+Lastly we have fairly straightforward `validate()` function. In Spine, a model's validation fails if the `validate()` function return's anything 'truthy' - i.e. a string. Here we're returning `"type required"` unless the `type` attribute exists. In other words, we're validating the presence of the `type`, `minutes` and `date` attributes.
       
     validate: ->    
       return 'type required' unless @type
@@ -106,7 +110,7 @@ You'll notice that the final line in the model is a `module.exports` assignment.
 
 ###WorkoutType model
 
-The only other model we'll need is a `WorkoutType` model. This is just going to be a basic class, and contain a list of valid workout types. As before, we need to first generate the model:
+The only other model we'll need is a `WorkoutType` model. This is just going to be a basic class, and contains a list of valid workout types. As before, we need to first generate the model:
 
     spine model workout_type
     
@@ -140,7 +144,7 @@ In Spine application's, [controllers](http://spinejs.com/docs/controllers) are t
 
 The key thing you need to know about Spine's controllers, is that they're all scoped by a single element, the `el` property. Everything a controller does in its lifetime is scoped by that element; whether it's adding event listeners, responding to event callbacks, updating the element's HTML, or pulling out form data. 
 
-Spine Mobile application's have one global `Stage` controller, which encompasses the whole screen. Let's take a look at it, in `app/index.coffee`:
+Spine Mobile application's have one global `Stage` controller, which encompasses the whole screen. Our generated application already includes a `Stage` in `app/index.coffee`, let's replace it with the following:
 
     require('lib/setup')
 
@@ -177,6 +181,9 @@ The new `Workouts` controller is located under `app/controllers/workouts.coffee`
     # Require models
     Workout     = require('models/workout')
     WorkoutType = require('models/workout_type')
+    
+    # TODO - WorkoutsList controller
+    # TODO - WorkoutsCreate controller
 
     class Workouts extends Spine.Controller
       constructor: ->
@@ -210,7 +217,7 @@ Ok, now we've done a fair bit of setting up with our `App` and `Workouts` contro
 
 So our application has two `Panel` controllers, a list view, and a create view. These two panels belong to the main stage which ensures they transition in and out properly, only showing one panel at any one time. 
 
-So let's first define our `WorkoutsList` controller in `app/controllers/workouts.coffee`, which, you guessed it, will list the workouts. 
+So let's first define our `WorkoutsList` controller in `app/controllers/workouts.coffee`, which, you guessed it, will list the workouts. Add the following code after the `require` statements in `workouts.coffee`, before the `Workouts` controller definition:
 
     class WorkoutsList extends Panel
       title: 'Workouts'
@@ -258,9 +265,16 @@ In `app/views`, create a folder called `workouts` which will contain all our tem
       
 This is using a great templating library called [Eco](https://github.com/sstephenson/eco). Check out the [view guide](http://spinejs.com/docs/views) for more information on its syntax. Suffice to say, it's CoffeeScript syntax, using the `<%%= %>` notation to render template variables to the page. 
 
+The template's `.jeco` extension isn't a typo, it's a jQuery extension to the [Eco](https://github.com/sstephenson/eco) templating library provided by Hem. Amongst other things, it allows us to associate elements with the original template data, which is why we're using it here. 
+
 The end result is a list of workouts looking like this:
 
 ![List](/images/example/list.png)
+
+Obviously, if you haven't created any workouts, then the list will be empty. We can create a workout programmatically, using the command line inside the WebKit console:
+
+    var Workout = require('models/workout');
+    Workout.create({type: 'handstands', minutes: 5, date: Date.now()});
         
 ##<span>Step 5</span> Creating new workouts
 
