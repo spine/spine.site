@@ -38,7 +38,7 @@ Have a browse round the the directory structure and initial files that Spine has
     public
     slug.json
     
-The `app` directory is where all the application's logic lives, such as it's models and controllers. The `public` directory is just full of static assets, and is where our application will ultimately be compiled to. It's the `public` directory that gets served up as our mobile application.
+The `app` directory is where all the application's logic lives, such as its models and controllers. The `public` directory is just full of static assets, and is where our application will ultimately be compiled to. It's the `public` directory that gets served up as our mobile application.
     
 Our new application also has some local dependencies (specified in `package.json`), let's go ahead an install those now:
     
@@ -56,7 +56,7 @@ Now the server's running, we navigate to our initial application on [http://loca
     
 ##<span>Step 2</span> Models
 
-In MVC frameworks, [models](http://spinejs.com/docs/models) store your application's data, and any logic associated with that data. That's it - model's shouldn't know anything else about the rest of your application; they should be completely de-coupled.
+In MVC frameworks, [models](http://spinejs.com/docs/models) store your application's data, and any logic associated with that data. That's it - models shouldn't know anything else about the rest of your application; they should be completely de-coupled.
 
 Our application needs to track workouts, recording the type of workout, how long it took, and when it took place.
 
@@ -93,7 +93,7 @@ So far so good. Now we're going to extend the model with a module named `Spine.M
 
     @extend Spine.Model.Local
     
-Now the next function, `load()`, needs a bit of an explanation. `load()` get's called multiple times internally in Spine, especially when records are serialized and de-serialized. Our issue is that we're serializing the records to JSON when persisting them with HTML5 Local Storage. However, JSON doesn't have a native 'Date' type, and just serializes it to a string. This is a problem, as we want to `date` attribute to always be a JavaScript date. Overriding `load()`, making sure the date attribute is a JavaScript `Date`, will solve this problem.
+Now the next function, `load()`, needs a bit of an explanation. `load()` gets called multiple times internally in Spine, especially when records are serialized and de-serialized. Our issue is that we're serializing the records to JSON when persisting them with HTML5 Local Storage. However, JSON doesn't have a native 'Date' type, and just serializes it to a string. This is a problem, as we want to `date` attribute to always be a JavaScript date. Overriding `load()`, making sure the date attribute is a JavaScript `Date`, will solve this problem.
 
     load: ->
       super
@@ -106,7 +106,7 @@ Lastly we have fairly straightforward `validate()` function. In Spine, a model's
       return 'minutes required' unless @minutes
       return 'date required' unless @date
       
-You'll notice that the final line in the model is a `module.exports` assignment. This exposes the `Workout` class, so other files can require it. Spine application's use [CommonJS modules](http://spinejs.com/docs/commonjs), which requires explicit module requiring and property exporting. 
+You'll notice that the final line in the model is a `module.exports` assignment. This exposes the `Workout` class, so other files can require it. Spine applications use [CommonJS modules](http://spinejs.com/docs/commonjs), which requires explicit module requiring and property exporting. 
 
 ###WorkoutType model
 
@@ -140,11 +140,11 @@ For more information about models, please see the [Spine models guide](http://sp
         
 ##<span>Step 3</span> Main controllers
 
-In Spine application's, [controllers](http://spinejs.com/docs/controllers) are the glue between models and views. They add event listeners to the view, pull data out the model and render JavaScript templates. 
+In Spine applications, [controllers](http://spinejs.com/docs/controllers) are the glue between models and views. They add event listeners to the view, pull data out the model and render JavaScript templates. 
 
 The key thing you need to know about Spine's controllers, is that they're all scoped by a single element, the `el` property. Everything a controller does in its lifetime is scoped by that element; whether it's adding event listeners, responding to event callbacks, updating the element's HTML, or pulling out form data. 
 
-Spine Mobile application's have one global `Stage` controller, which encompasses the whole screen. Our generated application already includes a `Stage` in `app/index.coffee`, let's replace it with the following:
+Spine Mobile applications have one global `Stage` controller, which encompasses the whole screen. Our generated application already includes a `Stage` in `app/index.coffee`, let's replace it with the following:
 
     require('lib/setup')
 
@@ -165,9 +165,9 @@ Spine Mobile application's have one global `Stage` controller, which encompasses
 
     module.exports = App
     
-Our `App` Stage is going to be the first controller instantiated, and in charge or setting up the rest of the application. You can see, it's requiring a as-yet undefined controller named `Workouts`, and instantiated `Workouts` in the class's `constructor` function. 
+Our `App` Stage is going to be the first controller instantiated, and in charge or setting up the rest of the application. You can see, it's requiring an as-yet undefined controller named `Workouts`, and instantiated `Workouts` in the class's `constructor` function. 
 
-In other words, when our application's first run, the `App` stage is going to be instantiated. That will in turn instantiate our `Workouts` controller, where all the action is going to be. You can also ignore all the [route stuff](http://spinejs.com/docs/routing) for the time being.
+In other words, when our application first run, the `App` stage is going to be instantiated. That will in turn instantiate our `Workouts` controller, where all the action is going to be. You can also ignore all the [route stuff](http://spinejs.com/docs/routing) for the time being.
 
 Now let's setup the aforementioned `Workouts` controller:
 
