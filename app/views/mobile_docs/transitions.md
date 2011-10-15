@@ -1,6 +1,6 @@
 <% title 'Transitions' %>
 
-Transitions are all activated by [Spine Managers](<%= docs_path("manager") %>), so it's worth familiarizing yourself with Managers if you haven't already done so. In a nutshell, transitions slide-on, or slide-pff Panels whenever the panel is activated or deactivated respectively. 
+Transitions are all activated by [Spine Managers](<%= docs_path("manager") %>), so it's worth familiarizing yourself with Managers if you haven't already done so. In a nutshell, transitions slide-on, or slide-off Panels whenever the panel is activated or deactivated respectively. 
 
 Behind the scenes, transitions use jQuery and [GFX](http://maccman.github.com/gfx) which programmatically manipulate CSS transforms, performing the transition. The neat thing about this approach is that the transitions are all hardware accelerated, greatly improving performance on mobile devices. Spine hides all this behind a very simple API.
 
