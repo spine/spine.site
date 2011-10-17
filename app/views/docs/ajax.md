@@ -294,7 +294,7 @@ Pagination is best done with an infinite scrolling pattern, rather than showing 
       @extend Spine.Model.Ajax
       
       @fetch: (params) ->
-        params or= {data: {last: Photo.last()?.id}}
+        params or= {data: {index: @last()?.id}}
         super(params)
         
     //= JavaScript
@@ -305,14 +305,14 @@ Pagination is best done with an infinite scrolling pattern, rather than showing 
     Photo.extend({
       fetch: function(params){
         if ( !params && Photo.last() ) 
-          params = {data: {last: Photo.last().id}}
+          params = {data: {index: this.last().id}}
         this.constructor.__super__.fetch.call(this, params);
       }
     });
     
 The server can then use the `index` parameter to return the appropriate records. For example, this is how you'd do it in Rails:
 
-    def photos
+    def index
       @photos = Photo.where("id > ?", params[:index] || 0).limit(30)
       respond_with(@photos)
     end
