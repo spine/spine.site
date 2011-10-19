@@ -42,13 +42,13 @@ To use the `Manager` class, we first need to include the *manager.js* script, wh
     assert( groups.isActive() );
     assert( !users.isActive() );
     
-So, as you can above, Spine gives your controllers an `isActive()` function which returns a boolean indicating whether the controller's state is *active*. In addition, we now have a `active()` function which we can call on controllers to activate them. 
+So, as you can see above, Spine gives your controllers an `isActive()` function which returns a boolean indicating whether the controller's state is *active*. In addition, we now have an `active()` function which we can call on controllers to activate them. 
 
 The manager ensures that only one controller in its set is activated at any one time. When the `users` controller is activated (by calling `active()`), the groups controller will be deactivated, and vice versa. 
 
-When a controller is activated, it's `activate()` function will be called. Likewise, when it's deactivated it's `deactivate()` function will be called. These are already implemented, but you can override them to add custom behavior.
+When a controller is activated, its `activate()` function will be called. Likewise, when it's deactivated, its `deactivate()` function will be called. These are already implemented, but you can override them to add custom behavior.
 
-By default, the controller's `activate()` function adds an *active* class onto the controller's element (`el`). The deactivate function removes this class.
+By default, the controller's `activate()` function adds an *active* class onto the controller's element (`el`). The `deactivate()` function removes this class.
 
     //= CoffeeScript
     # ...

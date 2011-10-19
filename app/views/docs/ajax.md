@@ -90,13 +90,13 @@ Then the server should respond with something like this:
 
     {"name":"Dummy page","id":1}
     
-Notice the ID change; the server has substituted the client-side generated ID with it's own one. Spine takes this all into account, and will refer to the record by its server-side ID in the future. For more information on how this works, see the [Rails integration guide](<%= docs_path("rails") %>).
+Notice the ID change; the server has substituted the client-side generated ID with its own. Spine takes this all into account, and will refer to the record by its server-side ID in the future. For more information on how this works, see the [Rails integration guide](<%= docs_path("rails") %>).
 
 ##A note on API design
 
 Ideally, when presenting an Ajax API to Spine apps, you should abstract out as much of the model data and application logic as possible. Make the API as simple as possible. When you're building APIs, it's good to get into the mindset of an API client. Approach it as if you knew nothing about the database schema or backend. What are the fundaments that you, as a client, need from the service? What's the simplest abstraction? Then you'll have a good API.
 
-One good example is the `user_id` and `User` model relationship. A common pattern present in applications is scoping by a user. In other words, a logged in user owns a particular resource, and can only perform actions on its own resources. Every resource has a `user_id`, which scopes it by a particular user. This is a classic example of a relationship you don't need to expose in your API. Every request to the API already has the current logged in user specified in the session cookies - you don't need to specify it again in the API schema.
+One good example is the `user_id` and `User` model relationship. A common pattern present in applications is scoping by a user. In other words, a logged in user owns a particular resource, and can only perform actions on his or her own resources. Every resource has a `user_id`, which scopes it by a particular user. This is a classic example of a relationship you don't need to expose in your API. Every request to the API already has the current logged in user specified in the session cookies - you don't need to specify it again in the API schema.
 
 ##Setting the Host
 
@@ -135,11 +135,11 @@ Calling fetch will send of an Ajax GET request to your server, and expect a resp
 
 ##Asynchronous UI
 
-One of Spine's core values, is asynchronous UIs. In a nutshell, this means that UIs should ideally never block. You shouldn't present the user with any 'loading' or 'pending' messages, everything should be pre-loaded in the backend. This is in stark contrast to other JavaScript frameworks, which block the UI whenever the user performs an action, like updating a record. 
+One of Spine's core values is asynchronous UIs. In a nutshell, this means that UIs should ideally never block. You shouldn't present the user with any 'loading' or 'pending' messages, everything should be pre-loaded in the backend. This is in stark contrast to other JavaScript frameworks, which block the UI whenever the user performs an action, like updating a record. 
 
 All of Spine's server communication is asynchronous - that is Spine never waits for a response. Requests are sent after the operation has completed successfully client-side. In other words, a POST request will be sent to the server after the record has successfully saved client-side, and the UI has updated. The server is completely de-coupled from the client, clients don't necessarily need a server in order to function.
 
-Users don't care that requests are still pending in the background, they just want a fast user interface. When I send an email, I don't want the UI to block up until the background request to the server has finished. User's don't have to know, or care, about server requests being fired off in the background - they should be able to continue using the application without any loading spinners.
+Users don't care that requests are still pending in the background, they just want a fast user interface. When I send an email, I don't want the UI to block up until the background request to the server has finished. Users don't have to know, or care, about server requests being fired off in the background - they should be able to continue using the application without any loading spinners.
 
 The second advantage is that a de-coupled server greatly simplifies your code. You don't need to cater for the scenario that the record may be displayed in your interface, but isn't editable until a server response returns. Lastly, if you ever decided to add offline support to your application, having a de-coupled server makes this a doddle. 
 
@@ -165,7 +165,7 @@ If you need more control over event callbacks, you should use custom requests, a
 
 ##Custom requests
 
-Sometimes it's necessary to do a custom Ajax requests. The easiest way of doing this is by using jQuery directly inside your models:
+Sometimes it's necessary to do custom Ajax requests. The easiest way of doing this is by using jQuery directly inside your models:
 
     //= CoffeeScript
     class Photo extends Spine.Model
@@ -286,7 +286,7 @@ You can warn users of this issue by setting a *onbeforeunload* event message if 
 
 Sometimes your database will be so large that it's impossible to pre-load it all client-side. The solution is to pre-load a segment of the database, and then use pagination to load more data as required.
 
-Pagination is best done with an infinite scrolling pattern, rather than showing users a list of pages. It's actually very straightforward to do. Spine's `fetch()` function takes an optional set of parameters that will be merged into the request options. All we need to do, is send along the index of the last fetched record. 
+Pagination is best done with an infinite scrolling pattern, rather than showing users a list of pages. It's actually very straightforward to do. Spine's `fetch()` function takes an optional set of parameters that will be merged into the request options. All we need to do is send along the index of the last fetched record. 
 
     //= CoffeeScript
     class Photo extends Spine.Model
@@ -327,7 +327,7 @@ On the client-side, you trigger calls to `fetch()` whenever page scrolls to a ce
 
 ##Disabling Ajax
 
-Ajax requests are automatically send whenever any model records are created, updated or deleting. You can prevent this behavior (i.e. stopping a DELETE request going out when a record is destroyed) by using `Ajax.disable(function)`
+Ajax requests are sent automatically whenever any model records are created, updated or deleted. You can prevent this behavior (i.e. stopping a DELETE request going out when a record is destroyed) by using `Ajax.disable(function)`
 
     //= CoffeeScript
     Spine.Ajax.disable ->

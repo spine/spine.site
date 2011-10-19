@@ -1,6 +1,6 @@
 <%- title 'Local Storage and Models' %>
 
-Spine has support for [HTML5 Local Storage](http://diveintohtml5.org/storage.html) to persist model data between page reloads. Local Storage is a quick and simple way of storing data, and one that's support by the vast amount of modern browsers (Chrome, Firefox 3.5+, IE 8+), as well as mobile browsers. It's great for offline applications too. 
+Spine has support for [HTML5 Local Storage](http://diveintohtml5.org/storage.html) to persist model data between page reloads. Local Storage is a quick and simple way of storing data, and the vast majority of modern browsers support it (Chrome, Firefox 3.5+, IE 8+, and mobile browsers). It's great for offline applications too. 
 
 Browsers give each 'origin' or domain at least 5mb of data by default. If you exceed this storage quota than the `QUOTA_EXCEEDED_ERR` exception will be thrown. 
 
