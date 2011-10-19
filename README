@@ -1,6 +1,12 @@
-TODO
+Site for Spine: http://spinejs.com
 
-#Other
 
-Testing
-CommonJS
+Release checklist:
+
+* Update version in Spine.coffee
+* Update version in package.json
+* Commit & push
+* Tag, and push tags
+* Update version in config/application.yml
+* Push site
+* npm publish
