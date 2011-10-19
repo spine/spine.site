@@ -4,7 +4,7 @@ One advantage of using the MVC and Binding patterns is that making your applicat
 
 Juggernaut is basically realtime PubSub for web apps. Browsers subscribe to channels, and servers publish to them. Juggernaut will do the rest, negotiating the best type of realtime connection with the server dependent on browser support. It'll first try WebSockets, and then fallback to Comet and polling. 
 
-I've build an [application demonstrating this](https://github.com/maccman/spine.rails3/tree/fowa) and you can also see a [live example here](http://spine-fowa.herokuapp.com).
+I've built an [application demonstrating this](https://github.com/maccman/spine.rails3/tree/fowa) and you can also see a [live example here](http://spine-fowa.herokuapp.com).
 
 ##Usage
 

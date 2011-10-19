@@ -10,7 +10,7 @@ In my opinion, CommonJS modules are the best system for JavaScript dependency ma
 
 > Not only have we split our code up into separate module components, the secret to good application design, but we've also got dependency management, scope isolation and namespacing.
 
-If you've ever use Node or Python you've used CommonJS modules, whether you realize it or not. In a nutshell, CommonJS modules give you require and exports, letting you require other modules and expose variables to other modules. For example:
+If you've ever used Node or Python, you've used CommonJS modules, whether you realize it or not. In a nutshell, CommonJS modules give you require and exports, letting you require other modules and expose variables to other modules. For example:
   
     //= CoffeeScript
     # example.js
@@ -49,7 +49,7 @@ External modules are then imported in using the `require()` function, setting th
       
 ##Tools
 
-If you're building Spine application's with [Hem](<%= docs_path("hem") %>), then all this has been taken care of for you. Your CoffeeScript and JavaScript scripts will automatically be wrapped up in the CommonJS format.
+If you're building Spine applications with [Hem](<%= docs_path("hem") %>), then all this has been taken care of for you. Your CoffeeScript and JavaScript scripts will automatically be wrapped up in the CommonJS format.
 
 If you're not using Hem, but you are using [Node.js](http://nodejs.org), you should checkout [Stitch](https://github.com/sstephenson/stitch), which will make sure all your libraries are *stitched* together into CommonJS modules, ready to run straight inside the browser.
 

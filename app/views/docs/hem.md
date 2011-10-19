@@ -2,7 +2,7 @@
 
 [Hem](https://github.com/maccman/hem) is a dependency management tool for JavaScript Web apps; you can think of it as Bundler for Web Apps, resolving all the dependencies and compiling your application up to be served to clients.
 
-Hem is excellent for developing Spine, and indeed any type of JavaScript applications. It'll manage your application's CoffeeScript, JavaScript and CSS, compiling them to disk upon deployment. 
+Hem is excellent for developing Spine, and indeed any type of JavaScript application. It'll manage your application's CoffeeScript, JavaScript and CSS, compiling them to disk upon deployment. 
 
 ##Getting started
 
@@ -62,7 +62,7 @@ However the awesome part of Stylus is the extra syntactical sugar it brings to C
 
 Stylus files are indicated by the `.styl` extension, and are automatically compiled down to CSS by Hem. This all happens in the background, so you don't need to worry about it. 
 
-Also in the pipeline, is the ability to bundle up CSS from Node modules. 
+Also in the pipeline is the ability to bundle up CSS from Node modules. 
 
 ##slug.json
 
