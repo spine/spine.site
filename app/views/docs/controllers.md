@@ -141,7 +141,7 @@ When you first instantiate a controller, it's common to set a bunch of instance 
       }
     });
     
-Since this is such a common scenario, Spine provides a helper, the `elements` property. The is in the format of `{"selector": "variableName"}`. When the controller is instantiated, Spine will go through `elements`, setting the appropriate elements as properties on the instance. Like with `events`, all the selectors are scoped by the controller's current element, `el`.
+Since this is such a common scenario, Spine provides a helper, the `elements` property. This is in the format of `{"selector": "variableName"}`. When the controller is instantiated, Spine will go through `elements`, setting the appropriate elements as properties on the instance. Like with `events`, all the selectors are scoped by the controller's current element, `el`.
 
     //= CoffeeScript
     class Tasks extends Spine.Controller
