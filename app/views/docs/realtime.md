@@ -6,6 +6,8 @@ Juggernaut is basically realtime PubSub for web apps. Browsers subscribe to chan
 
 I've built an [application demonstrating this](https://github.com/maccman/spine.rails3/tree/fowa) and you can also see a [live example here](http://spine-fowa.herokuapp.com).
 
+There's also a [short screencast](<%= pages_path("screencasts") %>) explaining how to integrate Spine with [Pusher](http://pusher.com), a hosted WebSocket server.
+
 ##Usage
 
 Let's implement a Juggernaut handler. It'll subscribe to the `/observer` channel, and then process observer events. During processing, it tries to find the model the message is associated with, then creates, updates or destroys records as necessary. 
@@ -21,7 +23,8 @@ Let's implement a Juggernaut handler. It'll subscribe to the `/observer` channel
         @jug.subscribe '/observer', @processWithoutAjax
 
       process: (msg) =>
-        klass = eval(msg.class)
+        klass = window[msg.class]
+        throw 'Unknown class' unless klass
         switch msg.type
           when 'create'
             klass.create msg.record unless klass.exists(msg.record.id)
@@ -49,7 +52,8 @@ Let's implement a Juggernaut handler. It'll subscribe to the `/observer` channel
       
       process: function(msg){
         var klass;
-        klass = eval(msg["class"]);
+        klass = window[msg["class"]];
+        if ( !klass ) throw 'Unknown class';
         switch (msg.type) {
           case 'create':
             if (!klass.exists(msg.record.id)) {
