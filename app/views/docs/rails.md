@@ -14,7 +14,7 @@ I've provided an example Rails app demonstrating Spine integration here: [https:
 
 There's also a [live demo](http://spine-rails3.herokuapp.com) of the application, go and give it [a whirl](http://spine-rails3.herokuapp.com). Notice that the UI is completely instant. There's absolutely no places where it blocks, even after creating a record. Ajax requests are sent in the background to keep the server in sync.  
 
-If you do intend to serve up your Spine app through Rails, there are two approaches: Sprockets or Stitch. I'd recommend the former, as it's much more compliant with the 'Blessed Rails Way™', and easier to setup.
+If you do intend to serve up your Spine app through Rails, there are two approaches: Sprockets or Stitch. I'd recommend the former, as it's much more compliant with the "Blessed Rails Way™", and easier to setup.
 
 ##Getting started with Sprockets
 
@@ -22,8 +22,8 @@ Rails uses [Sprockets](https://github.com/sstephenson/sprockets) internally to m
 
     gem 'jquery-rails'
     
-    # Optional support for jQuery templates
-    gem 'sprockets-jquery-tmpl' 
+    # Optional support for eco templates
+    gem 'eco' 
     
     # Embed Spine automatically
     gem 'spine-rails'
@@ -50,7 +50,6 @@ Let's demonstrate how easily Spine integrates with Rails. First, generate a Rail
 And now let's generate a Spine Model:
 
     rails g spine:model Post title content
-      create  app/assets/javascripts/app/models/post.coffee
 
 Run the migrations, boot up the server, and navigate to [http://localhost:3000/posts](http://localhost:3000/posts). 
 
@@ -75,13 +74,9 @@ If you reload the page, you'll see all the records you created were persisted. N
     
     App.Post.first().destroy();
     
-Very simple indeed! As you can see, Spine works with Rails out the box. 
+Very simple indeed! As you can see, Spine works with Rails out the box. As well as models, `spine-rails` also lets you generate controllers and views.
 
-As well as models, `spine-rails` also lets you generate controllers and views.
-
-    rails g spine:controller posts
-      create  app/assets/javascripts/app/controllers/posts.coffee
-      
+    rails g spine:controller posts      
     rails g spine:views posts/show
 
 ##Namespacing
@@ -159,7 +154,9 @@ Spine will use the server generated ID from then on, and does some clever stuff 
 
 ##Cross Domain Requests
 
-A limitation of Ajax is the same-origin policy which restricts Ajax requests to the same domain and port as the page was loaded from. This is for security reasons, due to [CSRF attacks](http://en.wikipedia.org/wiki/Cross-site_request_forgery). [Cross Origin Requests](https://developer.mozilla.org/En/HTTP_access_control), or CORS, lets you break out of the same origin policy, giving you access to authorized remote servers. 
+A limitation of Ajax is the same-origin policy which restricts Ajax requests to the same domain and port as the page was loaded from. This is for security reasons, and prevents [CSRF attacks](http://en.wikipedia.org/wiki/Cross-site_request_forgery). 
+
+However, while the same origin policy is integral to the security of the Web, it’s also somewhat inconvenient for developers trying to access legitimate remote resources. [Cross Origin Requests](https://developer.mozilla.org/En/HTTP_access_control), or CORS, lets you break out of the same origin policy, giving you access to authorized remote servers. 
 
 Using CORS is trivially easy, and is just the matter of adding a few authorization headers to request responses. The specification is well supported by the major browsers, although IE ignored the spec and created it's own object, [XDomainRequest](http://msdn.microsoft.com/en-us/library/cc288060%28VS.85%29.aspx), which has a number of arbitrary [restrictions and limitations](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx). Luckily, it's [easily shimed](https://github.com/jaubourg/ajaxHooks/blob/master/src/ajax/xdr.js). 
 
@@ -176,6 +173,8 @@ CORS support by browser:
 You can specify an external host for Spine to use by setting the `Spine.Model.host` option, like so:
 
     Spine.Model.host = "http://api.myservice.com"
+    
+Once set, all of Spine's subsequent Ajax requests will be made on that endpoint.
     
 ###CORs Rails integration
     
