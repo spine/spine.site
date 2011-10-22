@@ -58,79 +58,58 @@ Calling `preventDefault()` on the event prevents the default action, and is pref
 
 So, now we know when forms are being submitted, but how about actually retrieving the data contained inside the form. We could manually go through every input element in the form, reading their value, but we're lazy so let's automate it!
 
-[jQuery](http://jquery.com) has a rather useful function called `serializeArray()` ([documented here](api.jquery.com/serializeArray/)), which serializes forms based on their input's name and values. However, the returned result looks like this, and can't be directly used with Spine:
-
-    [{name: "first_name", value: "Alex"}, {name: "last_name", value: "MacCaw"}]
-    
-Let's create a plugin to jQuery which adds an additional function, `serializeForm()`.
-
-    //= CoffeeScript
-    $.fn.serializeForm = ->
-      result = {}
-      for item in $(@).serializeArray()
-        result[item.name] = item.value
-      result
-    
-This function basically takes the data returned from jQuery's `serializeArray()` and transforms it into a more useful format:
-
-    {first_name: "Alex", last_name: "MacCaw"}
-    
-Let's put everything together so you can see how form serialization works in context.
+Spine's models have a `fromForm(form)` function, which takes a form and returns a new record ready to be saved. Just give your form inputs the correct `name` attribute (matching the model's attributes), and everything will work correctly.
 
     //= CoffeeScript
     class Contacts extends Spine.Controller
-      elements: {"form.contactForm": "form"}
       events: {"submit form.contactForm": "create"}
       create: (e) ->
         e.preventDefault()
-        data = @form.serializeForm()
+        contact = Contact.fromForm(e.target)
         
     //= JavaScript
     var Contacts = Spine.Controller.sub({
-      elements: {"form.contactForm": "form"},
       events: {"submit form.contactForm": "create"},
       
       create: function(e) {
         e.preventDefault();
-        var data = @form.serializeForm();
+        var contact = Contact.fromForm(e.target)
       }
     });
 
 ##Updating a record
 
-Updating a record is now trivial, we have the data, all we need is the record. If you're using the [*element pattern*](http://maccman.github.com/spine#s-patterns-the-element-pattern), then you've already got a local reference to the record. All you need to do now is call `create()` or `updateAttributes()` depending on whether you want to create a record, or update an existing one.
+Updating a record is now trivial, we have the data, all we need is the record. If you're using the [*element pattern*](http://maccman.github.com/spine#s-patterns-the-element-pattern), then you've already got a local reference to the record. All you need to do now is load in the record's new values from the form, and save it:
 
     //= CoffeeScript
-    class Contacts extends Spine.Controller
-      elements: {"form.contactForm": "form"}
-      events: {"submit form.contactForm": "create"}
-      create: (e) ->
+    class ContactItem extends Spine.Controller
+      events: {"submit form.contactForm": "update"}
+      update: (e) ->
         e.preventDefault()
-        data    = @form.serializeForm();
-        contact = Contact.create(data);
+        @item.fromForm(@form).save()
         
     //= JavaScript
-    var Contacts = Spine.Controller.sub({
+    var ContactItem = Spine.Controller.sub({
       elements: {"form.contactForm": "form"},
-      events: {"submit form.contactForm": "create"},
+      events: {"submit form.contactForm": "update"},
       
-      create: function(e) {
-        e.preventDefault();
-        var data = @form.serializeForm();
-        var contact = Contact.create(data);
+      update: function(e) {
+        e.preventDefault()
+        this.item.fromForm(this.form).save()
       }
     });
 
-If, on the other hand, you don't have a local reference to the record at hand, you'll have to get one. If you're using [jQuery.tmpl](http://api.jquery.com/category/plugins/templates/) templating library, you can see which record an HTML element is associated with, by calling `tmplItem()`.
+If, on the other hand, you don't have a local reference to the record at hand, you'll have to get one. If you're using [jQuery.tmpl](http://api.jquery.com/category/plugins/templates/) templating library, you can see which record an HTML element is associated with, by calling `tmplItem()`, otherwise you can set an attribute on the item, indicating its ID.
 
-However, unfortunately the format this function returns isn't exactly what we need, so let's add an additional function to jQuery.tmpl called `item()`:
-
-    //= CoffeeScript
-    $.fn.item = ->
-      item = $(this).tmplItem().data
-      item.reload() if $.isFunction(item.reload)
+So, our view may look like this:
     
-Now we can just call `item()` on a HTML element to retrieve the record it's associated with.
+    <div data-id="<%= @id %>" class='item'>
+      <form>
+        <input name="name" value="<%= @name %>" />
+      </form>
+    </div>
+    
+And our controller like this:
 
     //= CoffeeScript
     class Contacts extends Spine.Controller
@@ -139,9 +118,8 @@ Now we can just call `item()` on a HTML element to retrieve the record it's asso
       
       update: (e) ->
         e.preventDefault()
-        data = $(e.target).serializeForm()
-        item = $(e.target).item()
-        item.updateAttributes(data)
+        item = Contact.find($(e.target).attr('id))
+        item.fromForm(e.target).save()
         
     //= JavaScript
     var Contacts = Spine.Controller.sub({
@@ -149,9 +127,8 @@ Now we can just call `item()` on a HTML element to retrieve the record it's asso
       
       update: function(e) {
         e.preventDefault();
-        var data = @form.serializeForm();
-        var item = $(e.target).item();
-        item.updateAttributes(data);
+        var item = Contact.find($(e.target).attr('id));
+        item.fromForm(e.target).save();
       }
     });
       
