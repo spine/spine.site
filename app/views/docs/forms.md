@@ -66,6 +66,7 @@ Spine's models have a `fromForm(form)` function, which takes a form and returns 
       create: (e) ->
         e.preventDefault()
         contact = Contact.fromForm(e.target)
+        contact.save()
         
     //= JavaScript
     var Contacts = Spine.Controller.sub({
@@ -74,6 +75,7 @@ Spine's models have a `fromForm(form)` function, which takes a form and returns 
       create: function(e) {
         e.preventDefault();
         var contact = Contact.fromForm(e.target)
+        contact.save();
       }
     });
 
@@ -103,9 +105,9 @@ If, on the other hand, you don't have a local reference to the record at hand, y
 
 So, our view may look like this:
     
-    <div data-id="<%= @id %>" class='item'>
+    <div data-id="<%%= @id %>" class='item'>
       <form>
-        <input name="name" value="<%= @name %>" />
+        <input name="name" value="<%%= @name %>" />
       </form>
     </div>
     
