@@ -78,6 +78,8 @@ Very simple indeed! As you can see, Spine works with Rails out the box. As well 
 
     rails g spine:controller posts      
     rails g spine:views posts/show
+    
+So that's the gist of Spine & Rails integration, and all you need to know to get started. The rest of this guide goes into specifics, but isn't necessary for day to day development.
 
 ##Namespacing
 
