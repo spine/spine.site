@@ -91,20 +91,21 @@ The element pattern essentially gives you the same functionality as the render p
       
       // Bind events to the record
       init: function()
-        throw "@item required" unless this.item
-        this.item.bind("update", this.proxy(this.render))
-        this.item.bind("destroy", this.proxy(remove))
+        if ( !this.item ) throw "@item required";
+        this.item.bind("update", this.proxy(this.render));
+        this.item.bind("destroy", this.proxy(remove));
       },
       
       render: function(item){
         if (item) this.item = item;
         
-        this.html(this.template(this.item))
+        this.html(this.template(this.item));
+        return this;
       },
       
       // Use a template, in this case via jQuery.tmpl.js
       template: function(items){
-        $('#contactTemplate').tmpl(items)
+        return $('#contactTemplate').tmpl(items);
       },
       
       // Called after an element is destroyed
@@ -120,17 +121,17 @@ The element pattern essentially gives you the same functionality as the render p
 
     var Contacts = Spine.Controller.sub({
       init: function(){
-        Contact.bind("refresh", this.proxy(this.addAll))
-        Contact.bind("create",  this.proxy(this.addOne))        
+        Contact.bind("refresh", this.proxy(this.addAll));
+        Contact.bind("create",  this.proxy(this.addOne));
       },
       
       addOne: function(item){
-        var contact = new ContactItem({item: item})
-        this.append(contact.render())
+        var contact = new ContactItem({item: item});
+        this.append(contact.render());
       },
       
       addAll: function(){
-        Contact.each(this.proxy(this.addOne))
+        Contact.each(this.proxy(this.addOne));
       }
     });        
     
