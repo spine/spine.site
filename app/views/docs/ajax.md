@@ -347,4 +347,4 @@ If you just want the Ajax methods, without any of the automatic create/update/de
 
 ##Cross domain requests
 
-The [Rails guide](<%= docs_path("rails") %>) has a good introduction to using Spine with remote servers, via the [CORs](https://developer.mozilla.org/En/HTTP_access_control) spec. The examples are all in Ruby, but the general concepts will apply to any language.
+The [Rails guide](<%= docs_path("rails") %>) has a good introduction to using Spine's Ajax module with remote servers via the [CORs](https://developer.mozilla.org/En/HTTP_access_control) spec. The examples are all in Ruby, but the general concepts will apply to any language.
