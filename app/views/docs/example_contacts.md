@@ -10,16 +10,35 @@ TODO
     cd contacts
     hem server
     
-##Generate models
+##Generate
         
     spine model contact
     spine controller contacts
+    spine controller contacts.main
+    spine controller contacts.sidebar
+    
+##Contact model
+
+    Spine = require('spine')
+
+    class Contact extends Spine.Model
+      @configure 'Contact', 'name', 'email'
+
+      @extend @Local
+
+      @filter: (query) ->
+        return @all() unless query
+        query = query.toLowerCase()
+        @select (item) ->
+          item.name?.toLowerCase().indexOf(query) isnt -1 or
+            item.email?.toLowerCase().indexOf(query) isnt -1
+
+    module.exports = Contact
     
 ##Contacts controller
 
     Spine   = require('spine')
     Contact = require('models/contact')
-    Manager = require('spine/lib/manager')
     $       = Spine.$
 
     Main    = require('controllers/contacts.main')
@@ -52,14 +71,7 @@ TODO
 
     Spine   = require('spine')
     Contact = require('models/contact')
-    Manager = require('spine/lib/manager')
     $       = Spine.$
-
-    $.fn.serializeForm = ->
-      result = {}
-      for item in $(@).serializeArray()
-        result[item.name] = item.value
-      result
 
     class Show extends Spine.Controller
       className: 'show'
@@ -105,25 +117,17 @@ TODO
 
       submit: (e) ->
         e.preventDefault()
-        params = @form.serializeForm()
-        @item.updateAttributes(params)
+        @item.fromForm(@form).save()
         @navigate('/contacts', @item.id)
 
       delete: ->
         @item.destroy() if confirm('Are you sure?')
 
-    class Main extends Spine.Controller
-      className: 'main viewport'
-
-      constructor: ->
-        super
-        @show    = new Show
-        @edit    = new Edit
-
-        @manager = new Manager(@show, @edit)
-
-        @append @show, @edit
-
+    class Main extends Spine.Stack
+      controllers:
+        show: Show
+        edit: Edit
+    
     module.exports = Main
     
 ##Contacts Sidebar

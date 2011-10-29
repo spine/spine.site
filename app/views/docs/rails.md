@@ -18,7 +18,7 @@ If you do intend to serve up your Spine app through Rails, there are two approac
 
 ##Getting started with Sprockets
 
-Rails uses [Sprockets](https://github.com/sstephenson/sprockets) internally to manage JavaScript and CSS assets. Spine includes support for Sprockets integration through the `spine-rails` gem. First off, add the required dependencies to your `Gemfile`:
+Rails uses [Sprockets](https://github.com/sstephenson/sprockets) internally to manage JavaScript and CSS assets. Spine includes support for Sprockets integration through the [spine-rails](https://github.com/maccman/spine-rails) gem. First off, add the required dependencies to your `Gemfile`:
 
     gem 'jquery-rails'
     

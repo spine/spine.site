@@ -10,3 +10,9 @@ Release checklist:
 * Update version in config/application.yml
 * Push site
 * npm publish
+
+TODO:
+
+* Finish example_contacts.md
+* Change manager.md
+* Change modules.md
