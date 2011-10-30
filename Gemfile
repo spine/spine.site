@@ -20,7 +20,6 @@ gem 'rdiscount'
 group :development do 
   gem 'sqlite3'
   gem 'heroku'
-  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do

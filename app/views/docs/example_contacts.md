@@ -108,9 +108,9 @@ Right, now out model is setup we can move onto the controllers. Let's tackle the
     
 That sets up some variables we're going to use, such as the `Contact` model and jQuery. 
 
-The main section of our application is going to hav
+The main section of our application is going to have two main 'views', a show view and an edit view. This will translate into two controller's `Show` and `Edit` respectively. We want to make sure only one of these controller is shown at any one time, so we're going to use a [Stack](<%= docs_path("stack") %>) to manage them.
 
-Our `ContactsMain` 
+So let's go ahead and implement the `Show` controller, appending the following to `app/controllers/contacts_main.coffee`:
 
     class Show extends Spine.Controller
       # Set the HTML class
@@ -139,6 +139,29 @@ Our `ContactsMain`
         # Navigate to the 'edit' view whenever
         # the edit link is clicked
         @navigate('/contacts', @item.id, 'edit')
+        
+So, the first property in `Show` is `className`, which set a class of `show` on the controller's internal HTML element. This will help us style the controller later. 
+
+Next we're setting up some events, specifically a *click* event on any element with a class of `edit`. In this case, our template is going to contain a `<a class="edit">Edit</a>` link which, when clicked, will invoke the controller's `edit()` function, navigating to the edit route.
+
+In the controller's constructor, we're binding to the *active* event, specifying the `change()` function as a callback. We're going to pass some router params when triggering the event, which will be used by our callback to find the relevant contact, and then re-render the view. This part will make more sense when you see how the controller is activated later on in the tutorial.
+
+Notice in the `render()` function we're requiring a template under `views/show`, calling it and passing in the current item. Let's go ahead now and define that template. Create a file under `app/views/show.eco` containing the following:
+
+    <header>
+      <a class="edit">Edit</a>
+    </header>
+
+    <div class="content">
+      <p><%= @name %></p>
+      <p><%= @email %></p>
+    </div>
+
+This is an [eco](<%= docs_path("views") %>) template, and the syntax inside the template tags (`<%%= %>`) is CoffeeScript. We're pulling out the `name` and `email` properties from the contact, displaying them in the page. We've also got that edit link we talked about earlier, ready to be clicked.
+
+###Edit controller
+
+No we've defined our `Show` controller which will show us information about the selected contacts, we can go ahead and define an `Edit` controller for updating contacts. Append the following to `app/controllers/contacts_main.coffee`.
 
     class Edit extends Spine.Controller
       className: 'edit'
@@ -169,6 +192,37 @@ Our `ContactsMain`
 
       delete: ->
         @item.destroy() if confirm('Are you sure?')
+        
+In a lot of ways, this is really similar to the `Show` controller. We're binding to the *active* active event with a `change()` callback, rendering a template with the appropriate contact context. The only real difference here is there's a few more events, mostly dealing with the controller's form. When the form submits, the `submit()` callback will be invoked and the item updated from the form's inputs (using `fromForm()`).
+
+Again, we're requiring a template under `views/form`, rendering it with the current contact (`@item`). Let's define that template under `app/views/form.eco`:
+
+    <header>
+      <a class="save">Save</a>
+      <a class="delete">Delete</a>
+    </header>
+
+    <div class="content">
+      <form>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" value="<%= @name %>">
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" value="<%= @email %>">
+        </label>  
+
+        <button>Save</button>
+      </form>
+    </div>
+    
+It's pretty self explanatory; again we're just pulling out properties from the current context using the `<%%= %>` syntax.
+
+###Main Stack
+
+The last step for our `ContactsMain` controller, is to define a stack that will manage our other two controllers, `Show` and `Edit`. Both controllers, `Show` and `Edit`, need to be shown independently one at a time. A  
 
     class Main extends Spine.Stack
       controllers:
