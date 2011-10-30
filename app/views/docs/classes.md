@@ -19,12 +19,14 @@ For classes, Spine uses CoffeeScript's [native class implementation](http://arct
       constructor: (attributes = {}) ->
         @attributes = attributes
 
-      # Instance method
+      # Instance methods
+      save: ->
       destroy: ->
       
 To instantiate classes, use the `new` keyword (behind the scenes, classes are constructor functions).
       
     user = new User(name: "Dark Knight")
+    user.save()
     user.destroy()
     
     user = User.find(1)

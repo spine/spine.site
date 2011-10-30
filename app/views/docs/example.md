@@ -4,7 +4,7 @@ Spine has a number of guides that take you step by step building example applica
 
 ##Example guides
 
-1. If you're using the building your Spine applications in [pure JavaScript](<%= docs_path("started_js") %>), without using Node or Hem, then the [TodoList guide](<%= docs_path("example2") %>) is the one for you. It takes you through building a basic CRUD application, including model persistence using HTML5 Local Storage.
+1. If you're using the building your Spine applications in [pure JavaScript](<%= docs_path("started_js") %>), without using Node or Hem, then the [TodoList guide](<%= docs_path("example_tasks") %>) is the one for you. It takes you through building a basic CRUD application, including model persistence using HTML5 Local Storage.
 
 1. Otherwise, if you're using [CoffeeScript and Hem](<%= docs_path("started") %>), you should checkout the [Contacts guide](<%= docs_path("example_contacts") %>), which will take you through all the steps necessary for building a fully fledged contacts manager, including CRUD, Stacks and search.
 

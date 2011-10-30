@@ -10,7 +10,7 @@ Controllers, like models, extend `Spine.Module` and so inherit all of its proper
     class Tasks extends Spine.Controller
       constructor: ->
         super
-        // Called on instantiation
+        # Called on instantiation
         
     //= JavaScript
     var Tasks = Spine.Controller.sub({
@@ -62,7 +62,7 @@ Spine gives you a shortcut for adding event listeners onto DOM elements, with th
         "click .item": "click"
       
       click: (event) ->
-        // Invoked when .item is clicked
+        # Invoked when .item is clicked
         
     //= JavaScript
     var Tasks = Spine.Controller.sub({

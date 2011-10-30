@@ -53,7 +53,7 @@ Inheriting from a class is as simple as calling `sub()` on it:
     });
     
     var DifferentClass = SomeClass.sub({
-      destroy: function(){ /* ... *},
+      destroy: function(){ /* ... */ },
 
       // Override property: 
       save: function(){ /* ... */ }

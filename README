@@ -3,7 +3,7 @@ Site for Spine: http://spinejs.com
 
 Release checklist:
 
-* Update version in Spine.coffee
+* Update version in spine.coffee
 * Update version in package.json
 * Commit & push
 * Tag, and push tags
