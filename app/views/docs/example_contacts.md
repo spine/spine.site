@@ -315,7 +315,7 @@ Two templates were mentioned in the controller, let's tackle the first, `views/s
 The other template is the `views/item` template, used by the List for rendering list items. Replace `app/views/item.jeco` with the following:
 
     <div class="item">
-      <%= @name or "<i>No Name</i>" %>
+      <%%= @name or "<i>No Name</i>" %>
     </div>
     
 Notice we're using the `.jeco` extension for this template, rather then `.eco`. This is a Hem specific extension to Eco, which allows us to associate data with template items, something the Spine List class requires.
