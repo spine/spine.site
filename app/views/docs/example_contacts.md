@@ -2,7 +2,7 @@
 
 This example will show you how to use Spine, Hem and Eco to build a basic contacts manager.
 
-Some of the source will be omitted for the sake of brevity (such as the CSS). You can find the complete source on GitHub, as well as a live demo. This is what we'll end up with:
+Some of the source will be omitted for the sake of brevity (such as the CSS). You can find the [complete source on GitHub](https://github.com/maccman/spine.contacts), as well as a [live demo](http://spine-contacts.herokuapp.com). This is what we'll end up with:
 
 ![Spine Contacts](https://lh5.googleusercontent.com/_IH1OempnqUc/TZpgYfnlUBI/AAAAAAAABKg/UYLhdmoc15o/s500/contacts.png)
 
@@ -60,7 +60,7 @@ Let's generate the basic models and controller's our applications going to need.
 
     spine model contact
     
-This will generate a model under `app/models/contact.coffee` which will come in handy later. Then let's generate three controllers, `Contacts`, `ContactsMain` and `ContactsSidebar`.
+This will generate a model under `app/models/contact.coffee` which will come in handy later. Then let's generate three controllers, `Contacts`, `Main` and `Sidebar`.
     
     spine controller contacts
     spine controller contacts_main
@@ -100,7 +100,7 @@ Lastly the model is exported, so it's available to be required from other module
     
 ##ContactsMain
 
-Right, now out model is setup we can move onto the controllers. Let's tackle the `ContactsMain` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
+Right, now out model is setup we can move onto the controllers. Let's tackle the `Main` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')
@@ -222,7 +222,7 @@ It's pretty self explanatory; again we're just pulling out properties from the c
 
 ###Main Stack
 
-The last step for our `ContactsMain` controller, is to define a stack that will manage our other two controllers, `Show` and `Edit`. Both controllers, `Show` and `Edit`, need to be shown independently one at a time. A  
+The last step for our `Main` controller, is to define a stack that will manage our other two controllers, `Show` and `Edit`. Both controllers, `Show` and `Edit`, need to be shown independently one at a time. Adding both controllers to a [Spine Stack](<%= docs_path("stack") %>) will ensures this happens automatically.
 
     class Main extends Spine.Stack
       controllers:
@@ -231,7 +231,13 @@ The last step for our `ContactsMain` controller, is to define a stack that will 
     
     module.exports = Main
     
+The last line exports the controller, so it's available to other modules (see the [CommonJS guide](<%= docs_path("common_js") %>) for more information). The full source for this controller is [available on GitHub](https://github.com/maccman/spine.contacts/blob/master/app/controllers/contacts.main.coffee).
+    
 ##Contacts Sidebar
+
+The `Sidebar` controller is going to list contacts and let users filter them by name and email. Additionally users's can select a contact, which is then displayed in the main view. 
+
+Although this controller is fairly large, it's pretty straightforward. Let's take a look at the full code, and then I'll explain it in default. Replace `app/controllers/contacts_sidebar.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')
@@ -243,16 +249,18 @@ The last step for our `ContactsMain` controller, is to define a stack that will 
 
       elements:
         '.items': 'items'
-        'input': 'search'
+        'input[type=search]': 'search'
 
       events:
-        'keyup input': 'filter'
+        'keyup input[type=search]': 'filter'
         'click footer button': 'create'
 
       constructor: ->
         super
+        # Render initial view
         @html require('views/sidebar')()
 
+        # Setup a Spine List
         @list = new List
           el: @items, 
           template: require('views/item'), 
@@ -282,8 +290,41 @@ The last step for our `ContactsMain` controller, is to define a stack that will 
 
     module.exports = Sidebar
     
+Ok, so that's a fair amount of code that needs some explaining. In a nutshell, the `Sidebar` controller sets up a Spine List, populates with contacts and handles filtering.
+
+The `elements` property is setting up some references to various HTML elements we'll need subsequently in the class. The format is `{elementSelector: propertyName}`, and ensures that references to properties such as `@items` and `@search` point to the appropriate elements.
+
+The `events` property sets up some event delegation, namely the contact filtering when users type in a search input, and responding to a *click* event on a 'contact create' button. The two callbacks referenced, `@filter()` and `@create()` are pretty self explanatory; `@filter()` merely pulling out a query from the search input, and re-rendering the list, whilst `@create()` makes a blank contact, navigating to the 'edit' route.
+
+The `Sidebar`'s constructor is where all the magic happens, and where the list of contacts is setup. The first step is to replace the controller's HTML with the `views/sidebar` template (which we'll define later). Next, we're instantiating a Spine List, passing in the `.items` element reference, the list template and some additional options. The list will take care of rendering and selecting contacts, we just have to add a *change* event listener onto it to know when a user selects a different contact.
+
+Also notice we're binding to two events, *refresh* and *change* on the `Contact` model. These will be fired whenever the model fetches its records (i.e. on startup), and whenever a record changes (i.e. is created, updated or destroyed). Whenever these two events fire, we're just going to redraw the whole list, reflecting model changes in the view.
+
+Two templates were mentioned in the controller, let's tackle the first, `views/sidebar`. This is just going to contain a search input, a container for our list and a button to create new contacts. Replace `app/views/sidebar.eco` with the following:
+    
+    <header>
+      <input type="search" placeholder="search" results="0" incremental="true" autofocus>
+    </header>
+
+    <div class="items"></div>
+
+    <footer>
+      <button>New Contact</button>
+    </footer>
+
+The other template is the `views/item` template, used by the List for rendering list items. Replace `app/views/item.jeco` with the following:
+
+    <div class="item">
+      <%= @name or "<i>No Name</i>" %>
+    </div>
+    
+Notice we're using the `.jeco` extension for this template, rather then `.eco`. This is a Hem specific extension to Eco, which allows us to associate data with template items, something the Spine List class requires.
+
+The full source for this controller, and all its templates, is [available on GitHub](https://github.com/maccman/spine.contacts/blob/master/app/controllers/contacts.sidebar.coffee).
 
 ##Contacts controller
+
+So we've got a `Sidebar` controller for listing contacts, and a `Main` controller for showing/editing them. The last step is to tie these two together by using Spine's routes. This we'll do in the `Contacts` controller; replace `app/controllers/contacts.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')
@@ -314,3 +355,36 @@ The last step for our `ContactsMain` controller, is to define a stack that will 
         Contact.fetch()
 
     module.exports = Contacts
+    
+Right, so that's a shorter controller than the previous two we implemented, lets have a look at what it's up to. Firstly you'll notice that we're requiring in our other two controller's `Main` and `Sidebar`. In the `Contacts` constructor these are instantiated, saved as local variables and ultimately appended to the controller. 
+
+We're also setting up some routes, `/contacts/:id` and `/contacts/:id/edit`. Spine will listen to changes in the URL's hash, and invoke the matched route callbacks. For example, if the user navigates to `#/contacts/1`, then the `/contacts/:id` route will be activated, and the `Show` controller activated. We're passing through the route params, so our controllers `change()` callbacks can pull out the contact's ID, and match it up with one from the model.
+
+Lastly we're calling `Contact.fetch()`, which fetches all the contacts out of local storage, populating the `Contact` model.
+    
+##App controller
+
+So our contacts app is now finished, and has all the functionality we need for listing, creating and updating contacts. So how do we actually go about instantiating it, adding it to the page? Well this is where the `App` controller comes in, Spine's main controller. This is automatically instantiated and appended to the document's body when the page loads. 
+
+All we need to do is instantiate `Contacts` controller, appending it to `App`. Replace `app/index.coffee` with the following:
+
+    require('lib/setup')
+
+    Spine    = require('spine')
+    Contacts = require('controllers/contacts')
+
+    class App extends Spine.Controller
+      constructor: ->
+        super
+        @contacts = new Contacts
+        @append @contacts
+
+        Spine.Route.setup()
+
+    module.exports = App
+    
+Awesome! Refresh the page, and you should see your working contacts application (albeit unstyled). Remember, you can clone the [complete source from GitHub](https://github.com/maccman/spine.contacts) if you run into any difficulties, as well as copy some [attractive CSS](https://github.com/maccman/spine.contacts/tree/master/css).
+
+##Next steps
+
+Congratulations if you've got this far. We've explored a lot of Spine, and you should have a good handle on the framework now. You're all set to go off and create your own applications. 
