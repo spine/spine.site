@@ -4,6 +4,46 @@
 
 Managers are great for having a set of views, and ensuring that only one of those views is displayed at any one time. 
 
+##Stacks
+
+You may find it easier to use [Spine's Stacks](<%= docs_path("stacks") %>), as they abstract Managers providing a more high level API.
+
+    //= CoffeeScript
+    class PostsShow extends Spine.Controller
+    class PostsEdit extends Spine.Controller
+
+    class Posts extends Spine.Stack
+      controllers:
+        show: PostsShow
+        edit: PostsEdit
+    
+    posts = new Posts
+    posts.show # <PostsShow>
+    
+    posts.show.active()
+    posts.show.isActive() # true
+    posts.edit.isActive() # false
+    
+    //= JavaScript
+    var PostsShow = Spine.Controller.sub();
+    var PostsEdit = Spine.Controller.sub();
+
+    var Posts = Spine.Stack.sub({
+      controllers: {
+        show: PostsShow,
+        edit: PostsEdit
+      }
+    });
+        
+    var posts = new Posts
+    posts.show // <PostsShow>
+    
+    posts.show.active();
+    posts.show.isActive(); // true
+    posts.edit.isActive(); // false
+    
+See the [Stacks guide](<%= docs_path("stacks") %>) for more information.
+
 ##Usage
 
 To use the `Manager` class, we first need to include the *manager.js* script, which you can find in [Spine's repository](https://github.com/maccman/spine/raw/master/lib/manager.js). Let's demonstrate this by creating a couple of controllers, adding them to a `Manager` instance, and change their state. 
