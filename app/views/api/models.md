@@ -141,6 +141,10 @@ Utility function so the model has a valid JSON representation (shows all records
 ### `@fromJSON(json)`
 
 Pass a JSON string, representing either an array or a singleton, to `@fromJSON()`. Returns an array or unsaved model instances. 
+
+### `@fromForm(formElement)`
+
+Returns a new record, populated by the given HTML form's inputs.
    
 ###  `@proxy(function)`
 
@@ -260,6 +264,10 @@ Returns a string representation of the record. A utility function used to displa
 ### `exists()`
 
 Returns a boolean indicating whether the record has saved. Similar to `isNew()`, but it actually checks the models record store.
+
+### `fromForm(formElement)`
+
+Populates the record's attributes with inputs from the given HTML form.
 
 ### `bind(name, function)`
 
