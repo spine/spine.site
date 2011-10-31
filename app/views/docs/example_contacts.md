@@ -237,7 +237,7 @@ The last line exports the controller, so it's available to other modules (see th
 
 The `Sidebar` controller is going to list contacts and let users filter them by name and email. Additionally users's can select a contact, which is then displayed in the main view. 
 
-Although this controller is fairly large, it's pretty straightforward. Let's take a look at the full code, and then I'll explain it in default. Replace `app/controllers/contacts_sidebar.coffee` with the following:
+Although this controller is fairly large, it's pretty straightforward. Let's take a look at the full code, and then I'll explain it in detail. Replace `app/controllers/contacts_sidebar.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')

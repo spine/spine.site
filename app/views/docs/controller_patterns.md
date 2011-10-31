@@ -46,6 +46,7 @@ The element pattern essentially gives you the same functionality as the render p
       
       # Bind events to the record
       constructor: ->
+        super
         throw "@item required" unless @item
         @item.bind("update", @render)
         @item.bind("destroy", @remove)
