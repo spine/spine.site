@@ -44,7 +44,7 @@ A basic stack looks like this, a class extending from `Spine.Stack`:
     posts.show.isActive(); // true
     posts.edit.isActive(); // false
     
-As you can see, we've got a `controllers` property in the format of `{controllerName: controllerClass}`. These controllers will be instantiated automatically when the Stack is instantiated, appended to the stack and and internal [manager](<%= docs_path("manager") %>).
+As you can see, we've got a `controllers` property in the format of `{controllerName: controllerClass}`. These controllers will be instantiated automatically when the Stack is instantiated, appended to the stack and an internal [manager](<%= docs_path("manager") %>).
 
 Notice we can access the Stack's controllers when it's instantiated, as in `posts.show`. We can activate individual controllers by calling `active()` on them, deactivating all the other controllers in the stack. 
 
@@ -70,7 +70,7 @@ Notice we can access the Stack's controllers when it's instantiated, as in `post
 
 ###CSS
 
-A Stack don't alter the display CSS property of its controllers, but rather simply adds and removes an *active* class. You should add the following snippet to your page's CSS, ensuring that only controller's with an active class are displayed.
+A Stack doesn't alter the display CSS property of its controllers, but rather simply adds and removes an *active* class. You should add the following snippet to your page's CSS, ensuring that only controller's with an active class are displayed.
 
     .stack > *:not(.active) {
       display: none
