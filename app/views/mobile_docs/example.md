@@ -1,22 +1,23 @@
 <% title 'Contacts Example' %>
 
-We're going to build an example Contact manager. You can see the full source [on GitHub](https://github.com/maccman/spine.mobile.contacts), and follow along as we explain the various components.
+We're going to build an example Contact manager. You can see the full source [on GitHub](https://github.com/maccman/spine.mobile.contacts), and follow along as we explain the various components. A live demo is [also available](http://spine-mobile-contacts.herokuapp.com/).
+
+Here's what we're going to end up with:
+
+![Preview](https://lh6.googleusercontent.com/-6i_3uJTlOrU/Tq_Y40-_5II/AAAAAAAABcc/74On9UewyUE/s640/Screen%252520Shot%2525202011-11-01%252520at%25252011.31.50.png)
 
 ##Model
 
 First up, we need a `Contact` model under `app/models/contact.coffee`. This can be generated with [Spine.app](<%= docs_path("app") %>), and should look like this:
 
     class Contact extends Spine.Model
-      @configure 'Contact', 'email'
+      @configure 'Contact', 'name', 'email'
       @extend Spine.Model.Local
 
       @nameSort: (a, b) ->
         if (a.name or a.email) > (b.name or b.email) then 1 else -1
 
-      validate: ->
-        'Email required' unless @email
-
-It's extending `Spine.Model.Local`, since we want the model to be persisted with HTML5 local storage. The model also has an email attribute, which we're validating the presence of.
+It's extending `Spine.Model.Local`, since we want the model to be persisted with HTML5 local storage. The model two attributes, 'name' and 'email'.
 
 ##Global Stage
 
@@ -42,9 +43,9 @@ The `Contacts` controller hasn't been defined yet, so let's go ahead and do that
         @create  = new ContactsCreate
 
         @routes
-          '/contacts':        (params) -> @list.active(params)
-          '/contacts/:id':    (params) -> @show.active(params)
           '/contacts/create': (params) -> @create.active(params)
+          '/contacts/:id':    (params) -> @show.active(params)
+          '/contacts':        (params) -> @list.active(params)
 
         Contact.fetch()
 
@@ -118,7 +119,7 @@ The `ContactsShow` controller is pretty straightforward. In a nutshell it waits 
 The view is located under `app/views/contaccts/show.eco`, and just displays the contact's email.
 
       <%% if @email: %>
-        <p><a href="mailto:<%= @email %>"><%= @email %></a></p>
+        <p><a href="mailto:<%%= @email %>"><%%= @email %></a></p>
       <%% end %>
 
 ##ContactsCreate Controller
@@ -127,7 +128,7 @@ Last but not least, the `ContactsCreate` controller:
 
     class ContactsCreate extends Panel
       elements:
-        'input': 'input'
+        'form': 'form'
 
       events:
         'submit form': 'submit'
@@ -140,16 +141,15 @@ Last but not least, the `ContactsCreate` controller:
         @addButton('Cancel', @back)
         @addButton('Create', @submit).addClass('right')
 
-        @render()
+        @active @render
 
       render: ->
         @html require('views/contacts/form')()
 
       submit: (e) ->
         e.preventDefault()
-        contact = Contact.create(email: @input.val())
-        if contact
-          @input.val('')
+        contact = Contact.fromForm(@form)
+        if contact.save()
           @navigate('/contacts', contact.id, trans: 'left')
 
       back: ->
@@ -157,9 +157,9 @@ Last but not least, the `ContactsCreate` controller:
 
       deactivate: ->
         super
-        @input.blur()
+        @form.blur()
 
-This renders a form when it's instantiated, and listens to *submit* events on that form. When the event gets fired, the contact is created and navigated to. Notice also that the form's `<input>` element is being associated with the variable `@input`, so it can be easily referenced.
+This renders a form when it's instantiated, and listens to *submit* events on that form. When the event gets fired, the contact is created and navigated to. Notice also that the form element is being associated with the variable `@form`, so it can be easily referenced.
 
 And the ContactsCreate form is defined under `app/views/contacts/form.eco`:
 
