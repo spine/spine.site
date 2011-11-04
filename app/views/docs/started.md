@@ -8,7 +8,7 @@ There are three main ways of using Spine:
 
 1. Plain static JavaScript for those who aren't ready to take the leap into CoffeeScript. Simply download the JavaScript files, include them in your HTML and you're good to go! If you're going down this route, please see the [Getting Started with JavaScript guide](<%= docs_path("started_js") %>)
 
-1. Integration into Rails with the [spine-rails gem](https://github.com/maccman/spine-rails). Spine & Rails work really work together and integrate seamlessly. Watch the [screencast](http://vimeo.com/30976192) and read the [Rails guide](<%= docs_path("rails") %>).
+1. Integration into Rails with the [spine-rails gem](https://github.com/maccman/spine-rails). Spine & Rails work really well together and integrate seamlessly. Watch the [screencast](http://vimeo.com/30976192) and read the [Rails guide](<%= docs_path("rails") %>).
 
 1. Using Node, CoffeeScript and Hem. [Hem](<%= docs_path("hem") %>) is a JavaScript dependency manager for Spine apps, and sits on top of npm to manage all your assets. This last approach is the one I personally advocate, and the path of least resistance. [Spine.app](<%= docs_path("app") %>) will generate a directory structure for your application, and Hem will serve it up to your users. 
 
