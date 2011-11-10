@@ -24,6 +24,8 @@ Rails uses [Sprockets](https://github.com/sstephenson/sprockets) internally to m
     
     # Optional support for eco templates
     gem 'eco' 
+    # Or support for ejs templates (default without eco)
+    gem 'ejs' 
     
     # Embed Spine automatically
     gem 'spine-rails'
@@ -77,7 +79,7 @@ If you reload the page, you'll see all the records you created were persisted. N
 Very simple indeed! As you can see, Spine works with Rails out the box. As well as models, `spine-rails` also lets you generate controllers and views.
 
     rails g spine:controller posts      
-    rails g spine:views posts/show
+    rails g spine:view posts/show
 
 ##Scaffolding
 
@@ -85,7 +87,7 @@ We can use the `spine-rails` scaffold generator to replace the Rails scaffold, m
 
     rails g spine:scaffold post title content
     
-This will generate a bunch of models, controllers and views with some basic scaffolding for CRUD actions on the `Post` model. You'll notice under `app/assets/javascripts/app/controllers` there's a new controller called `Pages`. In order for our scaffolding to work, we need to instantiate this controller, attaching it the page. 
+This will generate a bunch of models, controllers and views with some basic scaffolding for CRUD actions on the `Post` model. You'll notice under `app/assets/javascripts/app/controllers` there's a new controller called `Posts`. In order for our scaffolding to work, we need to instantiate this controller, attaching it the page. 
     
 The easiest way to do this, and a way that leaves scope for further controllers, is by appending it to the main controller, `App`. You can do this by opening up `app/assets/javascripts/app/index.coffee`, and adding some code to its constructor. 
 
@@ -101,7 +103,7 @@ The easiest way to do this, and a way that leaves scope for further controllers,
 
 As you can see in the example above, we're instantiating the `App.Posts` controller, appending it to the `App` controller. This will ensure that whenever `App` is instantiated, our scaffold will also be instantiated and appended to `App`'s element. 
 
-Now we need to actually instantiate our App controller, giving it an element to render to. Replace `app/views/pages/index.html.erb` with the following:
+Now we need to actually instantiate our App controller, giving it an element to render to. Replace `app/views/posts/index.html.erb` with the following:
     
     <div id="app"></div>
 
