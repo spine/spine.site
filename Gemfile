@@ -8,13 +8,13 @@ gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :assets do
   gem 'coffee-rails', :git => 'git://github.com/rails/coffee-rails.git'
   gem 'uglifier'
-  gem 'stylus', :git => 'git://github.com/maccman/ruby-stylus.git'
+  gem 'stylus'
 end
 
 gem 'jquery-rails'
 gem 'thin'
 gem 'nestful', :git => 'git://github.com/maccman/nestful.git'
-gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+gem 'omniauth'
 gem 'rdiscount'
 
 group :development do 
