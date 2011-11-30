@@ -329,9 +329,9 @@ It's all very good creating tasks from the console, but we can hardly expect our
         },
       
         create: function(e) {
-          e.preventDefault()
-          Task.create(name: this.input.val())
-          this.input.val("")
+          e.preventDefault();
+          Task.create({name: this.input.val()});
+          this.input.val("");
         },
       
         clear: function(){
