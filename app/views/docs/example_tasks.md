@@ -368,7 +368,7 @@ So the last part of our tutorial is going to cover completing and deleting tasks
       constructor: ->
         super
         @item.bind("update",  @render)
-        @item.bind("destroy", @destroy)
+        @item.bind("destroy", @release)
 
       render: =>
         @replace($("#taskTemplate").tmpl(@item))
