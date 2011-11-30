@@ -217,7 +217,7 @@ Ok, let's look at the last bit, the `Tasks` controller. This will be in charge o
       
       remove: function(){
         this.el.remove();
-        this.destroy();
+        this.release();
       }
     });
     
