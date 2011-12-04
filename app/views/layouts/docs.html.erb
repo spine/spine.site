@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spine</title>
+  <title><%= "#{content_for(:title).gsub("&amp;", "&")} - " if content_for?(:title) and content_for(:title) != "Documentation" %>Documentation - Spine</title>
   <%= stylesheet_link_tag    "docs" %>
   <%= javascript_include_tag "docs" %>
   <%= csrf_meta_tags %>
