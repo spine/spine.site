@@ -317,7 +317,7 @@ It's all very good creating tasks from the console, but we can hardly expect our
           Task.fetch();
         },
       
-        addOne: function(item){
+        addOne: function(task){
           var view = new Tasks({
             item: task
           });
