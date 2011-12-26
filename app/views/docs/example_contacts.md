@@ -100,7 +100,7 @@ Lastly the model is exported, so it's available to be required from other module
     
 ##ContactsMain
 
-Right, now out model is setup we can move onto the controllers. Let's tackle the `Main` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
+Right, now our model is setup we can move onto the controllers. Let's tackle the `Main` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')
@@ -153,8 +153,8 @@ Notice in the `render()` function we're requiring a template under `views/show`,
     </header>
 
     <div class="content">
-      <p><%= @name %></p>
-      <p><%= @email %></p>
+      <p><%%= @name %></p>
+      <p><%%= @email %></p>
     </div>
 
 This is an [eco](<%= docs_path("views") %>) template, and the syntax inside the template tags (`<%%= %>`) is CoffeeScript. We're pulling out the `name` and `email` properties from the contact, displaying them in the page. We've also got that edit link we talked about earlier, ready to be clicked.
@@ -206,12 +206,12 @@ Again, we're requiring a template under `views/form`, rendering it with the curr
       <form>
         <label>
           <span>Name</span>
-          <input type="text" name="name" value="<%= @name %>">
+          <input type="text" name="name" value="<%%= @name %>">
         </label>
 
         <label>
           <span>Email</span>
-          <input type="email" name="email" value="<%= @email %>">
+          <input type="email" name="email" value="<%%= @email %>">
         </label>  
 
         <button>Save</button>
