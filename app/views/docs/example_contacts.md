@@ -100,7 +100,7 @@ Lastly the model is exported, so it's available to be required from other module
     
 ##ContactsMain
 
-Right, now out model is setup we can move onto the controllers. Let's tackle the `Main` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
+Right, now our model is setup we can move onto the controllers. Let's tackle the `Main` controller first. Replace the contents of `app/controllers/contacts_main.coffee` with the following:
 
     Spine   = require('spine')
     Contact = require('models/contact')
