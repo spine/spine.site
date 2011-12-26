@@ -123,7 +123,7 @@ So let's go ahead and implement the `Show` controller, appending the following t
         super
         
         # Bind the change() callback
-        # to the *change* event
+        # to the *active* event
         @active @change
 
       render: ->
