@@ -161,7 +161,7 @@ This is an [eco](<%= docs_path("views") %>) template, and the syntax inside the 
 
 ###Edit controller
 
-No we've defined our `Show` controller which will show us information about the selected contacts, we can go ahead and define an `Edit` controller for updating contacts. Append the following to `app/controllers/contacts_main.coffee`.
+Now we've defined our `Show` controller which will show us information about the selected contacts, we can go ahead and define an `Edit` controller for updating contacts. Append the following to `app/controllers/contacts_main.coffee`.
 
     class Edit extends Spine.Controller
       className: 'edit'
