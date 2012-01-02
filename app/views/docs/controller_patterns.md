@@ -9,6 +9,7 @@ The *render pattern* is a really useful way of binding models and views together
     //= CoffeeScript
     class Contacts extends Spine.Controller
       constructor: ->
+        super
         Contact.bind("refresh change", @render)
 
       template: (items) ->
