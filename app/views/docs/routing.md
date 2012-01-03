@@ -76,11 +76,11 @@ Lastly, Spine gives controllers a `navigate()` function, which can be passed a f
     
     new Users({item: User.first()});
     
-Using `navigate()` ensures that the URL's fragment is kept in sync with the relevant controllers. By default, calling `navigate()` __won't__ trigger any events or route callbacks. If you want to trigger routes, pass a `true` boolean as the last argument to `navigate()`.
+Using `navigate()` ensures that the URL's fragment is kept in sync with the relevant controllers. By default, calling `navigate()` will trigger route callbacks. If you don't want to trigger routes, pass a `false` boolean as the last argument to `navigate()`.
     
     //= CoffeeScript
-    # Trigger routes by passing true
-    Spine.Route.navigate("/users", true)
+    # Don't trigger routes by passing false
+    Spine.Route.navigate("/users", false)
 
 ##HTML5 History
 
@@ -105,4 +105,3 @@ Sometimes it's convenient to use routes, without any changes to the page's URL o
     
     //= CoffeeScript
     Spine.Route.setup(shim: true)
-    
