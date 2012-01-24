@@ -69,7 +69,7 @@ You can then render the template using `$.fn.tmpl()`, passing in the template co
     //= JavaScript
     var Contacts = Spine.Controller.sub({
       render: function(){
-        var template = ( "#itemTemplate" ).tmpl( Contact.all() );
+        var template = $( "#itemTemplate" ).tmpl( Contact.all() );
         this.html( template );
       }
     });
@@ -140,7 +140,7 @@ Data binding is a very powerful technique for ensuring model data stays in sync 
       },
       
       render: function(){
-        var template = ( "#itemTemplate" ).tmpl( Contact.all() );
+        var template = $( "#itemTemplate" ).tmpl( Contact.all() );
         this.html( template );
       }
     });
