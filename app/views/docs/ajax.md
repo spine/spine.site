@@ -158,7 +158,7 @@ When the server does return an unsuccessful response, an *ajaxError* event will 
 Likewise, when the server returns a successful response, an *ajaxSuccess* event will be fired on the record, before it's updated.
 
     //= CoffeeScript
-    contact.bind "ajaxSuccess", (status, xhr) -> 
+    Contact.bind "ajaxSuccess", (status, xhr) -> 
       # Successful response...
       
 However if you're designing your application correctly, you **shouldn't** ever need these events. Waiting for a server response goes against the whole concept of an asynchronous user interface. For example, if your server is returning extra data after a record has been created, Spine will automatically update the record with the new data. All you need to do is listen to the *save*, *update* or *change* events on the model. 
