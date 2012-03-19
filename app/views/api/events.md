@@ -8,6 +8,14 @@ Bind a event to the current context. `eventNames` can be a space separated list 
 
     Model.bind('create update', -> )
 
+
+### `@one(eventNames, callback)`
+
+Bind an event to the current context. The handler will be executed at most once. `eventNames` can be a space separated list of event types.
+
+    Model.one('create update', -> )
+
+
 ### `@trigger(eventNames, [data...])`
 
 Trigger events in the current context. `eventNames` can be a space separated list of event types. The optional data arguments are passed to the event callback.
