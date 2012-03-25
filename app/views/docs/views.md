@@ -23,9 +23,9 @@ Here's an example:
       No projects
     <%% end %>
 
-As you can see, the syntax is remarkably straightforward. Just use `<%%` tags for evaluating expressions, and `<%%=` tags for printing them. The full list of template tags is as follows:
+As you can see, the syntax is remarkably straightforward. Just use `<%%` tags for evaluating expressions, and `<%=` tags for printing them. The full list of template tags is as follows:
     
-* `<%% expression %>`  
+* `<% expression %>`  
   Evaluate a CoffeeScript expression without printing its return value.
 
 * `<%%= expression %>`  
