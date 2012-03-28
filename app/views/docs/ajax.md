@@ -349,6 +349,11 @@ Ajax requests are sent automatically whenever any model records are created, upd
     Spine.Ajax.disable ->
       record.destroy()
       
+Alternatively if you just want to disable Ajax for a single operation, you can pass the option `{ajax: false}` to the model's methods.
+
+    //= CoffeeScript
+    record.destroy({ajax: false})
+
 If you just want the Ajax methods, without any of the automatic create/update/destroy Ajax requests, extend the model with `Spine.Model.Ajax.Methods` instead of `Spine.Model.Ajax`:
     
     //= CoffeeScript
