@@ -1,10 +1,10 @@
 <% title 'Controller Stacks' %>
 
-Stacks are a way of grouping controllers, ensuring that only one controller is activated and displayed at any one time. They're useful in all sorts of common scenarios, such as implementing tabs or displaying independent controllers. 
+Stacks are a way of grouping controllers, ensuring that only one controller is activated and displayed at any one time. They're useful in all sorts of common scenarios, such as implementing tabs or displaying independent controllers.
 
 Behind the scenes, Stacks are just Spine Controllers, with an internal [Manager](<%= docs_path("manager") %>) and some API sugar. Stacks are actually defined in the `manager.coffee` lib, so you'll need to require it before using them.
 
-    Stack = require('spine/lib/stacks');
+    Stack = require('spine/lib/manager').Stack;
 
 ##Usage
 
@@ -18,14 +18,14 @@ A basic stack looks like this, a class extending from `Spine.Stack`:
       controllers:
         show: PostsShow
         edit: PostsEdit
-    
+
     posts = new Posts
     posts.show # <PostsShow>
-    
+
     posts.show.active()
     posts.show.isActive() # true
     posts.edit.isActive() # false
-    
+
     //= JavaScript
     var PostsShow = Spine.Controller.sub();
     var PostsEdit = Spine.Controller.sub();
@@ -36,35 +36,35 @@ A basic stack looks like this, a class extending from `Spine.Stack`:
         edit: PostsEdit
       }
     });
-        
+
     var posts = new Posts
     posts.show // <PostsShow>
-    
+
     posts.show.active();
     posts.show.isActive(); // true
     posts.edit.isActive(); // false
-    
+
 As you can see, we've got a `controllers` property in the format of `{controllerName: controllerClass}`. These controllers will be instantiated automatically when the Stack is instantiated, appended to the stack and an internal [manager](<%= docs_path("manager") %>).
 
-Notice we can access the Stack's controllers when it's instantiated, as in `posts.show`. We can activate individual controllers by calling `active()` on them, deactivating all the other controllers in the stack. 
+Notice we can access the Stack's controllers when it's instantiated, as in `posts.show`. We can activate individual controllers by calling `active()` on them, deactivating all the other controllers in the stack.
 
     //= CoffeeScript
     posts = new Posts
-    
+
     assertEqual( posts.show.isActive(), false )
     posts.show.active()
     assertEqual( posts.show.isActive(), true )
-    
+
     assert( posts.show.el.hasClass('active') )
     assertEqual( posts.edit.el.hasClass('active'), false )
-    
+
     //= JavaScript
     var posts = new Posts;
-    
+
     assertEqual(posts.show.isActive(), false);
     posts.show.active();
     assertEqual(posts.show.isActive(), true);
-    
+
     assert(posts.show.el.hasClass('active'));
     assertEqual(posts.edit.el.hasClass('active'), false);
 
@@ -88,11 +88,11 @@ Stacks have a shorthand for adding [routes](<%= docs_path("routing") %>) via the
       controllers:
         show: PostsShow
         edit: PostsEdit
-    
+
       routes:
         '/posts/:id/edit': 'edit'
         '/posts/:id':      'show'
-        
+
     //= JavaScript
     var PostsShow = Spine.Controller.sub();
     var PostsEdit = Spine.Controller.sub();
@@ -102,18 +102,18 @@ Stacks have a shorthand for adding [routes](<%= docs_path("routing") %>) via the
         show: PostsShow,
         edit: PostsEdit
       },
-      
+
       routes: {
         '/posts/:id/edit': 'edit',
         '/posts/:id':      'show'
       }
     });
-    
-The `routes` property is in the format of `{route: controllerName}`. In this case, we're passing just passing in the controller name as a string. When the route is navigated to, the controller will be activated. We can also use a callback function instead of a controller name. 
+
+The `routes` property is in the format of `{route: controllerName}`. In this case, we're passing just passing in the controller name as a string. When the route is navigated to, the controller will be activated. We can also use a callback function instead of a controller name.
 
 ##Other options
 
-The only other support property in Stacks, is the `default` option. Set this as a controller name, indicating to Spine you want a specific controller to be activated when the Stack is instantiated. 
+The only other support property in Stacks, is the `default` option. Set this as a controller name, indicating to Spine you want a specific controller to be activated when the Stack is instantiated.
 
     //= CoffeeScript
     class PostsShow extends Spine.Controller
@@ -123,12 +123,12 @@ The only other support property in Stacks, is the `default` option. Set this as 
       controllers:
         show: PostsShow
         edit: PostsEdit
-    
+
       default: 'show'
-      
+
     posts = new Posts
     assert( posts.show.isActive() )
-      
+
     //= JavaScript
     var PostsShow = Spine.Controller.sub();
     var PostsEdit = Spine.Controller.sub();
@@ -138,13 +138,13 @@ The only other support property in Stacks, is the `default` option. Set this as 
         show: PostsShow,
         edit: PostsEdit
       },
-      
+
       default: 'show'
     });
-    
+
     var posts = new Posts;
     assert( posts.show.isActive() );
-    
+
 ##Advanced options
 
 If you need lower-level control, then you should use Spine's Managers directly. See the [Manager's guide](<%= docs_path("manager") %>) for more information.
