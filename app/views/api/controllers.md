@@ -2,12 +2,12 @@
 
 ##Class methods
 
-### `@include(Module)`
+### `@extend(Module)`
 
 Add class methods; see [modules](<%= docs_path("modules") %>).
-    
-### `@extend(Module)`
-    
+
+### `@include(Module)`
+
 Add instance methods; see [modules](<%= docs_path("modules") %>)
 
 ### `sub()`
@@ -27,7 +27,7 @@ JavaScript compatibility function for creating a new controller.
 `@el` represents the controller's HTML element, and is instantiated when the controller is first created. Most of the controller's operations, such as `@html()` and `@append()` involve `@el`. You can think of it as the view the controller is associated with.
 
 You also set a custom element when instantiating controllers.
-    
+
     //= CoffeeScript
     new Users(el: $(".users"))
 
@@ -38,9 +38,9 @@ You also set a custom element when instantiating controllers.
 By default `tag` is set to `"div"`.
 
     //= CoffeeScript
-    class Users extends Spine.Controller  
+    class Users extends Spine.Controller
       tag: "li"
-    
+
     //= JavaScript
     var Users = Spine.Controller.sub({
       tag: "li"
@@ -48,12 +48,12 @@ By default `tag` is set to `"div"`.
 
 ### `className`
 
-Classes to be set on `@el` when the controller is instantiated. 
+Classes to be set on `@el` when the controller is instantiated.
 
     //= CoffeeScript
-    class Users extends Spine.Controller  
+    class Users extends Spine.Controller
       className: "users list"
-      
+
     //= JavaScript
     var Users = Spine.Controller.sub({
       className: "users list"
@@ -61,13 +61,13 @@ Classes to be set on `@el` when the controller is instantiated.
 
 ### `events`
 
-You can use the `events` property instead of manually setting up event delegation. Set the `events` property to an array of object literals, in the following format: `{"eventType selector": "functionName"}`. If no selector is provided, then the event will be set directly on `@el`. Otherwise the events will be delegated to any of `@el`'s children matching the selector. 
+You can use the `events` property instead of manually setting up event delegation. Set the `events` property to an array of object literals, in the following format: `{"eventType selector": "functionName"}`. If no selector is provided, then the event will be set directly on `@el`. Otherwise the events will be delegated to any of `@el`'s children matching the selector.
 
     //= CoffeeScript
     class Users extend Spine.Controller
       events:
         "click div": "click"
-        
+
       click: ->
         @log("A div was clicked")
 
@@ -90,17 +90,17 @@ Set `elements` to a hash of selectors to names. Spine will setup instances varia
     class Users extend Spine.Controller
       elements:
         ".main": "mainElement"
-    
+
       render: ->
         // mainElement is set to a jQuery element
         @mainElement.empty()
-        
+
     //= JavaScript
     var Users = Spine.Controller.sub({
       elements: {
         ".main": "mainElement"
       },
-      
+
       render: function(){
         this.mainElement.empty();
       }
@@ -117,26 +117,26 @@ The `constructor()` function is called when the controller is instantiated and p
 
 ### `bind(name, function)`
 
-Bind custom events. See [events](<%= docs_path("events") %>) for more information. 
+Bind custom events. See [events](<%= docs_path("events") %>) for more information.
 
 ### `trigger(name, data...)`
 
-Trigger custom events. See [events](<%= docs_path("events") %>) for more information. 
+Trigger custom events. See [events](<%= docs_path("events") %>) for more information.
 
 ### `unbind(name, [function])`
 
-Unbind custom events. See [events](<%= docs_path("events") %>) for more information. 
+Unbind custom events. See [events](<%= docs_path("events") %>) for more information.
 
 ### `log(message)`
 
 Append a message to the console.
-    
+
     //= CoffeeScript
     class Users extend Spine.Controller
       constructor: ->
         super
         @log("Instantiated!")
-        
+
     //= JavaScript
     var Users = Spine.Controller.sub({
       init: function(){
@@ -148,7 +148,7 @@ Append a message to the console.
 
 If passed a function, then `release()` binds the function to the *release* events. Otherwise it fires the *release* event.
 
-The *release* event removes `el` from the page, and unbinds all the controller's event listeners. 
+The *release* event removes `el` from the page, and unbinds all the controller's event listeners.
 
 ### `$`
 
@@ -158,7 +158,7 @@ A jQuery/Zepto selector, scoped to `el`.
     class Users extend Spine.Controller
       render: ->
         @$(".count").html(User.count())
-        
+
     //= JavaScript
     var Users = Spine.Controller.sub({
       render: function(){
@@ -168,11 +168,11 @@ A jQuery/Zepto selector, scoped to `el`.
 
 ### `delay(function, delay = 0)`
 
-Executes the given function, in the context of the controller instance, after the given delay. This is sometimes useful when dealing with browser re-drawing issues. 
+Executes the given function, in the context of the controller instance, after the given delay. This is sometimes useful when dealing with browser re-drawing issues.
 
 ### `html(html)`
 
-Replaces `@el`'s html by passing in either a piece of HTML, a jQuery element, or another controller instance. The function also ensures that `@elements` has is up to date. 
+Replaces `@el`'s html by passing in either a piece of HTML, a jQuery element, or another controller instance. The function also ensures that `@elements` has is up to date.
 
 ### `append(elementOrController)`
 
