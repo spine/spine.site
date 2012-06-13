@@ -8,7 +8,7 @@ Models should be de-coupled from the rest of your application, and completely in
 
 ##Implementation
 
-Model are created by extending `Spine.Model`:
+Models are created by extending `Spine.Model`:
     
     //= CoffeeScript
     class Contact extends Spine.Model
