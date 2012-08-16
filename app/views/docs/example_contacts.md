@@ -108,7 +108,7 @@ Right, now our model is setup we can move onto the controllers. Let's tackle the
     
 That sets up some variables we're going to use, such as the `Contact` model and jQuery. 
 
-The main section of our application is going to have two main 'views', a show view and an edit view. This will translate into two controller's `Show` and `Edit` respectively. We want to make sure only one of these controller is shown at any one time, so we're going to use a [Stack](<%= docs_path("stack") %>) to manage them.
+The main section of our application is going to have two main 'views', a show view and an edit view. This will translate into two controller's `Show` and `Edit` respectively. We want to make sure only one of these controller is shown at any one time, so we're going to use a [Stack](<%= docs_path("stacks") %>) to manage them.
 
 So let's go ahead and implement the `Show` controller, appending the following to `app/controllers/contacts_main.coffee`:
 
@@ -222,7 +222,7 @@ It's pretty self explanatory; again we're just pulling out properties from the c
 
 ###Main Stack
 
-The last step for our `Main` controller, is to define a stack that will manage our other two controllers, `Show` and `Edit`. Both controllers, `Show` and `Edit`, need to be shown independently one at a time. Adding both controllers to a [Spine Stack](<%= docs_path("stack") %>) will ensures this happens automatically.
+The last step for our `Main` controller, is to define a stack that will manage our other two controllers, `Show` and `Edit`. Both controllers, `Show` and `Edit`, need to be shown independently one at a time. Adding both controllers to a [Spine Stack](<%= docs_path("stacks") %>) will ensures this happens automatically.
 
     class Main extends Spine.Stack
       controllers:
