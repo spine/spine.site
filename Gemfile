@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Bundle edge Rails instead:
-gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,7 +17,7 @@ gem 'nestful', :git => 'git://github.com/maccman/nestful.git'
 gem 'omniauth'
 gem 'rdiscount'
 
-group :development do 
+group :development do
   gem 'sqlite3'
   gem 'heroku'
 end
