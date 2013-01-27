@@ -28,7 +28,7 @@ In a nutshell, Hem will make sure your application and all its dependencies are 
 
 ##CommonJS
 
-CommonJS modules are at the core of Hem, and are the format Hem aspects every module to adhere to. As well as ensuring your code is encapsulated and modular, CommonJS modules give you dependency management, scope isolation, and namespacing. They should be used in any JavaScript application that spans more than a few files. 
+CommonJS modules are at the core of Hem, and are the format Hem expects every module to adhere to. As well as ensuring your code is encapsulated and modular, CommonJS modules give you dependency management, scope isolation, and namespacing. They should be used in any JavaScript application that spans more than a few files. 
 
 To find out more about why CommonJS modules are the best solution to JavaScript dependency management, see the [CommonJS guide](<%= docs_path("commonjs") %>)
 
