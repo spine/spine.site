@@ -81,7 +81,7 @@ Spine's models have a `fromForm(form)` function, which takes a form and returns 
 
 ##Updating a record
 
-Updating a record is now trivial, we have the data, all we need is the record. If you're using the [*element pattern*](http://maccman.github.com/spine#s-patterns-the-element-pattern), then you've already got a local reference to the record. All you need to do now is load in the record's new values from the form, and save it:
+Updating a record is now trivial, we have the data, all we need is the record. If you're using the [*element pattern*](<%= docs_path("controller_patterns")#element-pattern %>), then you've already got a local reference to the record. All you need to do now is load in the record's new values from the form, and save it:
 
     //= CoffeeScript
     class ContactItem extends Spine.Controller
