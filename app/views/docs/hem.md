@@ -1,8 +1,12 @@
 <% title 'Using Hem' %>
 
-[Hem](https://github.com/maccman/hem) is a dependency management tool for JavaScript Web apps; you can think of it as Bundler for Web Apps, resolving all the dependencies and compiling your application up to be served to clients.
+#Introduction
 
-Hem is excellent for developing Spine, and indeed any type of JavaScript application. It'll manage your application's CoffeeScript, JavaScript and CSS, compiling them to disk upon deployment. 
+[Hem](https://github.com/spine/hem) is a dependency management tool for JavaScript Web apps; you can think of it as [Bundler](http://gembundler.com/) for Node, or [Stitch](https://github.com/sstephenson/stitch) on steroids.
+
+This is rather awesome, as it means you don't need to faff around with coping around JavaScript files. jQuery can be a npm dependency, so can jQueryUI and all your custom components. Hem will resolve dependencies dynamically, bundling them together into one file to be served up. Upon deployment, you can serialize your application to disk and serve it statically.
+
+Hem was primarily designed for developing Spine.js based Single Page Web Applications (SPA's), so a major role it fills is to tie up some of the other lose ends of a frontend development project - things like running tests, precompiling code, and preparing it for deployment. It can even help out in proxying to an API if your app needs that.
 
 ##Getting started
 
@@ -124,7 +128,30 @@ Now, we can start a development server, which will dynamically build our applica
 
     hem server
     
-By default, your application is served on port [9294](http://localhost:9294), but you can configure that with the `-p` option. If you open [http://localhost:9294](http://localhost:9294), and there's an `index.html` file under `public`, it'll be served up. Likewise, any calls to `/application.js` and `/application.css` will return the relevant JavaScript and CSS. 
+By default, your spine application is served at http://localhost:9294. 
+You can configure the host and port from command line or as settings in your package.json
+
+    hem server -p 9295 --host 192.168.1.1 -d
+    
+Would result in your application being served in debug mode at http://192.168.1.1:9295/
+
+If there's an index.html file under public, it'll be served up. Likewise, any calls to /application.js and /application.css will return the relevant JavaScript and CSS.
+
+For the sake of avoiding cross domain issues in development environments when your spine app is utilizing an ajax api there is a optional proxy server built into hem.
+Including the following in your slug.json configures that:
+
+    "useProxy": true,
+    "baseSpinePath": "/apiapp/spineapp/",
+    "baseApiPath": "/apiapp/",
+    "apiHost": "localhost",
+    "apiPort": 8080,
+    "proxyPort": 8001,
+
+now http://localhost:8001/apiapp/spineapp/ will return the spine app.
+
+and http://localhost:8001/apiapp/ will return your apiApp
+
+so relative links like @url = "../api/album/" from inside your spine app can resolve against your apiApp without issue
 
 When you're ready to deploy, you should `build` your application, serializing it to disk.
     
