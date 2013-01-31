@@ -35,7 +35,7 @@ The *render pattern* is a really useful way of binding models and views together
     
 This is a simple but blunt method for data binding, updating every element whenever a single record is changed. This is fine for uncomplicated and small lists, but you may find you need more control over individual elements, such as adding event handlers to items. This is where the *element pattern* comes in.
 
-##The Element pattern {#element-pattern}
+##The Element Pattern {#element-pattern}
 
 The element pattern essentially gives you the same functionality as the render pattern, but a lot more control. It consists of two controllers, one that controls a collection of items, and the other deals with each individual item. Let's dive right into the code to give you a good indication of how it works.
 
@@ -141,6 +141,6 @@ In the example above, `Contacts` has responsibility for adding records when they
 
 For one thing, it's more performant; the list doesn't need to be re-drawn whenever a single element changes. Furthermore, we now have a lot more control over individual items. We can place event handlers, as demonstrated with the `click` callback, and manage rendering on an item by item basis.
 
-##Next steps
+##Next Steps
 
 A great example of the *element pattern* is Spine's TodoList example application, which is covered in depth in the [TodoList guide](<%= docs_path("example") %>).
