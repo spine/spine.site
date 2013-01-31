@@ -28,7 +28,7 @@ Models are like any other CoffeeScript class, so you can add class/instance meth
       
       @filter: (query) -> 
         @select (c) -> 
-          c.first_name.indexOf(query) is not -1
+          c.first_name.indexOf(query) isnt -1
       
       fullName: -> [@first_name, @last_name].join(' ')
       
