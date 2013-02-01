@@ -2,6 +2,8 @@
 
 Spine has support for [HTML5 Local Storage](http://diveintohtml5.org/storage.html) to persist model data between page reloads. Local Storage is a quick and simple way of storing data, and the vast majority of modern browsers support it (Chrome, Firefox 3.5+, IE 8+, and mobile browsers). It's great for offline applications too. 
 
+*Note: The stock browser of Android 2.3 or earlier has a bug related to parsing JSON which means you should make sure you are using a [shim](https://github.com/douglascrockford/JSON-js) if you are targeting that browser.*
+
 Browsers give each 'origin' or domain at least 5mb of data by default. If you exceed this storage quota than the `QUOTA_EXCEEDED_ERR` exception will be thrown. 
 
 ##Usage
