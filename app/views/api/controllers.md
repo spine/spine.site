@@ -86,7 +86,7 @@ You can use the `events` property instead of manually setting up event delegatio
 
 ### `elements`
 
-Set `elements` to a hash of selectors to names. Spine will setup instances variables pointing to those elements upon the controller's instantiation. The element selectors are all scoped by `@el`.
+Set `elements` to a hash of selectors to names. Spine will setup instances variables pointing to those elements upon the controller's instantiation. The element selectors are all scoped by `@el`. Spine will update these for you when content changes as with jQuery's .html(), .append() or .replace()
 
     //= CoffeeScript
     class Users extend Spine.Controller
