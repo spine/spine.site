@@ -15,6 +15,7 @@ Takes the following options:
 * `trigger: true` - fires a route event immediately if necessary
 * `history: false` - use HTML5 local history (if available)
 * `shim: false` - just route internally (don't use the page's path)
+* `replace: false` - use history.replaceState() instead of .pushState()
 
 ### `@add(path, callback)`
 
