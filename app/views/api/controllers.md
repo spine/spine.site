@@ -20,7 +20,9 @@ JavaScript compatibility function for creating a new controller.
       }
     });
 
-##Instance methods
+
+
+##Instance Variables
 
 ### `el`
 
@@ -106,6 +108,25 @@ Set `elements` to a hash of selectors to names. Spine will setup instances varia
       }
     });
 
+### `$`
+
+A jQuery/Zepto selector, scoped to `el`.
+
+    //= CoffeeScript
+    class Users extend Spine.Controller
+      render: ->
+        @$(".count").html(User.count())
+
+    //= JavaScript
+    var Users = Spine.Controller.sub({
+      render: function(){
+        this.$(".count").html(User.count())
+      }
+    });
+
+
+##Instance methods
+
 ### `constructor(options = {})`
 
 The `constructor()` function is called when the controller is instantiated and passed the controller options. You can override this, but be sure to call `super`. If you're using JavaScript, you should use the `init()` function instead; see [classes](<%= api_path("classes") %>)
@@ -149,22 +170,6 @@ Append a message to the console.
 If passed a function, then `release()` binds the function to the *release* events. Otherwise it fires the *release* event.
 
 The *release* event removes `el` from the page, and unbinds all the controller's event listeners.
-
-### `$`
-
-A jQuery/Zepto selector, scoped to `el`.
-
-    //= CoffeeScript
-    class Users extend Spine.Controller
-      render: ->
-        @$(".count").html(User.count())
-
-    //= JavaScript
-    var Users = Spine.Controller.sub({
-      render: function(){
-        this.$(".count").html(User.count())
-      }
-    });
 
 ### `delay(function, delay = 0)`
 
