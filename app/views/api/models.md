@@ -110,7 +110,7 @@ Returns the count of total records.
 
 Deletes every record without triggering any events.
 
-### `@destroyAll()`
+### `@destroyAll(options)`
 
 Destroys every record, triggering a *destroy* event on every record.
 
@@ -122,9 +122,9 @@ Updates the record with the matching ID, with the given attributes.
 
 Creates a new record with the given attributes. Returns `false` if the record's validation fails, or the newly created record if successful. 
 
-### `@destroy(id)`
+### `@destroy(id, options)`
 
-Destroys the record with the given ID. 
+Destroys the record with the given ID.
 
 ### `@change([function])`
 
