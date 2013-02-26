@@ -6,7 +6,7 @@ However, ideally you should try and abstract relationships out of your models on
 
 ##Usage
 
-Spine's relationship logic is available in a separate module to the rest of the library, [relation.js](https://raw.github.com/maccman/spine/master/lib/relation.js). You'll need to include that in your application before continuing. 
+Spine's relationship logic is available in a separate module to the rest of the library, [relation.js](https://raw.github.com/spine/spine/master/lib/relation.js). You'll need to include that in your application before continuing. 
 
 ##Has many associations
 
