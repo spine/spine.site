@@ -204,7 +204,7 @@ You've already seen that models have some events associated with them, such as *
 * *create* - record was created
 * *destroy* - record was destroyed
 * *change* - any of the above, record was created/updated/destroyed
-* *refresh* - triggered when the refresh method is called on the Model class, whether or not models are added or invalidated
+* *refresh* - when records are invalidated or appended using the refresh method
 * *error* - validation failed
 
 For example, you can bind to a model's *create* event like so:
