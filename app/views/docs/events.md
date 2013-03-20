@@ -14,7 +14,7 @@ Events are a powerful way of de-coupling interaction inside your application. Th
     var Tasks = Spine.Class.sub();
     Tasks.extend(Spine.Events);
     
-`Spine.Events` gives you three functions, `bind()`, `trigger()`, and `unbind()`. All three have a very similar API to jQuery's event handling one, if you're familiar with that. `bind(name, callback)` takes a event name and callback. `trigger(name, [*data])` takes an event name and optional data to be passed to handlers. `unbind(name, [callback])` takes a event name and optional callback.
+`Spine.Events` gives you the basic functions, `bind()`, `trigger()`, and `unbind()`. All three have a very similar API to jQuery's event handling one, if you're familiar with that. `bind(name, callback)` takes a event name and callback. `trigger(name, [*data])` takes an event name and optional data to be passed to handlers. `unbind(name, [callback])` takes a event name and optional callback.
     
     //= CoffeeScript
     Tasks.bind "create", (foo, bar) -> alert(foo + bar)
@@ -31,7 +31,23 @@ You can pass optional data arguments to `trigger()` that will be passed onto eve
     Tasks.bind "create", (name) -> alert(name)
     Tasks.trigger "create", "Take out the rubbish"
     
+Spine has taken inspiration from backbone with `listenTo()`, `listenToOnce()` and `stopListening()`. These allow an object to listen to a events on another object. The advantage of using:
+
+    //=CoffeeScript
+    todolist = new TodoList()
+    todoList.listenTo currentTask, 'work-done, completed', ->
+      ...
+    
+instead of:
+
+    //=CoffeeScript
+    currentTask.bind 'work-done, completed' ->
+      ...
+
+is that the former allows the listening object to keep track of the events meaning they can be reliably removed all at once later on, for example if you `release()` or `destroy()` the listening object the events will automattically be unbound leaving things nice and tidy! 
+
 Although you might never use `Spine.Events` in your own classes, you will use it with Spine's models and controllers.
+
 
 ##Global events
 
