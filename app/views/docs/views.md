@@ -4,9 +4,9 @@ In Spine's terminology, views are simple fragments of HTML that make up the inte
 
 To ensure your application's interface is completely asynchronous and responsive, you should be doing **all** the view rendering client-side. This means instead of server-side templates, like Ruby's ERB or Python’s string formatting, we're going to need client-side JavaScript templates.
 
-There are a number of good candidates, such as [Mustache](http://mustache.github.com) and [jQuery.tmpl](http://api.jquery.com/category/plugins/templates). We're going to demonstrate a library called [Eco](https://github.com/sstephenson/eco) here.
+There are a number of good candidates, such as [Mustache](http://mustache.github.com) and [Jade](http://jade-lang.com/). We're going to demonstrate a library called [Eco](https://github.com/sstephenson/eco) here.
 
-If you're building your application in pure JavaScript, rather than CoffeeScript, I recommend looking at the [jQuery.tmpl guide](<%= docs_path("views_tmpl") %>)  instead.
+Besides Eco, Jade is the other template solution that is built into Hem. For info on using jade with a spine app see the [Jade guide](<%= docs_path("views_jade") %>).
 
 ##Eco templates
 
