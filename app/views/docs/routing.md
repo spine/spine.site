@@ -105,3 +105,7 @@ Sometimes it's convenient to use routes, without any changes to the page's URL o
     
     //= CoffeeScript
     Spine.Route.setup(shim: true)
+
+##Zepto Disclaimer
+
+*our current tests for Spine v1.1 do not show routing as fully functional with zepto.js*

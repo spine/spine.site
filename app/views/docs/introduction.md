@@ -6,7 +6,7 @@ Spine is opinionated in its approach to web application architecture and design.
 
 The library is written in [CoffeeScript](http://jashkenas.github.com/coffee-script), but doesn't necessarily require CoffeeScript to develop applications. You can use CoffeeScript or JavaScript, whichever language you're most familiar with.
 
-Spine is tiny, the library comes in at around 500 lines of CoffeeScript. Being lightweight and simple is fundamental to Spine.
+Spine is tiny, the library comes in at around 600 lines of CoffeeScript. Being lightweight and simple is fundamental to Spine.
 
 ##Core values
 
@@ -25,12 +25,12 @@ JavaScript frameworks are a dime a dozen, and more are appearing everyday. So wh
 * Full model layer and ORM
 * Ajax and HTML5 Local Storage adapters baked in
 * Asynchronous server communication
-* Works in all major browsers (Chrome, Safari, Firefox, IE >= 7)
+* Works in all major browsers (Chrome, Safari, Firefox, IE >= 9)
 * [Spine Mobile](<%= mobile_path %>) extension
 * Simple and lightweight
 * Great documentation
 
-But don't take my word for it. Take a look at the source of the [example applications](<%= pages_path("examples") %>), and decide for yourself.
+But don't take our word for it. Take a look at the source of the [example applications](<%= pages_path("examples") %>), and decide for yourself.
 
 ##Components
 
