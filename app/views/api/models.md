@@ -231,6 +231,8 @@ Destroys the record, removing it from the record store and triggering the *destr
     user = User.create()
     user.destroy()
 
+Destroy will also unbind event listeners for the model and objects it was listening to.
+
 ### `dup()`
 
 Returns a new unsaved record, with the same attributes as the current record, save the ID, which will be `null`. 
@@ -277,9 +279,9 @@ Bind to an event specifically on this record.
 
 Trigger an event specifically on this record. This will propagate up to the model too. 
 
-### `unbind()`
+### `unbind([events, callback])`
 
-Unbind all events.
+Unbind all events, or just certain events (as a comma seperated list), or a specific callback for given events
 
 ### `proxy(function)`
 
