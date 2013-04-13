@@ -169,7 +169,7 @@ Append a message to the console.
 
 If passed a function, then `release()` binds the function to the *release* events. Otherwise it fires the *release* event.
 
-The *release* event removes `el` from the page, and unbinds all the controller's event listeners.
+The *release* event removes `el` from the page, and unbinds all the controller's event listeners as well as removing binders for items it was listening to.
 
 ### `delay(function, delay = 0)`
 
