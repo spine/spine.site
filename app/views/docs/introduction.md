@@ -40,7 +40,7 @@ But don't take our word for it. Take a look at the source of the [example applic
 
 * *Spine.app* - The simple way of [generating Spine applications](<%= docs_path("app") %>).
 
-* *Hem* - Spine's (optional) [dependency manager and server](<%= docs_path("hem") %>).
+* *Hem* - Spine's (optional but awesome) [dependency manager and server](<%= docs_path("hem") %>).
 
 ##CoffeeScript
 
