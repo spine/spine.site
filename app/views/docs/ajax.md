@@ -45,29 +45,29 @@ Spine will use this endpoint URL as a basis for all of its Ajax requests. Once a
     update  → PUT    /collection/id
     destroy → DELETE /collection/id
 
-For example, after a record has been created client-side Spine will send off an HTTP POST to your server, including a JSON representation of the record. Let's say we created a `Contact` with a name of `"Lars"`, this is the request that would be send to the server:
+For example, after a record has been created client-side Spine will send off an HTTP POST to your server, including a JSON representation of the record. Let's say we created a `Contact` with a name of `"Lars"`, this is the request that would be sent to the server:
 
     POST /contacts HTTP/1.0
     Host: localhost:3000
     Origin: http://localhost:3000
-    Content-Length: 59
+    Content-Length: 27
     Content-Type: application/json
     
-    {"id":"E537616F-F5C3-4C2B-8537-7661C7AC101E","name":"Lars"}
+    {"id":"c-1", "name":"Lars"}
 
 Likewise destroying a record will trigger a DELETE request to the server, and updating a record will trigger a PUT request. For PUT and DELETE requests, the records ID is referenced inside the URL.
 
-    PUT /contacts/E537616F-F5C3-4C2B-8537-7661C7AC101E HTTP/1.0
+    PUT /contacts/1 HTTP/1.0
     Host: localhost:3000
     Origin: http://localhost:3000
-    Content-Length: 60
+    Content-Length: 28
     Content-Type: application/json
     
-    {"id":"44E1DB33-2455-4728-AEA2-ECBD724B5E7B","name":"Peter"}
+    {"id":"c-1", "name":"Peter"}
     
 ##Server responses
 
-Spine expects a JSON representation of the record as a server response to `create` and `update` requests. Let's look at the [Spine & Rails 3 integration example app](https://github.com/maccman/spine.rails3) for a demonstration. 
+Spine expects a JSON representation of the record as a server response to `create` and `update` requests. 
 
 After a new `Page` record has been created, Spine sends a POST request to `/pages` containing the following:
 
@@ -76,15 +76,15 @@ After a new `Page` record has been created, Spine sends a POST request to `/page
     Accept: application/json, text/javascript, */*; q=0.01
     Content-Type: application/json; charset=UTF-8
     X-Requested-With: XMLHttpRequest
-    Content-Length: 65
+    Content-Length: 32
 
-    {"name":"Dummy page","id":"EEAF4B17-5F1D-4C06-B535-D9B58D84142F"}
+    {"name":"Dummy page","id":"c-1"}
     
 Then the server should respond with something like this:
     
     HTTP/1.1 201 Created
     Content-Type: application/json; charset=utf-8
-    Location: http://spine-rails3.herokuapp.com/pages/196
+    Location: http://spine-rails3.herokuapp.com/pages/1
     Content-Length: 28
     Connection: keep-alive
 
@@ -106,7 +106,7 @@ By default, Ajax requests are relative to the current domain. If your Ajax endpo
     Spine.Model.host = "http://my-endpoint"
     
 This sets the `host` property globally, for all models.
-    
+
 ##Fetching initial records
 
 When your application first loads, you need to make an Ajax call, pre-populating its data. You can do this with the `fetch()` function.
@@ -213,6 +213,29 @@ As you can see, Spine provides the `url()` method, which returns a relative URL 
     assertEqual( Photo.url(), "/photos" )
     assertEqual( Photo.url("order"), "/photos/order" )
     assertEqual( Photo.first().url(), "/photos/1" )
+    
+Spine also allows for customizing the url on the other end using 'scope':
+    
+    //= CoffeeScript
+    Photo.scope = "admin"
+    assertEqual( Photo.url(), "/admin/photos" )
+    assertEqual( Photo.url("order"), "/admin/photos/order" )
+    assertEqual( Photo.first().url(), "/admin/photos/1" )
+
+Scope can also be defined on a per instance basis, and scope can be a function:
+    
+    //= CoffeeScript
+    pic = new Photo({index:'45'})
+    pic.scope = 'custom'
+    assertEqual( Photo.url(), "/photos" )
+    assertEqual( pic.url(), "/custom/photos" )
+    
+    //= CoffeeScript
+    Photo.scope = -> 
+      new Date().getFullYear().toString()
+    assertEqual( Photo.url(), "/2013/photos" )
+    
+These customizations allow for lots of options when extending Model classes or defining relationships in Spine's MVC structure.
 
 ##Ajax queue
 
