@@ -85,7 +85,7 @@ As I mentioned in this guide's introduction, rendered template elements are asso
     //= CoffeeScript
     contact = $("items:first").tmplItem().data
     
-Spine provides a shortcut for this, in [*tmpl.js*](https://raw.github.com/maccman/spine/master/lib/tmpl.js). This defines a function called `$.fn.item()` on jQuery instances.
+Spine provides a shortcut for this, in [*tmpl.js*](https://raw.github.com/spine/spine/master/lib/tmpl.js). This defines a function called `$.fn.item()` on jQuery instances.
 
     //= CoffeeScript
     contact = $("items:first").item()

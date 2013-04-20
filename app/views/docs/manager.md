@@ -46,7 +46,7 @@ See the [Stacks guide](<%= docs_path("stacks") %>) for more information.
 
 ##Usage
 
-To use the `Manager` class, we first need to include the *manager.js* script, which you can find in [Spine's repository](https://github.com/maccman/spine/raw/master/lib/manager.js). Let's demonstrate this by creating a couple of controllers, adding them to a `Manager` instance, and change their state. 
+To use the `Manager` class, we first need to include the *manager.js* script, which you can find in [Spine's repository](https://github.com/spine/spine/raw/master/lib/manager.js). Let's demonstrate this by creating a couple of controllers, adding them to a `Manager` instance, and change their state. 
     
     //= CoffeeScript
     class Users extends Spine.Controller
