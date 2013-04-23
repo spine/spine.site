@@ -18,29 +18,53 @@ To generate your application, use the `app` generator like so:
     
     spine app my_app
     
-Spine.app will generate the initial application files, which look like this:
+Now we've produced a directory structure looking like:
+
+    my_app/.gitignore
+    my_app/.npmignore
+    my_app/Procfile
+    my_app/app
+    my_app/app/controllers
+    my_app/app/index.coffee
+    my_app/app/lib
+    my_app/app/lib/setup.coffee
+    my_app/app/models
+    my_app/app/views
+    my_app/app/views/sample.jade
+    my_app/css
+    my_app/css/index.styl
+    my_app/css/mixin.styl
+    my_app/lib
+    my_app/lib/runtime.js
+    my_app/package.json
+    my_app/public
+    my_app/public/favicon.ico
+    my_app/public/index.html
+    my_app/slug.json
+    my_app/test
+    my_app/test/lib
+    my_app/test/lib/run-jasmine.phantom.js
+    my_app/test/public
+    my_app/test/public/index.html
+    my_app/test/public/lib
+    my_app/test/public/lib/jasmine-html.js
+    my_app/test/public/lib/jasmine.css
+    my_app/test/public/lib/jasmine.js
+    my_app/test/specs
     
-    ./app
-    ./app/controllers
-    ./app/controllers/.gitkeep
-    ./app/index.coffee
-    ./app/models
-    ./app/models/.gitkeep
-    ./app/views
-    ./app/views/.gitkeep
-    ./css
-    ./css/index.styl
-    ./package.json
-    ./Procfile
-    ./public
-    ./public/favicon.ico
-    ./public/index.html
-    ./slug.json
-    
+As you can see spine.app has set up simple but fairly complete structure for your application.
+
 The `Procfile` is for [Heroku](http://heroku.com), which we'll cover later. `slug.json` is for Hem, see the [article on that](<%= docs_path("hem") %>) for more information. The rest is your classical MVC structure, which should look very familiar to you if you've used Rails.
 
-Now `cd` into your application directory, and you can generate some controllers, models and serve up the application.    
+First let's navigate to our application, and install it's npm dependencies:
     
+    $ cd my_app
+    $ npm install .
+    
+These dependencies will be stored locally in the `my_app/npm_modules` folder. Spine.app is currently set up to help you build a app that is fairly compatible with less capable browsers by relying on some shims and including jquery 1.9.1. If you are targeting more cutting edge browsers you'll want to refine your dependencies in `slug.json` and `app/lib/setup.coffee`
+
+Now you can generate some controllers, models and get to building your app!
+
 ##Generating controllers
 
 Simple enough, just use the `controller` generator, specifying the name of the controller. 
@@ -57,6 +81,8 @@ In the example above, Spine will generate a controller under `./app/controllers/
 
     module.exports = Users
     
+And a jasmine spec under `./test/specs/controllers/users.coffee`
+    
 By convention, your controllers should be plural and your models singular. Spine.app does nothing to enforce this, it's up to you.
     
 ##Generating models
@@ -71,10 +97,12 @@ In the example above, Spine will generate a model under `./app/models/user.coffe
 
     class User extends Spine.Model
       @configure "User"
+      
+And a jasmine spec under `./test/specs/models/user.coffee`
     
 ##Serving your application
 
-As soon as it's generated, your application is all ready to be served using [Hem](<%= docs_path("hem") %>). Firstly, you'll need to install Hem, and your application's dependencies:
+As soon as it's generated and its dependencies are installed your application will be ready to be served using [Hem](<%= docs_path("hem") %>). Firstly, you'll need to install Hem, and your application's dependencies:
 
     npm install .
     npm install -g hem
@@ -87,7 +115,17 @@ For more information regarding Hem, please see the [Hem Guide](<%= docs_path("he
     
 ##Building your application
 
-You can also use Hem to build your application. This will serialize all your JavaScript/CoffeeScript to one file (`./public/application.js`), and all your CSS/Stylus (`./public/application.css`). You'll need to do this before pushing your site to a remote server, so it can be served statically.
+You can also use Hem to test and build your application. This will serialize all your JavaScript/CoffeeScript to one file (`./public/application.js`), all your CSS/Stylus to (`./public/application.css`). You'll need to do this before pushing your site to a remote server, so it can be served statically.
+    
+    hem test
+    
+By default hem test expects the headless browser Phantom to be installed for running tests against but you can configure this to use others as well. 
+
+Testing in this way will build your CSS and JS and run the tests against those. 
+
+Assuming tests pass you would be able to commit it to your source controll and deploy
+
+If you're feeling lucky or if you ran your tests in the browser while `hem server` was going you can go straight to
 
     hem build
     
