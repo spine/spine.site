@@ -7,7 +7,7 @@ Aside from the simplest of applications, the vast majority have need of multiple
 
 Spine provides a simple abstraction on top of it's `Spine.Manager` class for tab integration, `Spine.Tabs`. The class lets you associate a 'tab' with a controller, and when the tab is clicked the controller is activated. 
 
-The first step is to include [spine.tabs.js](https://github.com/maccman/spine/raw/master/lib/spine.tabs.js). `Spine.Tabs` relies on either [jQuery](http://jquery.com) or Zepto, so you'll need to include one or the other in the page too, as well as [spine.manager.js](https://github.com/maccman/spine/raw/master/lib/spine.tabs.js).
+The first step is to include [spine.tabs.js](https://github.com/spine/spine/raw/master/lib/spine.tabs.js). `Spine.Tabs` relies on either [jQuery](http://jquery.com) or Zepto, so you'll need to include one or the other in the page too, as well as [spine.manager.js](https://github.com/spine/spine/raw/master/lib/spine.tabs.js).
 
     <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="spine.js" type="text/javascript" charset="utf-8"></script>
@@ -103,7 +103,7 @@ The `Spine.List` class is basically for a dynamic set of tabs populated by model
 
 ![Spine Contacts](https://lh5.googleusercontent.com/_IH1OempnqUc/TZpgYfnlUBI/AAAAAAAABKg/UYLhdmoc15o/s500/contacts.png)
 
-As always, the first step is is to include the required libraries. We're going to need templating for rendering our list, and in this example we'll be using [jQuery.tmpl](https://github.com/jquery/jquery-tmpl). We also need to include [spine.tmpl.js](https://github.com/maccman/spine/raw/master/lib/spine.tmpl.js) which includes some templating utilities. Lastly we obviously need to include [spine.list.js](https://github.com/maccman/spine/raw/master/lib/spine.list.js),
+As always, the first step is is to include the required libraries. We're going to need templating for rendering our list, and in this example we'll be using [jQuery.tmpl](https://github.com/jquery/jquery-tmpl). We also need to include [spine.tmpl.js](https://github.com/spine/spine/raw/master/lib/spine.tmpl.js) which includes some templating utilities. Lastly we obviously need to include [spine.list.js](https://github.com/spine/spine/raw/master/lib/spine.list.js),
 
     <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>

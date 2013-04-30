@@ -6,7 +6,7 @@ Internally Spine uses the *hashchange* event to detect changes in the URLs hash.
 
 ##Adding routes
 
-So, how to use the API? It's very simple. First you need to include [route.coffee](https://raw.github.com/maccman/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
+So, how to use the API? It's very simple. First you need to include [route.coffee](https://raw.github.com/spine/spine/master/src/route.coffee), which contains the module `Spine.Route`. Then you can start adding routes inside your controller. `Spine.Route` gives you a `routes()` function inside controllers, which you can call passing a hash of routes and callbacks.
 
     //= CoffeeScript
     class App extends Spine.Controller
