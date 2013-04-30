@@ -99,4 +99,4 @@ There are several common binding patterns, see the [controller patterns guide](<
 
 ##Other Considerations
 
-To use jade templates you must include jade's [runtime.js](https://raw.github.com/visionmedia/jade/master/runtime.js). In Hem you can add this a as a lib in your spine projects slug.json.
+To use precompiled jade templates in the browser you must include jade's [runtime.js](https://raw.github.com/visionmedia/jade/master/runtime.js). In Hem you can add this a as a lib in your spine projects slug.json.
