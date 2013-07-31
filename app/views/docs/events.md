@@ -36,13 +36,13 @@ Spine has taken inspiration from backbone with `listenTo()`, `listenToOnce()` an
     //=CoffeeScript
     todolist = new TodoList()
     todoList.listenTo currentTask, 'work-done, completed', ->
-      ...
+      doSomething()
     
 instead of:
 
     //=CoffeeScript
     currentTask.bind 'work-done, completed' ->
-      ...
+      doSomething()
 
 is that the former allows the listening object to keep track of the events meaning they can be reliably removed all at once later on, for example if you `release()` or `destroy()` the listening object the events will automattically be unbound leaving things nice and tidy! 
 
