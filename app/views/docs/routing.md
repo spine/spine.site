@@ -55,6 +55,18 @@ When the page loads initially, even if the URL has a hash fragment, the `hashcha
     //= CoffeeScript
     Spine.Route.setup()
     
+If you want unmatched routes to do something you can pass a redirect option to either have the window navigate to the unmatched route or perform some callback
+
+    //= CoffeeScript
+    Spine.Route.setup({redirect: true})
+    
+or
+
+    //= CoffeeScript
+    callback = (path, options)->
+      alert "#{path}, and #{options}"
+    Spine.Route.setup({redirect: callback})
+    
 ##Navigate
     
 Lastly, Spine gives controllers a `navigate()` function, which can be passed a fragment to change the URL's hash. You can also pass `navigate()` multiple arguments, which will be joined by a forward slash (`/`) to create the fragment. 
