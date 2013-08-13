@@ -33,14 +33,14 @@ You can pass optional data arguments to `trigger()` that will be passed onto eve
     
 Spine has taken inspiration from backbone with `listenTo()`, `listenToOnce()` and `stopListening()`. These allow an object to listen to a events on another object. The advantage of using:
 
-    //=CoffeeScript
+    //= CoffeeScript
     todolist = new TodoList()
     todoList.listenTo currentTask, 'work-done, completed', ->
       doSomething()
     
 instead of:
 
-    //=CoffeeScript
+    //= CoffeeScript
     currentTask.bind 'work-done, completed' ->
       doSomething()
 

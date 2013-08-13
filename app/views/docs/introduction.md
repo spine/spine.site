@@ -36,17 +36,17 @@ But don't take our word for it. Take a look at the source of the [example applic
 
 * *Spine* - The main library, containing the core classes, such as `Model` and `Controller`.
 
-* *Spine Mobile* - Spine's mobile extension, letting you easily build [mobile and PhoneGap applications](<%= mobile_path %>).
+* *Spine Mobile* - Spine's mobile extension, letting you easily build [mobile and PhoneGap applications](<%= mobile_path %>) currently looking for a maintainer.
 
 * *Spine.app* - The simple way of [generating Spine applications](<%= docs_path("app") %>).
 
-* *Hem* - Spine's (optional but awesome) [dependency manager and server](<%= docs_path("hem") %>).
+* *Hem* - Spine's (optional but awesome) [dependency manager and development server](<%= docs_path("hem") %>).
 
 ##CoffeeScript
 
-Spine is written in [CoffeeScript](http://jashkenas.github.com/coffee-script/), a little language that compiles into JavaScript. You don't have to write Spine applications in CoffeeScript, pure JavaScript will work fine. However, using CoffeeScript will be the path of least resistance, and the one I personally advocate.
+Spine is written in [CoffeeScript](http://jashkenas.github.com/coffee-script/), a little language that compiles into JavaScript. You don't have to write Spine applications in CoffeeScript, pure JavaScript will work fine. However, using CoffeeScript will be the path of least resistance, and the one we personally advocate.
 
-CoffeeScript won't be everyone's cup of tea, and I've no doubt it'll turn some people off the framework. However, if you've qualms about the language, I urge you to at least give it a chance and check it out; you should understand what you're missing. I personally think CoffeeScript is a complete revolution in web development.
+CoffeeScript won't be everyone's cup of tea, and no doubt it'll turn some people off the framework. However, if you've qualms about the language, at least give it a chance and check it out; you should understand what you're missing. CoffeeScript has a lot to offer.
 
 For an introduction to the language, see the [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/).
 
@@ -69,10 +69,10 @@ If you're new to Spine, you should first check out the four main guides:
 
 Then you should experiment with the [getting started guide](<%= docs_path("started") %>), learning about [generating Spine apps](<%= docs_path("app") %>), and using [Hem](<%= docs_path("hem") %>).
 
-Finally I'd definitely recommend browsing the source of the example applications, such as the [Todos](http://github.com/maccman/spine.todos) and [Contacts](http://github.com/maccman/spine.contacts) apps.
+Finally it is definitely recommended to browse the source of the example applications, such as the [Todos](http://github.com/maccman/spine.todos) and [Contacts](http://github.com/maccman/spine.contacts) apps.
 
 ##Companion guide
 
-Spine was built alongside a book, [*JavaScript Web Applications*](http://oreilly.com/catalog/0636920018421) by O'Reilly. The book is a really good introduction to MVC, dependency management, templates and testing, all useful concepts whichever framework you end up using.
+Spine was originally built alongside a book, [*JavaScript Web Applications*](http://oreilly.com/catalog/0636920018421) by O'Reilly. The book is a really good introduction to MVC, dependency management, templates and testing, all useful concepts whichever framework you end up using.
 
 [![JavaScript Web Applications](http://covers.oreilly.com/images/0636920018421/cat.gif)](http://oreilly.com/catalog/0636920018421)
