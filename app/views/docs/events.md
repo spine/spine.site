@@ -38,7 +38,7 @@ Spine has taken inspiration from backbone with `listenTo()`, `listenToOnce()` an
     todoList.listenTo currentTask, 'work-done, completed', ->
       doSomething()
     
-instead of:
+instead of
 
     //= CoffeeScript
     currentTask.bind 'work-done, completed' ->
