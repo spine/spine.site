@@ -2,7 +2,7 @@
   
 As templating libraries go, you can't go far wrong with [Jade](http://jade-lang.com/). It's easily installable via npm `npm install jade`, and is a common templating solution used with the node.js MVC framework Express. The format is very similar to Haml and is [well documented](https://github.com/visionmedia/jade#readme). 
 
-As well being able to use coffeescript and stylus withing jade templates jade has a very consice way of expressing html content. There are parts of jade that are most usefull on the server side, but plenty of stuff that is still useful on the client side like mixins and includes. If your spine app is complimenting a node.js app that uses jade it can be pretty awesome to only have to handle one type of view template!
+As well being able to use coffeescript and stylus within jade templates jade has a very consice way of expressing html content. There are parts of jade that are most usefull on the server side, but plenty of stuff that is still useful on the client side like mixins and includes. If your spine app is complimenting a node.js app that uses jade it can be pretty awesome to only have to handle one type of view template!
 
 ##Usage
 
