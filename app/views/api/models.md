@@ -94,13 +94,20 @@ Returns a cloned copy of every instance.
 
     users = User.all()
 
-### `@first()`
+### `@slice(begin[, end])`
 
-Return the first record.
+Returns a cloned copies of instances from begin up to but not including end.
 
-### `@last()`
+    allUsersExceptFirst3 = User.slice(3)
+    users7through13 = User.slice(6,13)
 
-Returns the last record.
+### `@first([x])`
+
+Returns a cloned copy of the first record. or an array of the first x records
+
+### `@last([x])`
+
+Returns a cloned copy of the last record, or an array of the last x records
 
 ### `@count()`
 
