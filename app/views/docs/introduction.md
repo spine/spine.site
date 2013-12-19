@@ -23,11 +23,12 @@ JavaScript frameworks are a dime a dozen, and more are appearing everyday. So wh
 * Built in a real-world environment
 * Lightweight controller implementation (based on Backbone's API)
 * Full model layer and ORM
-* Ajax and HTML5 Local Storage adapters baked in
+* Ajax and HTML5 Local Storage adapters
 * Asynchronous server communication
 * Works in all major browsers (Chrome, Safari, Firefox, IE >= 9)
 * [Spine Mobile](<%= mobile_path %>) extension
 * Simple and lightweight
+* Very Approachable Source Code
 * Great documentation
 
 But don't take our word for it. Take a look at the source of the [example applications](<%= pages_path("examples") %>), and decide for yourself.

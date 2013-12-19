@@ -222,7 +222,7 @@ Spine also allows for customizing the url on the other end using 'scope':
     assertEqual( Photo.url("order"), "/admin/photos/order" )
     assertEqual( Photo.first().url(), "/admin/photos/1" )
 
-Scope can also be defined on a per instance basis, and scope can be a function:
+Scope can also be defined on a per instance basis, and both scope and url can be a function:
     
     //= CoffeeScript
     pic = new Photo({index:'45'})
