@@ -395,4 +395,4 @@ The [Rails guide](<%= docs_path("rails_cont") %>) has a good introduction to usi
 
 ##Zepto Disclaimer
 
-*our current tests for Spine v1.1 do not show ajax as fully functional with zepto.js*
+*Spines ajax module is not functional with zepto.js because of the reliance on jQuery's Promise model*
