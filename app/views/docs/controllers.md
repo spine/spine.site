@@ -34,7 +34,7 @@ Every controller has an element associated with it, which you can access under t
     taskItem = new TaskItem 
     
     //= JavaScript
-    var Tasks = Spine.Controller.sub({
+    var TaskItem = Spine.Controller.sub({
       tag: "li"
     });
     
