@@ -102,9 +102,9 @@ Once an instance is created it can be saved in memory by calling `save()`.
     var contact = new Contact({first_name: "Joe"});
     contact.save();
     
-When a record is saved, Spine automatically creates an ID if it doesn't already exist.
+When a record is saved, Spine automatically creates a simple client ID if it doesn't already exist.
 
-    assertEqual( contact.id, "AD9408B3-1229-4150-A6CC-B507DFDF8E90" )
+    assertEqual( contact.id, "c-1" )
     
 You can use this ID to retrieve the saved record using `find()`.
 
@@ -127,12 +127,23 @@ You can also use `first()` or `last()` on the model to retrieve the first and la
 
     //= CoffeeScript
     firstContact = Contact.first()
+
+`first()` or `last()` also accept a number of records
+
+    //= CoffeeScript
+    recentMessages = Message.last(5)
     
 To retrieve every contact, use `all()`.
   
     //= CoffeeScript
     contacts = Contact.all()
     console.log(contact.name) for contact in contacts
+    
+Spine mainains the order of your model collection as well so if you wanted a sort of paginated list you might use `splice()` which follows the javascript pattern
+
+    //= CoffeeScript
+    allUsersExceptFirst3 = User.slice(3)
+    users7through13 = User.slice(6,13)
 
 You can pass a function that'll be iterated over every record using `each()`.
 
@@ -247,7 +258,7 @@ This means that you never have to bother calling some sort of `reload()` functio
 
 ##Relationships
 
-Spine has support for *has-many*, *has-one* and *belongs-to* model relationships. For more information, see the [relationships guide](<%= docs_path("relations") %>).
+Spine's relationship module (spine.relation) adds has support for *has-many*, *has-one* and *belongs-to* model relationships. For more information, see the [relationships guide](<%= docs_path("relations") %>).
 
 ##API documentation
 
