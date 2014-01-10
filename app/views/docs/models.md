@@ -155,6 +155,52 @@ Or select a subset of records with `select()`.
     //= CoffeeScript
     Contact.select (contact) -> contact.first_name
     
+##Customizing Client-side Generated UUID's
+
+If a model has been given a `@uuid()` method, it'll be used in the constructor to generate `@cid`, and also set `@id` to the same value right away (without waiting for `@save()`).
+
+This allows records to be created by `relation.coffee` without needing to wait for server-generated IDs to associate them. This can be used for scenarios where a controller needs to build a few (unsaved) related records which it may or may not send to the server depending on user actions.
+
+Example usage with [node-uuid](https://github.com/broofa/node-uuid):
+
+    //=CoffeeScript
+    # Enable for all models
+    Spine.Model.extend uuid: -> uuid.v1()
+
+    # Enable for a single model
+    class Client extends Spine.Model
+      @configure 'Client', 'name'
+      @uuid = -> uuid.v1()
+
+Here's what it can do:
+
+    //=CoffeeScript
+    PhoneNumber.belongsTo 'client', Client
+    Client.hasMany 'phone_numbers', PhoneNumber
+
+Records can be related before they're saved
+
+    //=CoffeeScript
+    new_client = new Client
+      name: 'John Doe'
+    phone1 = new PhoneNumber
+      name: 'Home'
+      number: '1-444-555-6666'
+      client_id: new_client.id
+
+Nested relations can be created by an instance constructor
+
+    //=CoffeeScript
+    new_client = new Client
+      name: 'John Doe'
+      phone_numbers: [
+        { name: 'Home', number: '1-444-555-6666' },
+        { name: 'Cell', number: '1-443-553-4444' }
+      ]
+An unsaved Client instance will be created with an ID, and the Photo model will be refreshed with 2 new related records.
+
+Everything works as usual if the `@uuid()` method is missing.
+    
 ##Validation
 
 Validating models is dirt simple, simply override the `validate()` function with your own custom one.
