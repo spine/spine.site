@@ -130,12 +130,12 @@ Usually this is done after the rest of your application has been setup, such as 
         Photo.fetch()
       }
     });
-    
+
 Calling fetch will send of an Ajax GET request to your server, and expect a response containing an array of records. Once the request has finished, the *refresh* event will be triggered. 
 
 ##Asynchronous UI
 
-One of Spine's core values is asynchronous UIs. In a nutshell, this means that UIs should ideally never block. You shouldn't present the user with any 'loading' or 'pending' messages, everything should be pre-loaded in the backend. This is in stark contrast to other JavaScript frameworks, which block the UI whenever the user performs an action, like updating a record. 
+One of Spine's core values is asynchronous UIs. In a nutshell, this means that UIs should ideally never block. You shouldn't present the user with any 'loading' or 'pending' messages, everything should be pre-loaded in the backend. This is in stark contrast to other older JavaScript frameworks, which block the UI whenever the user performs an action, like updating a record. 
 
 All of Spine's server communication is asynchronous - that is Spine never waits for a response. Requests are sent after the operation has completed successfully client-side. In other words, a POST request will be sent to the server after the record has successfully saved client-side, and the UI has updated. The server is completely de-coupled from the client, clients don't necessarily need a server in order to function.
 
@@ -239,7 +239,7 @@ These customizations allow for lots of options when extending Model classes or d
 
 ##Ajax queue
 
-Ajax requests are sent out serially, i.e. a request is only sent after the previous request has finished. This is to ensure data consistency without blocking up the UI. 
+By default ajax requests that are not 'GET' requests are sent out serially, i.e. a request is only sent after the previous request has finished. This is to ensure data consistency without blocking up the UI.
 
 For example, let's say a user creates a record, and then immediately deletes it. The `DELETE` requests needs to be send after the `POST` request has finished, otherwise the server won't know what record we're talking about. 
 
@@ -249,7 +249,14 @@ Spine does this by having an internal queue of requests. If you want to use this
     Spine.Ajax.queue ->
       $.post("/posts/custom")
 
-The callback supplied to `queue()` needs to return a jQuery Ajax object, as Spine will attach some event handlers onto it.
+The callback supplied to `queue()` needs to return a jQuery Ajax object, as Spine will attach some jquery style promise objects onto it.
+
+The exception in the queue is that GET requests are sent in parallel by defualt, as in the following reqest in the queue doesn't wait for it finish before firing off. This is the default because the case where data coming in via GET requests isn't likely to contain data needed for the next requests in the queue and it is can be significantly slower to do all requests serially. You have the option of sending any requests like this by passing `parallel:true` as part of the options object for a method that would trigger an ajax call. 
+
+    //= CoffeeScript
+    photo.save(parallel:true)
+    
+Similarly you can force GET requests to be serial by passing `parallel:false`
 
 ##Custom serialization
 
@@ -395,4 +402,4 @@ The [Rails guide](<%= docs_path("rails_cont") %>) has a good introduction to usi
 
 ##Zepto Disclaimer
 
-*Spines ajax module is not functional with zepto.js because of the reliance on jQuery's Promise model*
+*Spines ajax module is not functional with zepto.js because of the reliance on jQuery's Promise model and its queue. Zepto does have a Deffered addon that may work, and there have been attempts to port queue as well. Let us know if you get it working*
