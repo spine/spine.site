@@ -4,18 +4,17 @@ it is simialar in concept to [Angular's two way binding](http://docs.angularjs.o
 
 Here is a simple example of how it can be implemented in Spine:
 
-```coffee
-class TestController extends Spine.Controller
-  @extend Spine.Bindings
-  
-  modelVar: 'tmodel'
-  bindings:
-    '.testValue': 'field1'
-
-  constructor: ->
-    super
-    do @applyBindings
-```
+    //= CoffeeScript
+    class TestController extends Spine.Controller
+      @extend Spine.Bindings
+    
+      modelVar: 'tmodel'
+      bindings:
+        '.testValue': 'field1'
+    
+      constructor: ->
+        super
+        do @applyBindings
 
 We define the variable that should contain our model and then declare one binding. We want some element with class `testValue` to be in sync with `tmodel.field1` where tmodel is a spine model instance. Lastly you need to call method `applyBindings` somewhere in controller constructor.
 
@@ -23,17 +22,16 @@ The value synchronisation from the spine model depends on the `change` event. Sy
 
 Moreover, you have full control over extracting and setting element value.
 
-```coffee
-  TestController extends Spine.Controller
-    @extend Spine.Bindings
-
-    modelVar: 'tmodel'
-    bindings: 
-      '.testValue': 
-        field: 'field1'
-        setter: (element, value) -> element.val(value)
-        getter: (element) -> element.val()
-```
+    //= CoffeeScript
+    class TestController extends Spine.Controller
+      @extend Spine.Bindings
+      
+      modelVar: 'tmodel'
+      bindings: 
+        '.testValue': 
+          field: 'field1'
+          setter: (element, value) -> element.val(value)
+          getter: (element) -> element.val()
 
 In this example instead of just passing model field name we pass object where: `field1` stands for model field, `setter` is a function that invokes when model changed and we want to set a new value for an element. This function has two arguments: `element` and `value`. Also, there is function `getter` which invokes when the view element changes and we want to extract its value.
 
