@@ -42,14 +42,18 @@ An hash of the raw saved record instances. You shouldn't need to access or alter
 An array of model attributes, set using `@configure`. You shouldn't need to access or alter this directly.
 
 ### `@toString()`
-    
+
 Convenience function for representing the model.
 
-### `@find(id)`
-    
-Find records by ID - returning the record instance. If the record doesn't exist, this function will throw an error.
+### `@find(id, [notFound])`
+
+Find records by ID - returning the record instance. If the record doesn't exist, `@notFound` will be run unless a custom callback was also passed in.
 
     user = User.find("1")
+
+### `@notFound(id)`
+
+runs if `@find` for a given id does not find a model instance. Default simply returns null. You shouldn't need to invoke this directly, but defining custom notFound on a spine Model is something you may be interested in.'
     
 ### `@exists(id)`
     
