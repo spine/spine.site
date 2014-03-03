@@ -111,9 +111,21 @@ You can use this ID to retrieve the saved record using `find()`.
     identicalContact = Contact.find( contact.id )
     assert( contact.eql( identicalContact ) )
     
-If `find()` fails to retrieve a record, an exception will be thrown. You can check for the existence of records without fear of an exception by calling `exists()`.
+If `find()` fails to retrieve a record the default behaviour is for null to be returned. it up to you to check if anything is returned. alternately you can check for the existence of records by calling `exists()`.
 
     assert( Contact.exists( contact.id ) )
+    
+You also have the option to define a custom `notFound()` method on your Model. This method is called in the event find fails for the id it was given. You could have notFound() throw an exception (to mimic behavior of older versions of Spine) or you may want check a remote data source for the record.
+
+    //=CoffeeScript
+    Class Contact extends Spine.Model
+      ...
+      
+      notFound: (missingId)->
+        @one 'ajaxSuccess', ->
+          alert('found that one after all') 
+        @fetch(id:missingId)
+        # actually would be good to write custom ajax that returns a promise object 
     
 Once you've changed any of a record's attributes, you can update it in-memory by re-calling `save()`.
     
@@ -205,6 +217,10 @@ If you're using an older browser which doesn't have native JSON support (i.e. IE
 ##Persistence
 
 While storing records in memory is useful for quick retrieval, persisting them in one way or another is often required. Spine includes a number of pre-existing storage modules, such as Ajax and HTML5 Local Storage, which you can use for persistence. Please check out the [Ajax](<%= docs_path("ajax") %>) and [Local Storage guides](<%= docs_path("local") %>)) for more information. 
+
+If you want to pull from one of these sources to populate your model collection use `fetch()`
+
+    Contact.fetch()
 
 ##Events
 

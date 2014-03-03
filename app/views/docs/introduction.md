@@ -6,7 +6,7 @@ Spine is opinionated in its approach to web application architecture and design.
 
 The library is written in [CoffeeScript](http://jashkenas.github.com/coffee-script), but doesn't necessarily require CoffeeScript to develop applications. You can use CoffeeScript or JavaScript, whichever language you're most familiar with.
 
-Spine is tiny, the library comes in at around 600 lines of CoffeeScript. Being lightweight and simple is fundamental to Spine.
+Spine is tiny, the core library comes in at around 600 lines of CoffeeScript. Being lightweight and simple is fundamental to Spine, and it's only dependency is jquery or zepto.
 
 ##Core values
 
@@ -26,8 +26,8 @@ JavaScript frameworks are a dime a dozen, and more are appearing everyday. So wh
 * Ajax and HTML5 Local Storage adapters
 * Asynchronous server communication
 * Works in all major browsers (Chrome, Safari, Firefox, IE >= 9)
-* [Spine Mobile](<%= mobile_path %>) extension
 * Simple and lightweight
+* minimal dependencies
 * Very Approachable Source Code
 * Great documentation
 
@@ -36,6 +36,8 @@ But don't take our word for it. Take a look at the source of the [example applic
 ##Components
 
 * *Spine* - The main library, containing the core classes, such as `Model` and `Controller`.
+
+* *Extension Modules* - two way binding, routing, model relationship management etc. 
 
 * *Spine Mobile* - Spine's mobile extension, letting you easily build [mobile and PhoneGap applications](<%= mobile_path %>) currently looking for a maintainer.
 
@@ -70,7 +72,7 @@ If you're new to Spine, you should first check out the four main guides:
 
 Then you should experiment with the [getting started guide](<%= docs_path("started") %>), learning about [generating Spine apps](<%= docs_path("app") %>), and using [Hem](<%= docs_path("hem") %>).
 
-Finally it is definitely recommended to browse the source of the example applications, such as the [Todos](http://github.com/maccman/spine.todos) and [Contacts](http://github.com/maccman/spine.contacts) apps.
+Finally it is definitely recommended to browse [the source of spine itself](http://github.com/spine/spine) as well as the source of some example applications, such as the [Todos](http://github.com/maccman/spine.todos) and [Contacts](http://github.com/maccman/spine.contacts) apps.
 
 ##Companion guide
 
