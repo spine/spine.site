@@ -402,4 +402,4 @@ The [Rails guide](<%= docs_path("rails_cont") %>) has a good introduction to usi
 
 ##Zepto Disclaimer
 
-*Spines ajax module is not functional with zepto.js because of the reliance on jQuery's Promise model and its queue. Zepto does have a Deffered addon that may work, and there have been attempts to port queue as well. Let us know if you get it working*
+*Spines ajax module is not functional with zepto.js because of the reliance on jQuery's Promise model and its queue. Zepto does have a Deffered addon that may work, and there have been attempts to port queue as well. It's probably not to tricky to get working so let us know if you have any success*

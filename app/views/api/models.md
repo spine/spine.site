@@ -284,7 +284,7 @@ Populates the record's attributes with inputs from the given HTML form.
 
 ### `bind(name, function)`
 
-Bind to an event specifically on this record. 
+Bind to an event specifically on this record. `on` is an available alias.
 
 ### `trigger(name, [data...])`
 
@@ -292,7 +292,7 @@ Trigger an event specifically on this record. This will propagate up to the mode
 
 ### `unbind([events, callback])`
 
-Unbind all events, or just certain events (as a comma seperated list), or a specific callback for given events
+Unbind all events, or just certain events (as a comma seperated list), or a specific callback for given events. `off` is an available alias
 
 ### `proxy(function)`
 
