@@ -12,9 +12,9 @@ Set up the model and its attributes. This is required for every model, and shoul
 ### `@include(Module)`
 
 Add class methods; see [modules](<%= docs_path("modules") %>).
-    
+
 ### `@extend(Module)`
-    
+
 Add instance methods; see [modules](<%= docs_path("modules") %>)
 
 ### `@bind(eventName, function)`
@@ -22,23 +22,23 @@ Add instance methods; see [modules](<%= docs_path("modules") %>)
 Bind event listeners to the model. These are executed in the context of the model.
 
     User.bind("refresh change", (user) -> alert("#{user.name} changed!"))
-    
-See [events](<%= docs_path("events") %>) for more information. 
-    
+
+See [events](<%= docs_path("events") %>) for more information.
+
 ### `@trigger(eventName, data...)`
-    
+
 Trigger a custom event, see [events](<%= docs_path("events") %>) for more information.
 
 ### `@unbind([eventName, function])`
-    
-Unbind events, see the [events guide](<%= docs_path("events") %>) for more information. 
-    
+
+Unbind events, see the [events guide](<%= docs_path("events") %>) for more information.
+
 ### `@records`
-    
-An hash of the raw saved record instances. You shouldn't need to access or alter this directly. 
+
+An hash of the raw saved record instances. You shouldn't need to access or alter this directly.
 
 ### `@attributes`
-    
+
 An array of model attributes, set using `@configure`. You shouldn't need to access or alter this directly.
 
 ### `@toString()`
@@ -51,29 +51,36 @@ Find records by ID - returning the record instance. If the record doesn't exist,
 
     user = User.find("1")
 
+### `@findAll(ids, [notFound])`
+
+calls `@find(id, [notFound])` for each id in ids
+
+    users = User.findAll([1,2,3])
+
+
 ### `@notFound(id)`
 
 runs if `@find` for a given id does not find a model instance. Default simply returns null. You shouldn't need to invoke this directly, but defining custom notFound on a spine Model is something you may be interested in.'
-    
+
 ### `@exists(id)`
-    
+
 Returns a boolean indicating if the record with the specified ID exists or not.
 
     user = User.exists("1")
     alert(user.name) if user
-    
+
 ### `@refresh(recordsArray, [options])`
-    
+
 Appends to all the stored records, without calling any *create*, *update*, *save* or *destroy* events. The only event that will be triggered is the *refresh* event. You can pass the option `{clear: true}` to wipe all the existing records. Internally `@refresh` calls `fromJSON()`, so you can also pass it JSON instead of an array.
 
     User.refresh([{id: 1, name: "test"}, {id: 2, name: "test2"}])
-    
+
 ### `@select(function)`
 
-Select all records that the callback function returns true to. 
+Select all records that the callback function returns true to.
 
     bobs = User.select (user) -> user.name == "bob"
-    
+
 ### `@findByAttribute(name, value)`
 
 Find the first record that has the given attribute & value.
@@ -131,7 +138,7 @@ Updates the record with the matching ID, with the given attributes.
 
 ### `@create(attributes)`
 
-Creates a new record with the given attributes. Returns `false` if the record's validation fails, or the newly created record if successful. 
+Creates a new record with the given attributes. Returns `false` if the record's validation fails, or the newly created record if successful.
 
 ### `@destroy(id, options)`
 
@@ -151,24 +158,24 @@ Utility function so the model has a valid JSON representation (shows all records
 
 ### `@fromJSON(json)`
 
-Pass a JSON string, representing either an array or a singleton, to `@fromJSON()`. Returns an array or unsaved model instances. 
+Pass a JSON string, representing either an array or a singleton, to `@fromJSON()`. Returns an array or unsaved model instances.
 
 ### `@fromForm(formElement)`
 
 Returns a new record, populated by the given HTML form's inputs.
-   
+
 ###  `@proxy(function)`
 
 Wrap a function in a proxy so it will always execute in the context of the model. This is a JavaScript compatibility feature, and shouldn't be used in CoffeeScript.
 
     create = Model.proxy(Model.create)
-    
+
 ### `@setup(name, [attributes...])`
 
 Alternative method for creating a new model class. This is a JavaScript compatibility feature, and shouldn't be used in CoffeeScript.
 
     var User = Model.setup("User", ["first_name", "last_name"])
-    
+
 ##Instance methods
 
 ### `newRecord`
@@ -230,7 +237,7 @@ Sets a single attribute, saving the instance.
 
 ### `updateAttributes(attributes)`
 
-Updates a record with the given attributes, saving the record. 
+Updates a record with the given attributes, saving the record.
 
     user = User.create()
     user.updateAttributes(name: "Sir Galahad the Pure")
@@ -246,7 +253,7 @@ Destroy will also unbind event listeners for the model and objects it was listen
 
 ### `dup()`
 
-Returns a new unsaved record, with the same attributes as the current record, save the ID, which will be `null`. 
+Returns a new unsaved record, with the same attributes as the current record, save the ID, which will be `null`.
 
     user = User.create(name: "Sir Bedevere")
     dup  = user.dup()
@@ -258,7 +265,7 @@ Returns a prototype clone of the record. This is used internally for *Dynamic Re
 
 ### `reload()`
 
-Reloads a record's attributes from its saved counterpart. 
+Reloads a record's attributes from its saved counterpart.
 
 ### `toJSON()`
 
@@ -288,7 +295,7 @@ Bind to an event specifically on this record. `on` is an available alias.
 
 ### `trigger(name, [data...])`
 
-Trigger an event specifically on this record. This will propagate up to the model too. 
+Trigger an event specifically on this record. This will propagate up to the model too.
 
 ### `unbind([events, callback])`
 

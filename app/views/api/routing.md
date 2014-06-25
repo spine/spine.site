@@ -28,7 +28,7 @@ When the callback function is invoked, it gets passed an object containing the a
 Navigate to the supplied relative URL. If given multiple arguments, the arguments are joined with a forward slash.
 
     Route.navigate('/contacts', contact.id) #=> /contacts/1
-    
+
 The last argument can be an `options` object. Supported options are:
 
 * `trigger: true` - trigger route callbacks
@@ -42,7 +42,7 @@ Controllers are extended with following instance methods:
 Add a set of routes. Callbacks are executed in the current context:
 
     @routes
-      "/contacts/id": -> #... 
+      "/contacts/id": -> #...
       "/contacts":    -> #...
 
 ### `navigate(url, [data])`
