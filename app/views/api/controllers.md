@@ -26,7 +26,7 @@ JavaScript compatibility function for creating a new controller.
 
 ### `el`
 
-`@el` represents the controller's HTML element, and is instantiated when the controller is first created. Most of the controller's operations, such as `@html()` and `@append()` involve `@el`. You can think of it as the view the controller is associated with.
+`@el` A jQuery or Zepto object that represents the controller's HTML element, and is instantiated when the controller is first created. Most of the controller's operations, such as `@html()` and `@append()` involve `@el`. You can think of it as the view the controller is associated with.
 
 You also set a custom element when instantiating controllers.
 
