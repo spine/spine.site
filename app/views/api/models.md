@@ -156,6 +156,10 @@ If passed a function, `@fetch()` adds that function as a listener to the *fetch*
 
 Utility function so the model has a valid JSON representation (shows all records).
 
+### `@beforeFromJSON(json)`
+
+If defined will pre-process the JSON before Spine tries to create model object(s) from it in `@fromJSON`.
+
 ### `@fromJSON(json)`
 
 Pass a JSON string, representing either an array or a singleton, to `@fromJSON()`. Returns an array or unsaved model instances.

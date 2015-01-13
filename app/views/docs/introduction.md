@@ -21,7 +21,7 @@ Spine is tiny, the core library comes in at around 600 lines of CoffeeScript. Be
 JavaScript frameworks are a dime a dozen, and more are appearing everyday. So what makes Spine so special?
 
 * Built in a real-world environment
-* Lightweight controller implementation (based on Backbone's API)
+* Lightweight controller implementation (originally based on Backbone's API)
 * Full model layer and ORM
 * Ajax and HTML5 Local Storage adapters
 * Asynchronous server communication
