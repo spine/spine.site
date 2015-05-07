@@ -136,9 +136,12 @@ Destroys every record, triggering a *destroy* event on every record.
 
 Updates the record with the matching ID, with the given attributes.
 
-### `@create(attributes)`
+### `@create(attributes, [options])`
 
-Creates a new record with the given attributes. Returns `false` if the record's validation fails, or the newly created record if successful.
+Creates a new record with the given attributes. Returns `false` if the record's validation fails, or returns the newly created record if successful. 
+Optionaly accepts a options object with an 'idx' to insert the new record at. 
+
+    Asset.create({name: "test.pdf"}, {idx: 0});
 
 ### `@destroy(id, options)`
 
