@@ -92,6 +92,8 @@ Then the server should respond with something like this:
     
 Notice the ID change; the server has substituted the client-side generated ID with its own. Spine takes this all into account, and will refer to the record by its server-side ID in the future. For more information on how this works, see the [Rails integration guide](<%= docs_path("rails") %>).
 
+Since Spine version 1.6 If the server response of a POST or DELETE fails the ajax module automatically brings the Spine model collection back in sync with the server. That is, for a failed POST the model will be marked as new so that a subsequent `.save()` triggers another POST instead of a PUT, and for a failed DELETE the record is restored locally, so that a DELETE could be called again if desired.
+
 ##A note on API design
 
 Ideally, when presenting an Ajax API to Spine apps, you should abstract out as much of the model data and application logic as possible. Make the API as simple as possible. When you're building APIs, it's good to get into the mindset of an API client. Approach it as if you knew nothing about the database schema or backend. What are the fundaments that you, as a client, need from the service? What's the simplest abstraction? Then you'll have a good API.
