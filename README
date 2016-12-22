@@ -1,7 +1,9 @@
-Site for Spine: http://spinejs.com
+Old Docs Site for Spine.js and associated tools.
+
+content has been ported to new application and is now hosted at http://spine.github.io/
 
 
-Release checklist:
+Depricated Release checklist:
 
 * Update version in spine.coffee in dev branch
 * Update version in package.json in dev branch
